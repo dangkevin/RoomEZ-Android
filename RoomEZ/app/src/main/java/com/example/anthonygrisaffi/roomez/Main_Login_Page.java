@@ -68,6 +68,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //this was originally activity_login
         setContentView(R.layout.activity_main__login__page);
 
         // Find the Google+ sign in button.
@@ -303,7 +304,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             cursor.moveToNext();
         }
 
-        addEmailsToAutoComplete(emails);
+        //addEmailsToAutoComplete(emails);
     }
 
     @Override
@@ -322,7 +323,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
     }
 
 
-    private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
+    /*private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(LoginActivity.this,
@@ -330,7 +331,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
 
         mEmailView.setAdapter(adapter);
     }
-
+*/
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
