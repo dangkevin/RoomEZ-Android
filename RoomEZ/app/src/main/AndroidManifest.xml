@@ -45,15 +45,8 @@
 
         </activity>
 
-            <!--
-            THIS WAS AN ATTEMPT TO LINK THE GOOGLE+ LOGIN TO THE MAIN STICKY PAGE
-            IT DOESN'T WORK.
 
-            android:parentActivityName=".Main_Login_Page">//This
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.anthonygrisaffi.roomez.MainBoard"/>
-                -->
+
 
         <activity
             android:name=".Main_Login_Page"

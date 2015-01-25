@@ -5,21 +5,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.anthonygrisaffi.roomez.Main_Login_Page">
+    tools:context="com.example.anthonygrisaffi.roomez.Main_Login_Page"
+    android:weightSum="1">
 
     <!-- Login progress -->
     <ProgressBar android:id="@+id/login_progress" style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginBottom="8dp" android:visibility="gone" />
 
-    <ScrollView android:id="@+id/login_form" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/login_form" android:layout_width="match_parent"
+        android:layout_height="450dp">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <com.google.android.gms.common.SignInButton android:id="@+id/plus_sign_in_button"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp" />
 
             <LinearLayout android:id="@+id/plus_sign_out_buttons"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -69,7 +66,12 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.gms.common.SignInButton android:id="@+id/plus_sign_in_button"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_gravity="bottom" />
 
 </LinearLayout>
 
