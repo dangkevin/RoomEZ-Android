@@ -6,10 +6,4 @@
     <string name="action_settings">Settings</string>
     <string name="edit_message">Wuddup</string>
 
-    <string name="error_intro">Oops! </string>
-    <string name="error_blank_email">your email was left blank. </string>
-    <string name="error_blank_password">your password was left blank. </string>
-    <string name="error_join">and </string>
-    <string name="error_end">Please try again.</string>
-    <string name="progress_login">Attempting to login</string>
 </resources>
