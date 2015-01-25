@@ -55,14 +55,30 @@
                 android:value="com.example.anthonygrisaffi.roomez.MainBoard"/>
                 -->
 
-
         <activity
             android:name=".Main_Login_Page"
-            android:label="@string/title_activity_main__login__page"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_signup"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".DispatchActivity"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
