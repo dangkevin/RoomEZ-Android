@@ -7,6 +7,7 @@ import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentResolver;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -66,14 +67,17 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
     private View mLoginFormView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         //this was originally activity_login
         setContentView(R.layout.activity_main__login__page);
 
         // Find the Google+ sign in button.
         mPlusSignInButton = (SignInButton) findViewById(R.id.plus_sign_in_button);
-        if (supportsGooglePlayServices()) {
+
+        if (supportsGooglePlayServices())
+        {
             // Set a listener to connect the user when the G+ button is clicked.
             mPlusSignInButton.setOnClickListener(new OnClickListener() {
                 @Override
@@ -81,7 +85,9 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
                     signIn();
                 }
             });
-        } else {
+        }
+        else
+        {
             // Don't offer G+ sign in if the app's version is too low to support Google Play
             // Services.
             mPlusSignInButton.setVisibility(View.GONE);
@@ -105,10 +111,20 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
+        mEmailSignInButton.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
+            }
+        });
+
+        Button mRegisterSignInButton = (Button) findViewById(R.id.register_button);
+        mRegisterSignInButton.setOnClickListener(new OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
             }
         });
 
