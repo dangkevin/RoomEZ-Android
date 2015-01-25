@@ -16,7 +16,7 @@ public class RoomEZapp extends Application {
 
     public void onCreate() {
         Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
-
+      
         ParseUser user = new ParseUser();
         user.setUsername("my name");
         user.setPassword("my pass");
