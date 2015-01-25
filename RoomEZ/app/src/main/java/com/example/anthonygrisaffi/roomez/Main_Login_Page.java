@@ -3,15 +3,12 @@ package com.example.anthonygrisaffi.roomez;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
 import android.content.CursorLoader;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -20,7 +17,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +25,9 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +66,18 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        Parse.enableLocalDatastore(this);  //Enabling parse
+        //Initializes Parse using application ID that is provided
+        Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
+it
+
         super.onCreate(savedInstanceState);
         //this was originally activity_login
         setContentView(R.layout.activity_main__login__page);
@@ -87,6 +98,8 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             mPlusSignInButton.setVisibility(View.GONE);
             return;
         }
+
+
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
