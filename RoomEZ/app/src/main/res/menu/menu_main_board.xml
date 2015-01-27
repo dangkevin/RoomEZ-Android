@@ -24,5 +24,4 @@
         android:title="@string/group_message"
         app:showAsAction="always"/>
 
-
 </menu>
