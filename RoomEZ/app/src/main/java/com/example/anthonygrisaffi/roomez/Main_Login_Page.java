@@ -110,6 +110,8 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             }
         });
 
+        /** Implementation for the Login button for the login page **/
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener()
         {
@@ -119,12 +121,14 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             }
         });
 
+        /** Implementation for the Register button for the login page **/
+
         Button mRegisterSignInButton = (Button) findViewById(R.id.register_button);
         mRegisterSignInButton.setOnClickListener(new OnClickListener()
         {
             public void onClick(View v)
             {
-                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
+                startActivity(new Intent(Main_Login_Page.this, MainBoard.class));
             }
         });
 
@@ -192,11 +196,14 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
         }
     }
 
+      //This helper function helps check for an "@" symbol in the e-ail
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
+
+    //This helper function helps check the password length
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
