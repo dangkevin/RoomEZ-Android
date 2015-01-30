@@ -51,21 +51,43 @@
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
-
-                <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp" android:text="Sign In"
-                    android:textStyle="bold" />
-
-                <Button android:id="@+id/register_button" style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Register"
-                    android:textStyle="bold"
-                    />
+                    android:orientation="vertical">
+
+
+                <Button android:id="@+id/email_sign_in_button"
+                    android:layout_width="142dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/MaterialRed"
+                    android:text="@string/signin"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"/>
+
+
+                <Button android:id="@+id/register_button"
+                    android:layout_width="142dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/MaterialBlue"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_button"
+                    android:textStyle="normal"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                    </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
     <com.google.android.gms.common.SignInButton android:id="@+id/plus_sign_in_button"

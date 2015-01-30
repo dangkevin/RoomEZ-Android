@@ -110,6 +110,8 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             }
         });
 
+        /** Implementation for the Login button for the login page **/
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener()
         {
@@ -119,20 +121,26 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             }
         });
 
+        /** Implementation for the Register button for the register page **/
+
         Button mRegisterSignInButton = (Button) findViewById(R.id.register_button);
         mRegisterSignInButton.setOnClickListener(new OnClickListener()
         {
             public void onClick(View v)
             {
-                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
+                startActivity(new Intent(Main_Login_Page.this, MainBoard.class));
             }
         });
+
+
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         mEmailLoginFormView = findViewById(R.id.email_login_form);
         mSignOutButtons = findViewById(R.id.plus_sign_out_buttons);
     }
+
+
 
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
@@ -162,6 +170,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
 
 
         // Check for a valid password, if the user entered one.
+
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
@@ -169,6 +178,8 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
         }
 
         // Check for a valid email address.
+
+
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
@@ -191,11 +202,12 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             mAuthTask.execute((Void) null);
         }
     }
-
+    //This helper function helps check for an "@" symbol in the e-mail
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return email.contains("@");
     }
+
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
