@@ -40,7 +40,8 @@
             </LinearLayout>
 
             <LinearLayout android:id="@+id/email_login_form" android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:orientation="vertical">
+                android:layout_height="wrap_content" android:orientation="vertical"
+                android:weightSum="1">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -51,6 +52,10 @@
                     android:inputType="textEmailAddress" android:maxLines="1"
                     android:singleLine="true" />
 
+
+
+
+
                 <EditText android:id="@+id/password" android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:hint="@string/prompt_password"
                     android:imeActionId="@+id/login"
@@ -58,27 +63,40 @@
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
 
+                <!-- Linear Layout used to format Sign in and Register Button !-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <!-- Button used for Sign in !-->
+
                 <Button android:id="@+id/email_sign_in_button"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_width="142dp"
                     android:layout_marginTop="16dp"
-                    android:text="Sign In"
-                    android:background="#B71C1C"
-                    android:textColor="#FFFFFF"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text="@string/signin"
+                    android:background="@color/MaterialRed"
+                    android:textColor="@color/white"
                     android:textStyle="normal"
-                    style="?android:attr/borderlessButtonStyle"/>
-
-
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_weight="1" />
 
                 <!-- This is the register button used for the Login page !-->
                 <Button android:id="@+id/register_button"
-                    android:layout_width="match_parent"
-                    android:background="#0099CC"
+                    android:layout_width="142dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/MaterialBlue"
                     android:layout_height="wrap_content"
-                    android:text="Register"
-                    android:textColor="#FFFFFF"
+                    android:text="@string/register_button"
+                    android:layout_gravity=""
+                    android:textColor="@color/white"
                     android:textStyle="normal"
                     style="?android:attr/borderlessButtonStyle"
-                    />
+                    android:layout_weight="1" />
+
+                </LinearLayout>
 
                    <!--THIS LINE WAS PREVIOUSLY IN THE XML BUTTON ABOVE
                         style="?android:textAppearanceSmall" -->
