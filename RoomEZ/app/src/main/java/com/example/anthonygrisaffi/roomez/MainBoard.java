@@ -19,7 +19,7 @@ public class MainBoard extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
-        //Added by anthony
+        //Added by anthony January 29, 2015
         sticky = (ImageButton)findViewById(R.id.action_sticky);
         calendar = (ImageButton)findViewById(R.id.action_cal);
         message = (ImageButton)findViewById(R.id.action_gm);
