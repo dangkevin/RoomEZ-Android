@@ -4,14 +4,25 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 
-public class MainBoard extends ActionBarActivity {
+public class MainBoard extends ActionBarActivity
+{
+    ImageView sticky;
+    ImageView calendar;
+    ImageView message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
+        sticky = (ImageButton)findViewById(R.id.action_sticky);
+        calendar = (ImageButton)findViewById(R.id.action_cal);
+        message = (ImageButton)findViewById(R.id.action_gm);
+
     }
 
 

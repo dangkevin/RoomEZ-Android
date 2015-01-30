@@ -43,6 +43,7 @@
             android:name=".MainBoard"
             android:label="@string/app_name">
 
+
         </activity>
 
 
