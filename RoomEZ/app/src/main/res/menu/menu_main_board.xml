@@ -15,10 +15,14 @@
         android:icon="@drawable/ic_stickys"
         android:title="@string/sticky_page"
         app:showAsAction="always"/>
+
+
     <item android:id="@+id/action_cal"
         android:icon="@drawable/ic_calendar"
         android:title="@string/calendar"
         app:showAsAction="always"/>
+
+
     <item android:id="@+id/action_gm"
         android:icon="@drawable/ic_group_message"
         android:title="@string/group_message"

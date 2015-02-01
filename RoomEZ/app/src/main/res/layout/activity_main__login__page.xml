@@ -51,14 +51,11 @@
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified" android:inputType="textPassword"
                     android:maxLines="1" android:singleLine="true" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
 
+                <!-- This encapsulates the Login screen buttons into a vertical layout!-->
                 <Button android:id="@+id/email_sign_in_button"
-                    android:layout_width="142dp"
+                    android:layout_width="157dp"
                     android:layout_marginTop="16dp"
                     android:background="@color/MaterialRed"
                     android:text="@string/signin"
@@ -66,23 +63,27 @@
                     android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:textStyle="normal"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center_horizontal"/>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
 
                 <Button android:id="@+id/register_button"
-                    android:layout_width="142dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/MaterialBlue"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_button"
-                    android:textStyle="normal"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
+                android:layout_width="160dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/MaterialBlue"
+                android:layout_height="wrap_content"
+                android:text="@string/register_button"
+                android:textStyle="normal"
+                android:textColor="@color/white"
                     android:gravity="center"
-                    style="?android:attr/borderlessButtonStyle" />
-
-                    </LinearLayout>
+                style="?android:attr/borderlessButtonStyle"
+                    android:layout_gravity="center_horizontal" />
 
             </LinearLayout>
 
