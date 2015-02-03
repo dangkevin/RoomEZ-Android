@@ -1,5 +1,8 @@
 package com.example.anthonygrisaffi.roomez;
 
+import android.app.ActionBar;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,21 +13,19 @@ import android.widget.ImageView;
 
 public class MainBoard extends ActionBarActivity
 {
-    ImageView sticky;
-    ImageView calendar;
-    ImageView message;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
+
         //Added by anthony January 29, 2015
-        sticky = (ImageButton)findViewById(R.id.action_sticky);
-        calendar = (ImageButton)findViewById(R.id.action_cal);
-        message = (ImageButton)findViewById(R.id.action_gm);
+
 
     }
+
 
 
     @Override
@@ -45,6 +46,25 @@ public class MainBoard extends ActionBarActivity
         if (id == R.id.action_settings) {
             return true;
         }
+
+        /*
+        These if conditions check to see if the action bar buttons are pressed.
+        Their id's are located in menu_main_board. The sticky and the gm one should be working.
+        We need to investigate destroying the activities so they don't stay active the whole time.
+         */
+        if (id == R.id.action_sticky)
+        {
+            startActivity(new Intent(this, MainBoard.class));
+        }
+        if (id == R.id.action_gm)
+        {
+            startActivity(new Intent(this, GroupMessage.class));
+        }
+
+        /*if (id == R.id.action_cal)
+        {
+            startActivity(new Intent(this,));
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
