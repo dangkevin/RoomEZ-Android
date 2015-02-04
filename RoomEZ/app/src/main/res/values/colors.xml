@@ -4,5 +4,6 @@
    <color name="white" type="color">#FFFFFF</color>
    <color name="MaterialBlue" type="color">#0099CC</color>
    <color name="MaterialRed"  type="color>">#B71C1C</color>
+    <color name="defalut" type="color">#03A9F4</color>
 
     </resources>
