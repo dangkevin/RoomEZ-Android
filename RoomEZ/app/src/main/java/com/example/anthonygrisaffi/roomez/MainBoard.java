@@ -1,6 +1,7 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
@@ -40,32 +41,47 @@ public class MainBoard extends ActionBarActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+
+        //int id = item.getItemId();
+
+
+        switch (item.getItemId()) {
+
+            case R.id.action_settings:
+                // action_settings
+                return true;
+            case R.id.action_gm:
+                // location found
+                Intent i = new Intent(this, GroupMessage.class);
+                startActivity(i);
+                // refresh
+                return true;
+            case R.id.action_cal:
+                Intent b = new Intent(this, CalendarActivity.class);
+                startActivity(b);
+                return true;
+            case R.id.action_sticky:
+                Intent c = new Intent(this,MainBoard.class);
+                startActivity(c);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         /*
         These if conditions check to see if the action bar buttons are pressed.
         Their id's are located in menu_main_board. The sticky and the gm one should be working.
         We need to investigate destroying the activities so they don't stay active the whole time.
          */
-        if (id == R.id.action_sticky)
-        {
-            startActivity(new Intent(this, MainBoard.class));
-        }
-        if (id == R.id.action_gm)
-        {
-            startActivity(new Intent(this, GroupMessage.class));
-        }
+
+
 
         /*if (id == R.id.action_cal)
         {
             startActivity(new Intent(this,));
         }*/
-
-        return super.onOptionsItemSelected(item);
-    }
 }

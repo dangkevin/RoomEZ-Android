@@ -110,7 +110,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
             }
         });
 
-        /** Implementation for the Login button for the login page **/
+        /** Implementation for the Signin button for the login page **/
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener()
@@ -128,7 +128,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
         {
             public void onClick(View v)
             {
-                startActivity(new Intent(Main_Login_Page.this, MainBoard.class));
+                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
             }
         });
 
