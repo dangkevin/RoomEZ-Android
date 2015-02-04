@@ -9,16 +9,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 
 public class MainBoard extends ActionBarActivity
 {
 
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
     }
 
     @Override
