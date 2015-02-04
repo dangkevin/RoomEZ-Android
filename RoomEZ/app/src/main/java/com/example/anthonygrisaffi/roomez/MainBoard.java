@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
@@ -21,12 +22,30 @@ public class MainBoard extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
+        //calling the Endless Scroll class on the gridview layout
+        GridView gridView = (GridView)findViewById(R.id.gridView);
 
-        //Added by anthony January 29, 2015
-
+        gridView.setOnScrollListener(new EndlessScrollListener()
+        {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount)
+            {
+              // Triggered only when new data needs to be appended to the list
+              // Add whatever code is needed to append new items to your AdapterView
+              customLoadMoreDataFromApi(page);
+              // or customLoadMoreDataFromApi(totalItemsCount);
+            }
+        });
 
     }
 
+    private void customLoadMoreDataFromApi(int page)
+    {
+        // This method probably sends out a network request and appends new data items to your adapter.
+        // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
+        // Deserialize API response and then construct new objects to append to the adapter
+
+    }
 
 
     @Override
@@ -54,15 +73,18 @@ public class MainBoard extends ActionBarActivity
                 // location found
                 Intent i = new Intent(this, GroupMessage.class);
                 startActivity(i);
+                finish();
                 // refresh
                 return true;
             case R.id.action_cal:
                 Intent b = new Intent(this, CalendarActivity.class);
                 startActivity(b);
+                finish();
                 return true;
             case R.id.action_sticky:
                 Intent c = new Intent(this,MainBoard.class);
                 startActivity(c);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
