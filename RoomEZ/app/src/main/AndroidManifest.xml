@@ -35,7 +35,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainBoard"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_launcher">
         </activity>
         <activity
             android:name=".Main_Login_Page"
