@@ -11,7 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 
-public class MainBoard extends FragmentActivity
+public class MainBoard extends ActionBarActivity
 {
 
 
@@ -19,22 +19,8 @@ public class MainBoard extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
-
-        if(findViewById(R.id.sticky_frag) != null)
-        {
-            // Create a new Fragment to be placed in the activity layout
-            HeadlinesFragment firstFragment = new HeadlinesFragment();
-
-            // Intent, pass the Intent's extras to the fragment as arguments
-            firstFragment.setArguments(getIntent().getExtras());
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            getFragmentManager().beginTransaction().add(R.id.sticky_frag, firstFragment).commit();
-        }
-
-        //Added by anthony January 29, 2015
-
-
+        //The app segfaults when I call the main activity layout.
+        //setContentView(R.layout.activity_main_board);
     }
 
 
@@ -42,7 +28,7 @@ public class MainBoard extends FragmentActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        //getMenuInflater().inflate(R.menu.menu_main_board, menu);
+        getMenuInflater().inflate(R.menu.menu_main_board, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
