@@ -19,14 +19,7 @@ public class MainBoard extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
-
-
-        //Added by anthony January 29, 2015
-
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,7 +47,7 @@ public class MainBoard extends ActionBarActivity
          */
         if (id == R.id.action_sticky)
         {
-            startActivity(new Intent(this, MainBoard.class));
+            //startActivity(new Intent(this, MainBoard.class));
         }
         if (id == R.id.action_gm)
         {

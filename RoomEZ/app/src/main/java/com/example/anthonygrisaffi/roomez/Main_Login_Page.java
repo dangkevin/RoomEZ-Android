@@ -128,7 +128,7 @@ public class Main_Login_Page extends PlusBaseActivity implements LoaderCallbacks
         {
             public void onClick(View v)
             {
-                startActivity(new Intent(Main_Login_Page.this, MainBoard.class));
+                startActivity(new Intent(Main_Login_Page.this, SignUpActivity.class));
             }
         });
 
