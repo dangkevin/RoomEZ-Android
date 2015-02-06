@@ -37,7 +37,7 @@ public class MainBoard extends ActionBarActivity
             }
         });
 
-        gridView.setAdapter(new ImageAdaptor(this));
+        //gridView.setAdapter(new ImageAdaptor(this));
 
     }
 
