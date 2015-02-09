@@ -32,7 +32,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainBoard"
             android:label="@string/app_name" >
@@ -42,7 +42,7 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".CalendarActivity"
             android:label="portrait"
             android:screenOrientation="portrait" />
         <activity
@@ -70,6 +70,10 @@
         <activity
             android:name=".GroupMessage"
             android:label="@string/title_activity_group_message" >
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
+            android:label="@string/title_activity_welcome" >
         </activity>
     </application>
 

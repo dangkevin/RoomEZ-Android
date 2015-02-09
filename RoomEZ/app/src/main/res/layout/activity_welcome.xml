@@ -1,0 +1,87 @@
+
+
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.anthonygrisaffi.roomez.WelcomeActivity">
+<!--
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="128dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="@string/title_activity_login" /> !-->
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/welcomelogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:text="Login"
+        bootstrap:bb_size="large"
+        bootstrap:bb_roundedCorners="true"
+        bootstrap:bb_icon_right="fa-paper-plane"
+        bootstrap:bb_type="success"
+
+
+        />
+
+
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/welcomesignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        bootstrap:bb_roundedCorners="true"
+        android:text="Sign up for RoomEZ"
+        bootstrap:bb_size="large"
+        bootstrap:bb_icon_right="fa-weixin"
+        bootstrap:bb_type="success"
+        />
+
+
+
+
+    <!--<com.beardedhen.androidbootstrap.BootstrapEditText
+        android:id="@+id/txtOne"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="rounded"
+        bootstrapbutton:be_roundedCorners="true"
+        android:gravity="center"
+        bootstrapbutton:be_state="success"
+        /> !-->
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
