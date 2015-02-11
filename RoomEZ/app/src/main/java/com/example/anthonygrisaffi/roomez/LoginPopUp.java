@@ -17,10 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import java.io.File;
-
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import me.drakeet.materialdialog.MaterialDialog;
@@ -56,7 +53,7 @@ public class LoginPopUp extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(LoginPopUp.this, MainBoard.class);
                 startActivity(i);
-                mMaterialDialog.dismiss();
+                //mMaterialDialog.dismiss();
 
             }
         });
