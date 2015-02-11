@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -50,9 +51,11 @@ public class LoginPopUp extends Activity {
         final MaterialDialog mMaterialDialog = new MaterialDialog(this);
         mMaterialDialog.setTitle("MaterialDialog");
         //mMaterialDialog.setMessage("Hello world!");
-        mMaterialDialog.setPositiveButton("Sign Up", new View.OnClickListener() {
+        final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("Sign Up", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(LoginPopUp.this, MainBoard.class);
+                startActivity(i);
                 mMaterialDialog.dismiss();
 
             }
