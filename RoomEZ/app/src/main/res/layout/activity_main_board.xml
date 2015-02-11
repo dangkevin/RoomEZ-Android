@@ -5,8 +5,9 @@
     android:orientation="horizontal"
     android:background="@drawable/cork">
 
-    >
+
     <!--android:background="@drawable/images"-->
+    <include layout="@layout/plus_button"></include>
 
     <GridView
         android:layout_width="match_parent"
@@ -18,7 +19,9 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
+
         />
+
 
 
 </LinearLayout>

@@ -1,26 +1,32 @@
 package com.example.anthonygrisaffi.roomez;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class MainBoard extends ActionBarActivity
 {
 
+    ImageButton plusButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
+        plusButton = (ImageButton)findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                popUpOptions();
+            }
+        });
 
         //calling the Endless Scroll class on the gridview layout
         GridView gridView = (GridView)findViewById(R.id.gridView);
@@ -39,6 +45,11 @@ public class MainBoard extends ActionBarActivity
 
         //gridView.setAdapter(new ImageAdaptor(this));
 
+    }
+
+    private void popUpOptions()
+    {
+        Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
     }
 
     private void customLoadMoreDataFromApi(int page)
