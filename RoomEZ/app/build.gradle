@@ -26,4 +26,5 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.1.71'
     compile 'com.parse.bolts:bolts-android:1.+'        //This line is for Parse-backend
     compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')  //This line is for the Parse-backend
+    compile 'com.google.apis:google-api-services-calendar:v3-rev117-1.19.1'
 }

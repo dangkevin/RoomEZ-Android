@@ -8,5 +8,6 @@
     <string name="sticky_page">Stickys</string>
     <string name="group_message">Group Messages</string>
     <string name="calendar">Calendar</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 
 </resources>
