@@ -24,6 +24,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.google.android.gms:play-services:6.1.71'
-    compile 'com.parse.bolts:bolts-android:1.+'        //This line is for Parse-backend
-    compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')  //This line is for the Parse-backend
+    compile 'com.parse.bolts:bolts-android:1.+'
+    //This line is for Parse-backend
+    compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')
+    //This line is for the Parse-backend
+    compile 'com.beardedhen:androidbootstrap:+'
+    //compile files('libs/AndroidBootstrap/libs/android-support-v4.jar')
 }

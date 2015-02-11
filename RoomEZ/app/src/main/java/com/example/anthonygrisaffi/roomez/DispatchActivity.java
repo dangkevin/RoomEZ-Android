@@ -28,7 +28,7 @@ import com.parse.ParseUser;
                 startActivity(new Intent(this, MainBoard.class));
             } else {
                 // Start and intent for the logged out activity
-                startActivity(new Intent(this, Main_Login_Page.class));
+                startActivity(new Intent(this, WelcomeActivity.class));
             }
         }
 
