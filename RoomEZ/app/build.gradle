@@ -29,5 +29,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')
     //This line is for the Parse-backend
     compile 'com.beardedhen:androidbootstrap:+'
+    compile 'me.drakeet.materialdialog:library:1.2.2'
     //compile files('libs/AndroidBootstrap/libs/android-support-v4.jar')
 }

@@ -1,11 +1,15 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 
 public class WelcomeActivity extends Activity {
@@ -15,9 +19,15 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-
-
+        BootstrapButton loginButton = (BootstrapButton) findViewById(R.id.welcomesignup);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(WelcomeActivity.this, LoginPopUp.class);
+                startActivity(i);
+            }
+        });
     }
+
 
 
     @Override
@@ -26,6 +36,11 @@ public class WelcomeActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_welcome, menu);
         return true;
     }
+
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
