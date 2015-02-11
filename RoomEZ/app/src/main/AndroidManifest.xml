@@ -75,6 +75,11 @@
             android:name=".WelcomeActivity"
             android:label="@string/title_activity_welcome" >
         </activity>
+        <activity
+            android:name=".LoginPopUp"
+            android:theme="@android:style/Theme.Dialog"
+            android:label="@string/title_activity_login_pop_up" >
+        </activity>
     </application>
 
 </manifest>
