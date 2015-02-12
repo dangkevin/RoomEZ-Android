@@ -1,16 +1,13 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -21,24 +18,28 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+//Github Library we will be using for the dialog
 import me.drakeet.materialdialog.MaterialDialog;
 
 
+/* This is the Welcome Activity that is seen when the app is initialized. Handles the login
+    and sign up components for our apps.
+ */
 public class WelcomeActivity extends Activity {
 
-    //Text field used for login username
+    //Text field used for the username upon login
     private EditText loginUsername;
 
-    //Text field used for login password
+    //Text field used for password upon login
     private EditText loginPassword;
 
-    //Text field used for sign up username
+    //Text field used for the username when signing up
     private EditText signupUsername;
 
-    //Text field used for sign up password
+    //Text field used for password when signing up
     private EditText signupPassword;
 
-    //Text field used for sign up password (Entering again)
+    //Text field used for entering password again
     private EditText signupPassword2;
 
 
@@ -47,22 +48,27 @@ public class WelcomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
+        //Initializes a customized login button from a GitHub library
         BootstrapButton logininButton = (BootstrapButton) findViewById(R.id.welcomelogin);
+        //Initializes a customized signup button from a GitHub Library
         BootstrapButton signupButton = (BootstrapButton) findViewById(R.id.welcomesignup);
+
+        //When the sign up button is clicked, a pop up sign up dialog will appear
         signupButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                signupPopup();
+                signupPopup();   //This function calls the sign up dialog
             }
         });
+
+        //When the login button is clicked, a pop up Login dialog will appear
         logininButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
 
-                loginPopup();
+                loginPopup();   //This function calls the Login dialog
 
             }
         });
     }
-
 
 
     @Override
@@ -72,61 +78,80 @@ public class WelcomeActivity extends Activity {
         return true;
     }
 
+    /****************This method is responsible for generating the sign up pop up *****************/
     public void signupPopup(){
+        //Define a custom layout
         LayoutInflater factory = LayoutInflater.from(this);
+        //Creates a view and adds buttons (such as Edit Text) from a customized layout
         View myView = factory.inflate(R.layout.activity_login_pop_up, null);
+        //Linear layout is created
         LinearLayout hello = new LinearLayout(this);
+
+        //The customized layout with all the buttons are added into this Linear Layout
+        hello.addView(myView);
+
+        //The EditText buttons are initialized here referenced by their id from an XML
         signupUsername = (EditText) myView.findViewById(R.id.popupemail);
         signupPassword = (EditText) myView.findViewById(R.id.popuppassword);
         signupPassword2 = (EditText) myView.findViewById(R.id.popuppasswordagain);
-        hello.addView(myView);
 
 
-
+       //This call is responsible for generating a custom dialog pop up
         final MaterialDialog mMaterialDialog = new MaterialDialog(this);
-        mMaterialDialog.setTitle("MaterialDialog");
-        //mMaterialDialog.setMessage("Hello world!");
+
+        //This line handles whenever the SIGN UP in the dialog is clicked
         final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("SIGN UP", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signup();
+                signup();   //Makes a call to the Sign Up function associated with Parse
                 mMaterialDialog.dismiss();
 
             }
         });
+
+        //This line handles whenever the CANCEL button is clicked in the dialog
         mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMaterialDialog.dismiss();
+                mMaterialDialog.dismiss(); //Dismisses the dialog
 
             }
         });
+        //Allows the dialog to be canceled on outside touch
         mMaterialDialog.setCanceledOnTouchOutside(true);
+        //Sets the view from the linear layout to the dialog
         mMaterialDialog.setView(hello);
+        //Shows the dialog
         mMaterialDialog.show();
     }
 
+    /****************This method is responsible for generating the Login pop up *****************/
     public void loginPopup(){
+        //Define a custom layout
         LayoutInflater factory = LayoutInflater.from(this);
+        //Creates a view and adds buttons (such as Edit Text) from a customized layout
         View myView = factory.inflate(R.layout.activity_signup_pop_up, null);
+        //Linear layout is created
         LinearLayout hello = new LinearLayout(this);
+        //Adds the view to the linear layout
+        hello.addView(myView);
+        //Initializes the Edit Text buttons
         loginUsername = (EditText) myView.findViewById(R.id.popupemail2);
         loginPassword = (EditText) myView.findViewById(R.id.popuppassword2);
-        hello.addView(myView);
-        //hello.addView(passwordBox);
 
+        //Responsible for the dialog
         final MaterialDialog mMaterialDialog = new MaterialDialog(this);
-        mMaterialDialog.setTitle("MaterialDialog");
-        //mMaterialDialog.setMessage("Hello world!");
+
+        //This line handles whenever the LOGIN button is clicked in the dialog
         final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("LOGIN", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //LoginActivity other = new LoginActivity();
-                login();
+                login(); //Makes a call to the login function associated with Parse
 
 
             }
         });
+        //This line handles whenever the CANCEL button is clicked in the dialog
         mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,8 +159,11 @@ public class WelcomeActivity extends Activity {
 
             }
         });
+
         mMaterialDialog.setCanceledOnTouchOutside(true);
+        //Sets the Linear Layout
         mMaterialDialog.setView(hello);
+        //Show dialog
         mMaterialDialog.show();
 
     }
@@ -160,8 +188,10 @@ public class WelcomeActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-
+/**********************This method handles the database query for the sign up*********************/
     private void signup() {
+
+        /**Involves Parse**/
 
         String username = signupUsername.getText().toString().trim();
         String password = signupPassword.getText().toString().trim();
@@ -174,6 +204,12 @@ public class WelcomeActivity extends Activity {
             validationError = true;
             validationErrorMessage.append(getString(R.string.error_blank_email));
         }
+
+       /*if(username.length() < 5){
+            validationError = true;
+            validationErrorMessage.append(("Email invalid"));
+        }*/
+
         if (password.length() == 0) {
             if (validationError) {
                 validationErrorMessage.append(getString(R.string.error_join));
@@ -226,8 +262,12 @@ public class WelcomeActivity extends Activity {
     }
 
 
+/*************************This method handles the database checks for Login***********************/
+
+        /**Involves Parse**/
 
     private void login() {
+
 
         String username = loginUsername.getText().toString().trim();
         String password = loginPassword.getText().toString().trim();
