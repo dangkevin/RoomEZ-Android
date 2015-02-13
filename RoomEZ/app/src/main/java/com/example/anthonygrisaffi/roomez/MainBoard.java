@@ -3,18 +3,28 @@ package com.example.anthonygrisaffi.roomez;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.beardedhen.androidbootstrap.BootstrapButton;
+
+import me.drakeet.materialdialog.MaterialDialog;
 
 
 public class MainBoard extends ActionBarActivity
 {
 
     ImageButton plusButton;
+    private BootstrapButton addSticky;
+    private BootstrapButton groupChat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,48 @@ public class MainBoard extends ActionBarActivity
     private void popUpOptions()
     {
         Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
+        //Define a custom layout
+        LayoutInflater factory = LayoutInflater.from(this);
+        //Creates a view and adds buttons (such as Edit Text) from a customized layout
+        View myView = factory.inflate(R.layout.plus_button_options, null);
+        //Linear layout is created
+        LinearLayout hello = new LinearLayout(this);
+        //Adds the view to the linear layout
+        hello.addView(myView);
+        //Initializes the Edit Text buttons
+        addSticky = (Button) myView.findViewById(R.id.add_sticky_button);
+        groupChat = (Button) myView.findViewById(R.id.start_group_chat);
+
+        //Responsible for the dialog
+        final MaterialDialog mMaterialDialog = new MaterialDialog(this);
+
+        //This line handles whenever the LOGIN button is clicked in the dialog
+        final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("LOGIN", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //login(); //Makes a call to the login function associated with Parse
+
+
+            }
+        });
+
+//        addSticky.setOnClickListener(new);
+        //This line handles whenever the CANCEL button is clicked in the dialog
+        mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMaterialDialog.dismiss();
+
+            }
+        });
+
+        mMaterialDialog.setCanceledOnTouchOutside(true);
+        //Sets the Linear Layout
+        mMaterialDialog.setView(hello);
+        //Show dialog
+        mMaterialDialog.show();
+
+
     }
 
     private void customLoadMoreDataFromApi(int page)
