@@ -5,22 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/add_sticky_button"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/MaterialBlue"
-        android:text="Add a sticky"/>
-        <!--bootstrapbutton:bb_icon_left="fa-thumb-tack"-->
-        <!--bootstrapbutton:bb_type="info" />-->
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="Add a sticky"
+        bootstrap:bb_size="large"
+        bootstrap:bb_roundedCorners="true"
+        bootstrapbutton:bb_icon_left="fa-thumb-tack"
+        bootstrapbutton:bb_type="success" />
 
-    <Button
+    <com.beardedhen.androidbootstrap.BootstrapButton
         android:id="@+id/start_group_chat"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/MaterialRed"
         android:text="New Chat"/>
         <!--bootstrapbutton:bb_icon_right="fa-cloud"-->
         <!--bootstrapbutton:bb_roundedCorners="true"-->

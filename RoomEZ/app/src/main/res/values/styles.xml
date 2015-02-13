@@ -25,4 +25,9 @@
             name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/corkboard</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>

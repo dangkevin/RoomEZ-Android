@@ -4,5 +4,14 @@
    <color name="white" type="color">#FFFFFF</color>
    <color name="MaterialBlue" type="color">#0099CC</color>
    <color name="MaterialRed"  type="color>">#B71C1C</color>
+    <color name="yellow" type="color">#F7FE2E</color>
+    <color name="pink" type="color">#FF299C</color>
+    <color name="pink_pressed" type="color">#EF27A6</color>
+    <color name="teal" type="color">#a1f999</color>
+    <color name="teal2" type="color">#1fff99</color>
+    <color name="black2" type="color">#230000</color>
+    <color name="black" type="color">#000000</color>
+    <color name="white2" type="color">#FddFFF</color>
+
 
     </resources>

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -15,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -34,10 +34,14 @@ public class MainBoard extends ActionBarActivity
         plusButton = (ImageButton)findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+
+                Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
                 popUpOptions();
             }
         });
 
+
+        //button.setColorNormalResId(R.color.MaterialBlue);
         //calling the Endless Scroll class on the gridview layout
         GridView gridView = (GridView)findViewById(R.id.gridView);
 
@@ -69,14 +73,14 @@ public class MainBoard extends ActionBarActivity
         //Adds the view to the linear layout
         hello.addView(myView);
         //Initializes the Edit Text buttons
-        addSticky = (Button) myView.findViewById(R.id.add_sticky_button);
-        groupChat = (Button) myView.findViewById(R.id.start_group_chat);
+        addSticky = (BootstrapButton) myView.findViewById(R.id.welcomelogin);
+        groupChat = (BootstrapButton) myView.findViewById(R.id.start_group_chat);
 
         //Responsible for the dialog
         final MaterialDialog mMaterialDialog = new MaterialDialog(this);
 
         //This line handles whenever the LOGIN button is clicked in the dialog
-        final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("LOGIN", new View.OnClickListener() {
+        /*final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("LOGIN", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //login(); //Makes a call to the login function associated with Parse
@@ -93,7 +97,7 @@ public class MainBoard extends ActionBarActivity
                 mMaterialDialog.dismiss();
 
             }
-        });
+        });*/
 
         mMaterialDialog.setCanceledOnTouchOutside(true);
         //Sets the Linear Layout
