@@ -1,9 +1,11 @@
 package com.example.anthonygrisaffi.roomez;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +32,34 @@ public class CalendarActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        try {
+            setUp();
+        }
+        catch (IOException e) {
+            Context context = getApplicationContext();
+            CharSequence text = "IOException";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        catch (GeneralSecurityException e) {
+            Context context = getApplicationContext();
+            CharSequence text = "GeneralSecurityException";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        catch (Exception e) {
+            Context context = getApplicationContext();
+            CharSequence text = "Any Exception";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
 
@@ -62,8 +92,8 @@ public class CalendarActivity extends ActionBarActivity {
         JacksonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
         // The clientId and clientSecret can be found in Google Developers Console
-        String clientId = "YOUR_CLIENT_ID";
-        String clientSecret = "YOUR_CLIENT_SECRET";
+        String clientId = "105996800409-a1n5594ef7kdvot6fsocqdvddiomqgk1.apps.googleusercontent.com";
+        String clientSecret = "";
 
         // Or your redirect URL for web based applications.
         String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
@@ -96,7 +126,7 @@ public class CalendarActivity extends ActionBarActivity {
                 .build().setFromTokenResponse(response);
 
         Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credential)
-                .setApplicationName("YOUR_APPLICATION_NAME").build();
+                .setApplicationName("RoomEZ").build();
 
     }
 }
