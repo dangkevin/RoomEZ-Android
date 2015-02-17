@@ -25,7 +25,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.google.android.gms:play-services:6.1.71'
     compile 'com.parse.bolts:bolts-android:1.+'
-    compile 'com.getbase:floatingactionbutton:1.7.0'//for the plus button actions
+    compile 'com.melnykov:floatingactionbutton:1.2.0'//for the plus button actions
 
     //This line is for Parse-backend
     compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')

@@ -3,7 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="horizontal"
-    android:background="@drawable/corkboard">
+    android:background="@drawable/corkboard"
+    tools:context=".MainActivity">
 
 
     <!--android:background="@drawable/images"-->
@@ -19,8 +20,8 @@
         android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
-
         />
+
 
 
 

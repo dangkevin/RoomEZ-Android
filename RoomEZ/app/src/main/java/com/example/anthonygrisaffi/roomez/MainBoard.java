@@ -2,6 +2,7 @@ package com.example.anthonygrisaffi.roomez;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,10 +12,10 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -30,6 +31,8 @@ public class MainBoard extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+        GridView gridView1 =(GridView)findViewById(R.id.gridView);
+        gridView1.setAdapter(new ImageAdaptor(this));
 
         plusButton = (ImageButton)findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +60,7 @@ public class MainBoard extends ActionBarActivity
             }
         });
 
-        //gridView.setAdapter(new ImageAdaptor(this));
+
 
     }
 
@@ -73,7 +76,7 @@ public class MainBoard extends ActionBarActivity
         //Adds the view to the linear layout
         hello.addView(myView);
         //Initializes the Edit Text buttons
-        addSticky = (BootstrapButton) myView.findViewById(R.id.welcomelogin);
+        addSticky = (BootstrapButton) myView.findViewById(R.id.add_sticky_button);
         groupChat = (BootstrapButton) myView.findViewById(R.id.start_group_chat);
 
         //Responsible for the dialog
@@ -87,9 +90,16 @@ public class MainBoard extends ActionBarActivity
 
 
             }
-        });
+        });*/
 
-//        addSticky.setOnClickListener(new);
+        addSticky.setOnClickListener((new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Toast.makeText(MainBoard.this, "Making a new sticky", Toast.LENGTH_SHORT).show();
+                create_a_sticky();
+            }
+        }));
+
         //This line handles whenever the CANCEL button is clicked in the dialog
         mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
             @Override
@@ -97,7 +107,7 @@ public class MainBoard extends ActionBarActivity
                 mMaterialDialog.dismiss();
 
             }
-        });*/
+        });
 
         mMaterialDialog.setCanceledOnTouchOutside(true);
         //Sets the Linear Layout
@@ -106,6 +116,11 @@ public class MainBoard extends ActionBarActivity
         mMaterialDialog.show();
 
 
+    }
+
+    private void create_a_sticky()
+    {
+        //FragmentActivity fragmentActivity =
     }
 
     private void customLoadMoreDataFromApi(int page)
