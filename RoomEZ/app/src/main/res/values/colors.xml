@@ -11,7 +11,7 @@
     <color name="teal2" type="color">#1fff99</color>
     <color name="black2" type="color">#230000</color>
     <color name="black" type="color">#000000</color>
-    <color name="white2" type="color">#FddFFF</color>
+    <color name="grey" type="color">#808080</color>
 
 
     </resources>
