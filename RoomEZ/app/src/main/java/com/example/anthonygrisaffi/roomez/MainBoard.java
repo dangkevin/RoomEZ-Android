@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseUser;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -155,6 +158,13 @@ public class MainBoard extends ActionBarActivity
                 startActivity(c);
                 finish();
                 return true;
+            case R.id.logOut:
+                ParseUser.logOut();
+                finish();
+                Intent d = new Intent(this,DispatchActivity.class);
+                startActivity(d);
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -7,6 +7,11 @@
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/logOut"
+        android:title="@string/logOut"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
 
     <!--Below is where I added the sticky, calendar and the group messaging-->
     <!--icons in the action bar. I made it say "always" that way it is-->
