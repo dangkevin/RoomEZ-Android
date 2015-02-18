@@ -31,8 +31,11 @@ public class MainBoard extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
-        GridView gridView1 =(GridView)findViewById(R.id.gridView);
-        gridView1.setAdapter(new ImageAdaptor(this));
+
+        if(findViewById(R.id.StickyNoteFrag) != null)
+        {
+
+        }
 
         plusButton = (ImageButton)findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
@@ -166,9 +169,11 @@ public class MainBoard extends ActionBarActivity
                 finish();
                 return true;
             case R.id.action_sticky:
-                Intent c = new Intent(this,MainBoard.class);
-                startActivity(c);
-                finish();
+                GridView gridView1 =(GridView)findViewById(R.id.gridView);
+                gridView1.setAdapter(new ImageAdaptor(this));
+//                Intent c = new Intent(this,MainBoard.class);
+//                startActivity(c);
+//                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

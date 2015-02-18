@@ -57,9 +57,9 @@ public class ImageAdaptor extends BaseAdapter {
         if(convertView==null)
         {
             imageView = new ImageView(context);
-            imageView.setPadding(8,8,8,8);
-            imageView.setLayoutParams(new GridView.LayoutParams(85,85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            //imageView.setPadding(8,8,8,8);
+            //imageView.setLayoutParams(new GridView.LayoutParams(85,85));
+            //imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         }
         else
         {
@@ -100,7 +100,7 @@ public class ImageAdaptor extends BaseAdapter {
             R.drawable.ran12
     };
 
-    @Override
+    /*@Override
     public boolean areAllItemsEnabled() {
         return false;
     }
@@ -108,5 +108,5 @@ public class ImageAdaptor extends BaseAdapter {
     @Override
     public boolean isEnabled(int position) {
         return false;
-    }
+    }*/
 }
