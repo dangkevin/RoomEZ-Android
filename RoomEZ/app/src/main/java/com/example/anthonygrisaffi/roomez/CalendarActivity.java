@@ -88,7 +88,17 @@ public class CalendarActivity extends ActionBarActivity {
     }
 
     public void setUp() throws IOException, GeneralSecurityException {
+
+        Context context = getApplicationContext();
+        CharSequence text = "unknown exception";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+
         HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+
         JacksonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
         // The clientId and clientSecret can be found in Google Developers Console
@@ -99,10 +109,12 @@ public class CalendarActivity extends ActionBarActivity {
         String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
         String scope = "https://www.googleapis.com/auth/calendar";
 
+
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow(
                 httpTransport, jsonFactory, clientId, clientSecret, Collections.singleton(scope));
         // Step 1: Authorize
         String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri(redirectUrl).build();
+
 
         // Point or redirect your user to the authorizationUrl.
         System.out.println("Go to the following link in your browser:");
