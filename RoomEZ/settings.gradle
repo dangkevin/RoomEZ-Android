@@ -1,2 +1,2 @@
-include ':app', ':actionbarsherlock'
+include ':app'
 include ':libs:AndroidBootstrap'
