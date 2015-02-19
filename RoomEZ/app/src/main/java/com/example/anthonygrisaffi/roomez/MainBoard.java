@@ -153,6 +153,9 @@ public class MainBoard extends ActionBarActivity
         switch (item.getItemId()) {
 
             case R.id.action_settings:
+                Intent j = new Intent(this, AccountSettings.class);
+                startActivity(j);
+                //finish();
                 // action_settings
                 return true;
             case R.id.action_gm:
@@ -179,6 +182,7 @@ public class MainBoard extends ActionBarActivity
                 finish();
                 Intent d = new Intent(this,DispatchActivity.class);
                 startActivity(d);
+
 
 
             default:
