@@ -21,7 +21,7 @@ public class AccountSettings extends ActionBarActivity {
 
         //header.add("Change Group");
         //footer.add("do it");
-        String[] items = {"hello", "world"};
+        String[] items = {"Change Groups", "Logout"};
 
         final ListView listview = (ListView) findViewById(R.id.listView);
         listview.setAdapter(new ArrayAdapter<String>(this, R.layout.settings_buttons, items));

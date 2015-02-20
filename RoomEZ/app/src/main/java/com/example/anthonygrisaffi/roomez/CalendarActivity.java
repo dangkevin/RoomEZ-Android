@@ -142,12 +142,13 @@ public class CalendarActivity extends ActionBarActivity {
 
     public void setUp() throws IOException, GeneralSecurityException {
 
+        /*
         Context context = getApplicationContext();
         CharSequence text = "unknown exception";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        toast.show();*/
 
 
         HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
