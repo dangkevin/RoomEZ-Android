@@ -14,5 +14,6 @@
     <string name="title_activity_login_pop_up">LoginPopUp</string>
     <string name="logOut">Log Out</string>
     <string name="title_activity_account_settings">AccountSettings</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
 
 </resources>
