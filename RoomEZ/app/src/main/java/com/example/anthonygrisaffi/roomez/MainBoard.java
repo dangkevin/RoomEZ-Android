@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -30,6 +31,7 @@ public class MainBoard extends ActionBarActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
 
         if(findViewById(R.id.StickyNoteFrag) != null)
         {
@@ -62,8 +64,7 @@ public class MainBoard extends ActionBarActivity
             }
         });
 
-
-
+        gridView.setAdapter(new ImageAdaptor(this));
     }
 
     private void popUpOptions()

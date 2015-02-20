@@ -9,28 +9,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.parse.ParseUser;
+
 
 public class GroupMessage extends ActionBarActivity
 {
-    ImageButton plusButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_message);
 
-        plusButton = (ImageButton)findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popUpOptions();
-            }
-        });
-
-    }
-
-    private void popUpOptions()
-    {
-        Toast.makeText(GroupMessage.this, "Anthony is groovy", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -52,13 +41,15 @@ public class GroupMessage extends ActionBarActivity
         switch (item.getItemId()) {
 
             case R.id.action_settings:
+                Intent j = new Intent(this, AccountSettings.class);
+                startActivity(j);
                 // action_settings
                 return true;
             case R.id.action_gm:
                 // location found
-                Intent i = new Intent(this, GroupMessage.class);
+                /*Intent i = new Intent(this, GroupMessage.class);
                 startActivity(i);
-                finish();
+                finish();*/
                 // refresh
                 return true;
             case R.id.action_cal:
@@ -71,6 +62,12 @@ public class GroupMessage extends ActionBarActivity
                 startActivity(c);
                 finish();
                 return true;
+            case R.id.logOut:
+                ParseUser.logOut();
+                finish();
+                Intent d = new Intent(this,DispatchActivity.class);
+                startActivity(d);
+
             default:
                 return super.onOptionsItemSelected(item);
         }
