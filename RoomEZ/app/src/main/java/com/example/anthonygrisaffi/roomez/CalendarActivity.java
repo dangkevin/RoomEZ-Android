@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
+/*
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ import com.google.api.services.calendar.Calendar;
 
 import com.google.api.client.http.javanet.NetHttpTransport;
 //import com.google.api.client.json.jackson.JacksonFactory;
-import com.google.api.services.calendar.model.*;
+import com.google.api.services.calendar.model.*;*/
 
 public class CalendarActivity extends ActionBarActivity {
 
@@ -49,6 +50,7 @@ public class CalendarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
+        /*
         try {
             setUp();
         }
@@ -75,7 +77,9 @@ public class CalendarActivity extends ActionBarActivity {
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
-        }
+        }*/
+
+
     }
 
     @Override
@@ -129,27 +133,12 @@ public class CalendarActivity extends ActionBarActivity {
         }
     }
 
+
+    
+
+
     /*
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-
-
-    }*/
-
     public void setUp() throws IOException, GeneralSecurityException {
-
-        /*
-        Context context = getApplicationContext();
-        CharSequence text = "unknown exception";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();*/
-
 
         HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
 
@@ -193,6 +182,5 @@ public class CalendarActivity extends ActionBarActivity {
 
         Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credential)
                 .setApplicationName("RoomEZ").build();
-
-    }
+    }*/
 }
