@@ -1,6 +1,10 @@
 package com.example.anthonygrisaffi.roomez;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -31,10 +35,6 @@ public class MainBoard extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
-        if(findViewById(R.id.StickyNoteFrag) != null)
-        {
-
-        }
 
         plusButton = (ImageButton)findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
@@ -45,10 +45,9 @@ public class MainBoard extends ActionBarActivity
             }
         });
 
-
         //button.setColorNormalResId(R.color.MaterialBlue);
         //calling the Endless Scroll class on the gridview layout
-        GridView gridView = (GridView)findViewById(R.id.gridView);
+        /*GridView gridView = (GridView)findViewById(R.id.MainView);
 
         gridView.setOnScrollListener(new EndlessScrollListener()
         {
@@ -61,7 +60,7 @@ public class MainBoard extends ActionBarActivity
               // or customLoadMoreDataFromApi(totalItemsCount);
             }
         });
-
+*/
 
 
     }
@@ -81,6 +80,8 @@ public class MainBoard extends ActionBarActivity
         addSticky = (BootstrapButton) myView.findViewById(R.id.add_sticky_button);
         groupChat = (BootstrapButton) myView.findViewById(R.id.start_group_chat);
 
+
+
         //Responsible for the dialog
         final MaterialDialog mMaterialDialog = new MaterialDialog(this);
 
@@ -98,7 +99,12 @@ public class MainBoard extends ActionBarActivity
             public void onClick(View view) {
 
                 Toast.makeText(MainBoard.this, "Making a new sticky", Toast.LENGTH_SHORT).show();
-                create_a_sticky();
+                StickyNoteFrag fragment = new StickyNoteFrag();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.add(R.id.MainView,fragment,"note");
+                //fragmentTransaction.addToBackStack("sticky");
+                fragmentTransaction.commit();
             }
         }));
 
@@ -122,7 +128,8 @@ public class MainBoard extends ActionBarActivity
 
     private void create_a_sticky()
     {
-        //FragmentActivity fragmentActivity =
+
+
     }
 
     private void customLoadMoreDataFromApi(int page)
@@ -168,8 +175,7 @@ public class MainBoard extends ActionBarActivity
                 finish();
                 return true;
             case R.id.action_sticky:
-                GridView gridView1 =(GridView)findViewById(R.id.gridView);
-                gridView1.setAdapter(new ImageAdaptor(this));
+
 //                Intent c = new Intent(this,MainBoard.class);
 //                startActivity(c);
 //                finish();
@@ -186,8 +192,13 @@ public class MainBoard extends ActionBarActivity
         }
     }
 
+//    @Override
+//    public void onFragmentInteraction(Uri uri) {
+//
+//    }
 
-        //noinspection SimplifiableIfStatement
+
+    //noinspection SimplifiableIfStatement
 
         /*
         These if conditions check to see if the action bar buttons are pressed.

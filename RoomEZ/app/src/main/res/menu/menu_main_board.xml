@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainBoard">
+    <item
+        android:id="@+id/logo"
+        android:icon="@drawable/ic_launcher"
+        android:title="logo"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"

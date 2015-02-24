@@ -1,7 +1,9 @@
 package com.example.anthonygrisaffi.roomez;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -54,6 +56,12 @@ public class ImageAdaptor extends BaseAdapter {
     {
         ImageView imageView;
 
+        // /FragmentActivity fragment = new FragmentActivity();
+        //fraigment.setContentView(R.layout.sticky);
+        //Add the fragment itself here, then
+        //1)update data in adapter
+        //2)tell the list view adapter to reload by notify dataset changed"
+        //3)scroll button listview so you can see it in the bottom of the page.
         if(convertView==null)
         {
             imageView = new ImageView(context);
@@ -70,20 +78,7 @@ public class ImageAdaptor extends BaseAdapter {
         return imageView;
     }
 
-    /*@Override
-    public int getItemViewType(int position) {
-        return position % 1;
-    }
 
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }*/
 
     private Integer[] mThumbsIds={
             R.drawable.ran1,
@@ -99,14 +94,4 @@ public class ImageAdaptor extends BaseAdapter {
             R.drawable.ran11,
             R.drawable.ran12
     };
-
-    /*@Override
-    public boolean areAllItemsEnabled() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return false;
-    }*/
 }
