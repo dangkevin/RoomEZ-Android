@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    tools:context="com.example.anthonygrisaffi.roomez.LoginPopUp"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <EditText
+        android:id="@+id/eventName"
+        android:inputType="textEmailAddress"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:hint="What's happening?" />
+
+    <Spinner
+        android:id="@+id/hourSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/minute_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </Spinner>
+    <Spinner
+        android:id="@+id/day_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </Spinner>
+    <EditText
+        android:id="@+id/eventDetails"
+        android:inputType="textPassword"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="sans-serif"
+        android:hint="Event Details"/>
+    <Spinner
+        android:id="@+id/color_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </Spinner>
+
+</LinearLayout>

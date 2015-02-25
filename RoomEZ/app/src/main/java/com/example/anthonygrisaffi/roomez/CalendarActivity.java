@@ -4,16 +4,21 @@ package com.example.anthonygrisaffi.roomez;
  * Created by KD on 2/3/15.
  */
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
@@ -24,6 +29,8 @@ import com.parse.ParseUser;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import me.drakeet.materialdialog.MaterialDialog;
 
 /*
 import android.content.Context;
@@ -72,12 +79,23 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     private WeekView.EventClickListener mEventClickListener;
     private WeekView.MonthChangeListener mMonthChangeListener;
     private WeekView.EventLongPressListener mEventLongPressListener;
+    ImageButton plusButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        plusButton = (ImageButton)findViewById(R.id.plusButton);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                //Toast.makeText(CalendarActivity.this, "Adding an Event", Toast.LENGTH_SHORT).show();
+                addCalEvent();
+
+            }
+        });
 //        CaldroidFragment caldroidFragment = new CaldroidFragment();
 //        Bundle args = new Bundle();
 //        Calendar cal = Calendar.getInstance();
@@ -113,7 +131,93 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         //mWeekView.setEventLongPressListener(mEventLongPressListener);
 
     }
-        @Override
+
+    private void addCalEvent()
+    {
+
+
+
+                //Define a custom layout
+        LayoutInflater factory = LayoutInflater.from(this);
+        //Creates a view and adds buttons (such as Edit Text) from a customized layout
+        View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
+        //Linear layout is created
+        LinearLayout hello = new LinearLayout(this);
+        //Adds the view to the linear layout
+        hello.addView(myView);
+
+        Spinner spinner = (Spinner) myView.findViewById(R.id.hourSpinner);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,
+                R.array.Hour, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.plus_button_cal_popup);
+// Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
+//        if(spinner == null){
+//            Toast.makeText(getApplicationContext(), "SPinner is null", Toast.LENGTH_SHORT).show();
+//        }
+//        else{
+//            Toast.makeText(getApplicationContext(), "SPinner is not null", Toast.LENGTH_SHORT).show();
+//        }
+        //Responsible for the dialog
+        final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CalendarActivity.this);
+
+        //mAlertDialog.setCanceledOnTouchOutside(true);
+        //Sets the Linear Layout
+        mAlertDialog.setView(hello);
+        //Show dialog
+        mAlertDialog.show();
+
+
+
+
+//        Spinner spinner = (Spinner) myView.findViewById(R.id.hourSpinner);
+//
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+//                R.array.Hour, R.layout.plus_button_cal_popup);
+//
+//// Specify the layout to use when the list of choices appears
+//        adapter.setDropDownViewResource(R.layout.plus_button_cal_popup);
+//// Apply the adapter to the spinner
+//        spinner.setAdapter(adapter);
+
+//        Spinner spinner2 = (Spinner) findViewById(R.id.minute_spinner);
+//
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+//                R.array.Minute, R.layout.plus_button_cal_popup);
+//// Specify the layout to use when the list of choices appears
+//        adapter2.setDropDownViewResource(R.layout.plus_button_cal_popup);
+//// Apply the adapter to the spinner
+//        spinner2.setAdapter(adapter);
+//
+//        Spinner spinner3 = (Spinner) findViewById(R.id.day_spinner);
+//
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+//                R.array.Day, R.layout.plus_button_cal_popup);
+//// Specify the layout to use when the list of choices appears
+//        adapter3.setDropDownViewResource(R.layout.plus_button_cal_popup);
+//// Apply the adapter to the spinner
+//        spinner3.setAdapter(adapter);
+//        Spinner spinner4 = (Spinner) findViewById(R.id.color_spinner);
+//
+//        // Create an ArrayAdapter using the string array and a default spinner layout
+//        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
+//                R.array.Colors, R.layout.plus_button_cal_popup);
+//
+//// Specify the layout to use when the list of choices appears
+//        adapter4.setDropDownViewResource(R.layout.plus_button_cal_popup);
+//// Apply the adapter to the spinner
+//        spinner4.setAdapter(adapter);
+
+    }
+
+    @Override
         public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
 
             // Populate the week view with some events.
