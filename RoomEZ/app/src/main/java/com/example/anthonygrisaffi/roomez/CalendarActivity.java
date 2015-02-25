@@ -137,7 +137,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
 
 
-                //Define a custom layout
+        //Define a custom layout
         LayoutInflater factory = LayoutInflater.from(this);
         //Creates a view and adds buttons (such as Edit Text) from a customized layout
         View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
@@ -148,20 +148,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
         Spinner spinner = (Spinner) myView.findViewById(R.id.hourSpinner);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,
-                R.array.Hour, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(R.layout.plus_button_cal_popup);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
 
-//        if(spinner == null){
-//            Toast.makeText(getApplicationContext(), "SPinner is null", Toast.LENGTH_SHORT).show();
-//        }
-//        else{
-//            Toast.makeText(getApplicationContext(), "SPinner is not null", Toast.LENGTH_SHORT).show();
-//        }
         //Responsible for the dialog
         final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CalendarActivity.this);
 
@@ -174,46 +161,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
 
 
-//        Spinner spinner = (Spinner) myView.findViewById(R.id.hourSpinner);
-//
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-//                R.array.Hour, R.layout.plus_button_cal_popup);
-//
-//// Specify the layout to use when the list of choices appears
-//        adapter.setDropDownViewResource(R.layout.plus_button_cal_popup);
-//// Apply the adapter to the spinner
-//        spinner.setAdapter(adapter);
-
-//        Spinner spinner2 = (Spinner) findViewById(R.id.minute_spinner);
-//
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-//                R.array.Minute, R.layout.plus_button_cal_popup);
-//// Specify the layout to use when the list of choices appears
-//        adapter2.setDropDownViewResource(R.layout.plus_button_cal_popup);
-//// Apply the adapter to the spinner
-//        spinner2.setAdapter(adapter);
-//
-//        Spinner spinner3 = (Spinner) findViewById(R.id.day_spinner);
-//
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-//                R.array.Day, R.layout.plus_button_cal_popup);
-//// Specify the layout to use when the list of choices appears
-//        adapter3.setDropDownViewResource(R.layout.plus_button_cal_popup);
-//// Apply the adapter to the spinner
-//        spinner3.setAdapter(adapter);
-//        Spinner spinner4 = (Spinner) findViewById(R.id.color_spinner);
-//
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
-//                R.array.Colors, R.layout.plus_button_cal_popup);
-//
-//// Specify the layout to use when the list of choices appears
-//        adapter4.setDropDownViewResource(R.layout.plus_button_cal_popup);
-//// Apply the adapter to the spinner
-//        spinner4.setAdapter(adapter);
 
     }
 

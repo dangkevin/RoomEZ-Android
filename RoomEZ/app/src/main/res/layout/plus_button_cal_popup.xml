@@ -6,7 +6,7 @@
     android:paddingRight="20dp"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    tools:context="com.example.anthonygrisaffi.roomez.LoginPopUp"
+    tools:context="com.example.anthonygrisaffi.roomez.CalendarActivity"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -25,18 +25,21 @@
     <Spinner
         android:id="@+id/hourSpinner"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:entries="@array/Hour">
     </Spinner>
 
     <Spinner
         android:id="@+id/minute_spinner"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:entries="@array/Minute">
     </Spinner>
     <Spinner
         android:id="@+id/day_spinner"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:entries="@array/Day">
     </Spinner>
     <EditText
         android:id="@+id/eventDetails"
@@ -52,7 +55,8 @@
     <Spinner
         android:id="@+id/color_spinner"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:entries="@array/Colors">
     </Spinner>
 
 </LinearLayout>
