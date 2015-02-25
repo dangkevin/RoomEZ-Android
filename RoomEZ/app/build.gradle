@@ -38,4 +38,5 @@ dependencies {
     compile 'com.google.apis:google-api-services-calendar:v3-rev117-1.19.1'
     //compile 'com.roomorama:caldroid:1.1.8'
     compile 'com.github.alamkanak:android-week-view:1.2.1'
+    compile 'com.squareup.picasso:picasso:2.5.0'
 }
