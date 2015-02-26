@@ -29,6 +29,7 @@
         android:layout_height="fill_parent"
         android:entries="@array/Hour"
         android:paddingBottom="20dp"
+        android:prompt="@string/startTitle"
         android:spinnerMode="dialog">
     </Spinner>
 
@@ -38,6 +39,7 @@
         android:layout_height="fill_parent"
         android:entries="@array/Hour"
         android:paddingBottom="20dp"
+        android:prompt="@string/endTitle"
         android:spinnerMode="dialog">
     </Spinner>
 
@@ -47,6 +49,7 @@
         android:layout_height="fill_parent"
         android:entries="@array/Min"
         android:paddingBottom="20dp"
+        android:prompt="@string/minPrompt"
         android:spinnerMode="dialog">
     </Spinner>
 
@@ -56,6 +59,7 @@
         android:id="@+id/am_pm_spinner"
         android:entries="@array/ampm"
         android:paddingBottom="20dp"
+        android:prompt="@string/am_pm"
         android:spinnerMode="dialog">
 
     </Spinner>
@@ -66,6 +70,7 @@
         android:layout_height="fill_parent"
         android:entries="@array/Day"
         android:paddingBottom="20dp"
+        android:prompt="@string/dayPrompt"
         android:spinnerMode="dialog">
     </Spinner>
 
@@ -74,6 +79,7 @@
         android:layout_height="fill_parent"
         android:id="@+id/month_spinner"
         android:entries="@array/months"
+        android:prompt="@string/monthPrompt"
         android:spinnerMode="dialog">
 
      </Spinner>
@@ -94,6 +100,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:entries="@array/Colors"
+        android:prompt="@string/colorPrompt"
         android:spinnerMode="dialog">
     </Spinner>
 

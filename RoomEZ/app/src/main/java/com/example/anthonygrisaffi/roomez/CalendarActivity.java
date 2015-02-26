@@ -31,13 +31,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 
 public class CalendarActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
         WeekView.EventClickListener, WeekView.EventLongPressListener  {
-    public int startSelected;
-    public int endSelected;
-    public int minSelected;
-    public int daySelected;
+    public String startSelected;
+    public String endSelected;
+    public String minSelected;
+    public String daySelected;
     public String ampmSelected;
     public String monthSelected;
     public String colorString;
@@ -68,16 +70,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
             }
         });
-//        CaldroidFragment caldroidFragment = new CaldroidFragment();
-//        Bundle args = new Bundle();
-//        Calendar cal = Calendar.getInstance();
-//        args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
-//        args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
-//        caldroidFragment.setArguments(args);
-//
-//        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-//        t.replace(R.id.calendar1, caldroidFragment);
-//        t.commit();
+
         // Get a reference for the week view in the layout.
 
         mWeekView = (WeekView) findViewById(R.id.weekView);
@@ -149,9 +142,9 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         });
 
         //Responsible for the dialog
-        final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CalendarActivity.this);
+        final MaterialDialog mAlertDialog = new MaterialDialog(CalendarActivity.this);
 
-        //mAlertDialog.setCanceledOnTouchOutside(true);
+        mAlertDialog.setCanceledOnTouchOutside(true);
         //Sets the Linear Layout
         mAlertDialog.setView(hello);
         //Show dialog
@@ -206,28 +199,32 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
                 break;
 
         }
-//        int start = Integer.parseInt(startSelected);
-//        int end = Integer.parseInt(endSelected);
+        int start = Integer.parseInt(startSelected);
+        int end = Integer.parseInt(endSelected);
         if(ampmSelected == "pm")
         {
-         endSelected+= 12;
-         startSelected+= 12;
-            if(startSelected == 24 || endSelected == 24)
-            {
-                startSelected = 0;
-                endSelected = 0;
-            }
+         start+= 12;
+         if((end - start) < 0)
+         {
+             end+=12;
+         }
+
+        if(start == 24 || end == 24)
+        {
+            start = 0;
+            end = 0;
         }
+       }
 
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
         Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, startSelected);
-        startTime.set(Calendar.MINUTE, minSelected);
+        startTime.set(Calendar.HOUR_OF_DAY, start);
+        startTime.set(Calendar.MINUTE, Integer.parseInt(minSelected));
         startTime.set(Calendar.MONTH, monthNumValue);
         startTime.set(Calendar.YEAR, Calendar.YEAR);
         Calendar endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR, endSelected);
+        endTime.set(Calendar.HOUR, end);
         endTime.set(Calendar.MONTH, monthNumValue);
 
 
@@ -322,7 +319,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         spinnerStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                startSelected = (int) parent.getSelectedItem();
+                startSelected =  parent.getSelectedItem().toString();
                 Toast.makeText(CalendarActivity.this, "hour is " + startSelected, Toast.LENGTH_SHORT).show();
 
             }
@@ -337,7 +334,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                endSelected = (int) parent.getSelectedItem();
+                endSelected =  parent.getSelectedItem().toString();
                 Toast.makeText(CalendarActivity.this, "hour is " + endSelected, Toast.LENGTH_SHORT).show();
 
             }
@@ -353,7 +350,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                minSelected = (int) parent.getSelectedItem();
+                minSelected = parent.getSelectedItem().toString();
                 Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
 
             }
@@ -369,7 +366,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                daySelected = (int) parent.getSelectedItem();
+                daySelected =  parent.getSelectedItem().toString();
                 Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
 
             }

@@ -22,8 +22,11 @@
     <string name="colorPrompt">Event Color?</string>
     <string name="profile_me">My Profile Pic</string>
     <string name="profile_other">Other profile pic</string>
+    <string name="startTitle">Start Time?</string>
+    <string name="endTitle">End Time?</string>
+    <string name="monthPrompt">What Month?</string>
 
-    <integer-array name="Hour">
+    <string-array name="Hour">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -37,8 +40,8 @@
         <item>11</item>
         <item>12</item>
 
-    </integer-array>
-    <integer-array name="Day">
+    </string-array>
+    <string-array name="Day">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -70,14 +73,14 @@
         <item>29</item>
         <item>30</item>
         <item>31</item>
-    </integer-array>
+    </string-array>
 
-    <integer-array name="Min">
+    <string-array name="Min">
         <item>0</item>
         <item>15</item>
         <item>30</item>
         <item>45</item>
-    </integer-array>
+    </string-array>
 
     <string-array name="Colors">
         <item>Color of Event</item>
