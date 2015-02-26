@@ -61,6 +61,14 @@
         android:prompt="@string/dayPrompt"
         android:spinnerMode="dialog">
     </Spinner>
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/month_spinner"
+        android:entries="@array/months"
+        android:spinnerMode="dialog">
+
+     </Spinner>
     <EditText
         android:id="@+id/eventDetails"
         android:layout_width="224dp"
