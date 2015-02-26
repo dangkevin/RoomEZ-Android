@@ -2,8 +2,10 @@ package com.example.anthonygrisaffi.roomez;
 
 import android.app.Application;
 
+
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -15,17 +17,18 @@ public class RoomEZapp extends Application {
 
 
     public void onCreate() {
+        super.onCreate();
+        ParseObject.registerSubclass(Message.class);
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
-      
-        ParseUser user = new ParseUser();
-        user.setUsername("my name");
-        user.setPassword("my pass");
-        user.setEmail("email@example.com");
+
+        //ParseUser user = new ParseUser();
+
 
 // other fields can be set just like with ParseObject
-        user.put("phone", "650-555-0000");
+        //user.put("phone", "650-555-0000");
 
-        user.signUpInBackground(new SignUpCallback() {
+        /*user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                     // Hooray! Let them use the app now.
@@ -34,7 +37,7 @@ public class RoomEZapp extends Application {
                     // to figure out what went wrong
                 }
             }
-        });
+        });*/
 
 
     }

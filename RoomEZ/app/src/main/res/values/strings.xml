@@ -92,6 +92,7 @@
         <item>am</item>
         <item>pm</item>
     </string-array>
+<<<<<<< HEAD
     <string-array name="months">
         <item>January</item>
         <item>February</item>
@@ -108,4 +109,6 @@
 
 
     </string-array>
+=======
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 </resources>

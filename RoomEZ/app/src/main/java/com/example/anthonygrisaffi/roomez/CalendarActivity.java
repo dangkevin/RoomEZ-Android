@@ -235,6 +235,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     {
         event = new ParseObject("Event");
         event.put("month", monthSelected);
+=======
+    private void saveToParse()
+    {
+        event = new ParseObject("Event");
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
         event.put("hour", hourSelected);
         event.put("min", minSelected);
         event.put("day", daySelected);
@@ -258,12 +263,16 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
         Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
         Spinner spinnerColor = (Spinner) myView.findViewById(R.id.color_spinner);
+<<<<<<< HEAD
         Spinner spinnerMonth = (Spinner) myView.findViewById(R.id.month_spinner);
+=======
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
 
 
 
         //Create a listener for each spinner.
+<<<<<<< HEAD
         spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -280,6 +289,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
             }
         });
+=======
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
         spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -365,7 +376,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
     @Override
+<<<<<<< HEAD
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+=======
+        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
             // Populate the week view with some events.
             List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
@@ -469,7 +484,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             events.add(event);
 
             return events;
+<<<<<<< HEAD
     }
+=======
+        }
+>>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
 
 
