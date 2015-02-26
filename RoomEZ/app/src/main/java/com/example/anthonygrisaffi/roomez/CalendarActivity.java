@@ -25,42 +25,16 @@ import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-//import com.roomorama.caldroid.CaldroidFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/*
-import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
-
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
-import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.HttpTransport;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.services.calendar.Calendar;
-
-import com.google.api.client.http.javanet.NetHttpTransport;
-//import com.google.api.client.json.jackson.JacksonFactory;
-import com.google.api.services.calendar.model.*;*/
 
 public class CalendarActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
         WeekView.EventClickListener, WeekView.EventLongPressListener  {
 
+<<<<<<< HEAD
     public final static String DIALOG_TITLE = "dialogTitle";
     public final static String MONTH = "month";
     public final static String YEAR = "year";
@@ -74,10 +48,29 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     public final static String SIX_WEEKS_IN_CALENDAR = "sixWeeksInCalendar";
     public final static String ENABLE_CLICK_ON_DISABLED_DATES = "enableClickOnDisabledDates";
     public final static String SQUARE_TEXT_VIEW_CELL = "squareTextViewCell";
+=======
+//    public final static String DIALOG_TITLE = "dialogTitle";
+//    public final static String MONTH = "month";
+//    public final static String YEAR = "year";
+//    public final static String SHOW_NAVIGATION_ARROWS = "showNavigationArrows";
+//    public final static String DISABLE_DATES = "disableDates";
+//    public final static String SELECTED_DATES = "selectedDates";
+//    public final static String MIN_DATE = "minDate";
+//    public final static String MAX_DATE = "maxDate";
+//    public final static String ENABLE_SWIPE = "enableSwipe";
+//    public final static String START_DAY_OF_WEEK = "startDayOfWeek";
+//    public final static String SIX_WEEKS_IN_CALENDAR = "sixWeeksInCalendar";
+//    public final static String ENABLE_CLICK_ON_DISABLED_DATES = "enableClickOnDisabledDates";
+//    public final static String SQUARE_TEXT_VIEW_CELL = "squareTextViewCell";
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
     public String hourSelected;
     public String minSelected;
     public String daySelected;
     public String ampmSelected;
+<<<<<<< HEAD
+=======
+    public String monthSelected;
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
     public String colorSelected;
     public String eventTitleString;
     public String eventDetailsString;
@@ -170,7 +163,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
                 saveToParse();
 
+<<<<<<< HEAD
                 //createEvent();
+=======
+                createEvent();
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
 
 
 
@@ -199,9 +196,74 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
 
+<<<<<<< HEAD
     private void saveToParse()
     {
         event = new ParseObject("Event");
+=======
+    private void createEvent()
+    {
+        int month;
+        switch (monthSelected) {
+
+            case ("January"):
+                month = 0;
+                break;
+            case ("February"):
+                month = 1;
+                break;
+            case ("March"):
+                month = 2;
+                break;
+            case ("April"):
+                month = 3;
+                break;
+            case ("May"):
+                month = 4;
+                break;
+            case ("June"):
+                month = 5;
+                break;
+            case ("July"):
+                 month = 6;
+                break;
+            case ("August"):
+                month = 7;
+                break;
+            case ("September"):
+                month = 8;
+                break;
+            case ("October"):
+                month = 9;
+                break;
+            case ("November"):
+                month = 10;
+                break;
+            case ("December"):
+                month = 11;
+                break;
+
+        }
+
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR, 1);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.teal));
+        events.add(event);
+
+    }
+
+    private void saveToParse()
+    {
+        event = new ParseObject("Event");
+        event.put("month", monthSelected);
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
         event.put("hour", hourSelected);
         event.put("min", minSelected);
         event.put("day", daySelected);
@@ -225,11 +287,34 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
         Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
         Spinner spinnerColor = (Spinner) myView.findViewById(R.id.color_spinner);
+<<<<<<< HEAD
+=======
+        Spinner spinnerMonth = (Spinner) myView.findViewById(R.id.month_spinner);
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
 
 
 
 
         //Create a listener for each spinner.
+<<<<<<< HEAD
+=======
+        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                monthSelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "month is " + monthSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
         spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -315,7 +400,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
     @Override
+<<<<<<< HEAD
         public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+=======
+    public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
 
             // Populate the week view with some events.
             List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
@@ -419,7 +508,11 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             events.add(event);
 
             return events;
+<<<<<<< HEAD
         }
+=======
+    }
+>>>>>>> 02e2a00752b6dce667a8954daf12c4b6cb8561ac
 
 
 
@@ -489,7 +582,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
             Toast.makeText(CalendarActivity.this, "Long pressed event: " + event.getName(), Toast.LENGTH_SHORT).show();
         }
-    }
+}
 
 
     
