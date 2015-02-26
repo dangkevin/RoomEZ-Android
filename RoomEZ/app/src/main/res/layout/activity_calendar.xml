@@ -32,6 +32,7 @@
         app:todayBackgroundColor="#1848adff"
         app:headerColumnBackground="#ffffffff"/>
 
+
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/plusButton"
         android:layout_width="wrap_content"
