@@ -61,7 +61,6 @@
         android:prompt="@string/dayPrompt"
         android:spinnerMode="dialog">
     </Spinner>
-<<<<<<< HEAD
     <Spinner
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -70,8 +69,7 @@
         android:spinnerMode="dialog">
 
      </Spinner>
-=======
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
+
     <EditText
         android:id="@+id/eventDetails"
         android:layout_width="224dp"

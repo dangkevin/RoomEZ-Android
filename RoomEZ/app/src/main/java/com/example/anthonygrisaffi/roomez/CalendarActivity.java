@@ -217,29 +217,24 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
         }
 
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.teal));
-        events.add(event);
+//        Calendar startTime = Calendar.getInstance();
+//        startTime.set(Calendar.HOUR_OF_DAY, 3);
+//        startTime.set(Calendar.MINUTE, 0);
+//        startTime.set(Calendar.MONTH, newMonth-1);
+//        startTime.set(Calendar.YEAR, newYear);
+//        Calendar endTime = (Calendar) startTime.clone();
+//        endTime.add(Calendar.HOUR, 1);
+//        endTime.set(Calendar.MONTH, newMonth-1);
+//        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+//        event.setColor(getResources().getColor(R.color.teal));
+//        events.add(event);
 
     }
 
+
     private void saveToParse()
     {
         event = new ParseObject("Event");
-        event.put("month", monthSelected);
-=======
-    private void saveToParse()
-    {
-        event = new ParseObject("Event");
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
         event.put("hour", hourSelected);
         event.put("min", minSelected);
         event.put("day", daySelected);
@@ -263,16 +258,13 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
         Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
         Spinner spinnerColor = (Spinner) myView.findViewById(R.id.color_spinner);
-<<<<<<< HEAD
         Spinner spinnerMonth = (Spinner) myView.findViewById(R.id.month_spinner);
-=======
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
 
 
 
         //Create a listener for each spinner.
-<<<<<<< HEAD
+
         spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -289,8 +281,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
             }
         });
-=======
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
+
         spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
@@ -376,119 +367,111 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
     @Override
-<<<<<<< HEAD
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
-=======
-        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
-            // Populate the week view with some events.
-            List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        // Populate the week view with some events.
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
-            Calendar startTime = Calendar.getInstance();
-            startTime.set(Calendar.HOUR_OF_DAY, 3);
-            startTime.set(Calendar.MINUTE, 0);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            Calendar endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR, 1);
-            endTime.set(Calendar.MONTH, newMonth-1);
-            WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.teal));
-            events.add(event);
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR, 1);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.teal));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.HOUR_OF_DAY, 3);
-            startTime.set(Calendar.MINUTE, 30);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.set(Calendar.HOUR_OF_DAY, 4);
-            endTime.set(Calendar.MINUTE, 30);
-            endTime.set(Calendar.MONTH, newMonth-1);
-            event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.black2));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 30);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR_OF_DAY, 4);
+        endTime.set(Calendar.MINUTE, 30);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.black2));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.HOUR_OF_DAY, 4);
-            startTime.set(Calendar.MINUTE, 20);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.set(Calendar.HOUR_OF_DAY, 5);
-            endTime.set(Calendar.MINUTE, 0);
-            event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.black));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 4);
+        startTime.set(Calendar.MINUTE, 20);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR_OF_DAY, 5);
+        endTime.set(Calendar.MINUTE, 0);
+        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.black));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.HOUR_OF_DAY, 5);
-            startTime.set(Calendar.MINUTE, 30);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR_OF_DAY, 2);
-            endTime.set(Calendar.MONTH, newMonth-1);
-            event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.grey));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 5);
+        startTime.set(Calendar.MINUTE, 30);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 2);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        event = new WeekViewEvent(2, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.grey));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.HOUR_OF_DAY, 5);
-            startTime.set(Calendar.MINUTE, 0);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            startTime.add(Calendar.DATE, 1);
-            endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR_OF_DAY, 3);
-            endTime.set(Calendar.MONTH, newMonth - 1);
-            event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.pink));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 5);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        startTime.add(Calendar.DATE, 1);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 3);
+        endTime.set(Calendar.MONTH, newMonth - 1);
+        event = new WeekViewEvent(3, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.pink));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.DAY_OF_MONTH, 15);
-            startTime.set(Calendar.HOUR_OF_DAY, 3);
-            startTime.set(Calendar.MINUTE, 0);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.material_blue_500));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.DAY_OF_MONTH, 15);
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 3);
+        event = new WeekViewEvent(4, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.material_blue_500));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.DAY_OF_MONTH, 1);
-            startTime.set(Calendar.HOUR_OF_DAY, 3);
-            startTime.set(Calendar.MINUTE, 0);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.yellow));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.DAY_OF_MONTH, 1);
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 3);
+        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.yellow));
+        events.add(event);
 
-            startTime = Calendar.getInstance();
-            startTime.set(Calendar.DAY_OF_MONTH, startTime.getActualMaximum(Calendar.DAY_OF_MONTH));
-            startTime.set(Calendar.HOUR_OF_DAY, 15);
-            startTime.set(Calendar.MINUTE, 0);
-            startTime.set(Calendar.MONTH, newMonth-1);
-            startTime.set(Calendar.YEAR, newYear);
-            endTime = (Calendar) startTime.clone();
-            endTime.add(Calendar.HOUR_OF_DAY, 3);
-            event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
-            event.setColor(getResources().getColor(R.color.yellow));
-            events.add(event);
+        startTime = Calendar.getInstance();
+        startTime.set(Calendar.DAY_OF_MONTH, startTime.getActualMaximum(Calendar.DAY_OF_MONTH));
+        startTime.set(Calendar.HOUR_OF_DAY, 15);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 3);
+        event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.yellow));
+        events.add(event);
 
-            return events;
-<<<<<<< HEAD
+        return events;
     }
-=======
-        }
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 
 
 
@@ -560,54 +543,4 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         }
 }
 
-
-    
-
-
-    /*
-    public void setUp() throws IOException, GeneralSecurityException {
-
-        HttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-
-        JacksonFactory jsonFactory = JacksonFactory.getDefaultInstance();
-
-        // The clientId and clientSecret can be found in Google Developers Console
-        String clientId = "105996800409-a1n5594ef7kdvot6fsocqdvddiomqgk1.apps.googleusercontent.com";
-        String clientSecret = "";
-
-        // Or your redirect URL for web based applications.
-        String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
-        String scope = "https://www.googleapis.com/auth/calendar";
-
-
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow(
-                httpTransport, jsonFactory, clientId, clientSecret, Collections.singleton(scope));
-        // Step 1: Authorize
-        String authorizationUrl = flow.newAuthorizationUrl().setRedirectUri(redirectUrl).build();
-
-
-        // Point or redirect your user to the authorizationUrl.
-        System.out.println("Go to the following link in your browser:");
-        System.out.println(authorizationUrl);
-
-        // Read the authorization code from the standard input stream.
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("What is the authorization code?");
-        String code = in.readLine();
-        // End of Step 1
-
-        // Step 2: Exchange
-        GoogleTokenResponse response = flow.newTokenRequest(code).setRedirectUri(redirectUrl)
-                .execute();
-        // End of Step 2
-
-        Credential credential = new GoogleCredential.Builder()
-                .setTransport(httpTransport)
-                .setJsonFactory(jsonFactory)
-                .setClientSecrets(clientId, clientSecret)
-                .build().setFromTokenResponse(response);
-
-        Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credential)
-                .setApplicationName("RoomEZ").build();
-    }*/
 
