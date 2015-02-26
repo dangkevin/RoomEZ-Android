@@ -15,6 +15,11 @@
     <string name="logOut">Log Out</string>
     <string name="title_activity_account_settings">AccountSettings</string>
     <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="hourPrompt">Enter the hour</string>
+    <string name="minPrompt">Enter the minutes</string>
+    <string name="am_pm">Am or Pm?</string>
+    <string name="dayPrompt">What day?</string>
+    <string name="colorPrompt">Event Color?</string>
     <string-array name="Hour">
         <item>1</item>
         <item>2</item>
@@ -82,5 +87,9 @@
         <item>Pink</item>
         <item>Gray</item>
         <item>Teal</item>
+    </string-array>
+    <string-array name="ampm">
+        <item>am</item>
+        <item>pm</item>
     </string-array>
 </resources>

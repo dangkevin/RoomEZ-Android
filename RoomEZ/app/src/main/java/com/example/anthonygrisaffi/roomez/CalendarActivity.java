@@ -8,14 +8,14 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -23,14 +23,13 @@ import android.widget.Toast;
 
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 //import com.roomorama.caldroid.CaldroidFragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import me.drakeet.materialdialog.MaterialDialog;
 
 /*
 import android.content.Context;
@@ -75,11 +74,20 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     public final static String SIX_WEEKS_IN_CALENDAR = "sixWeeksInCalendar";
     public final static String ENABLE_CLICK_ON_DISABLED_DATES = "enableClickOnDisabledDates";
     public final static String SQUARE_TEXT_VIEW_CELL = "squareTextViewCell";
+    public String hourSelected;
+    public String minSelected;
+    public String daySelected;
+    public String ampmSelected;
+    public String colorSelected;
+    public String eventTitleString;
+    public String eventDetailsString;
     private WeekView mWeekView;
     private WeekView.EventClickListener mEventClickListener;
     private WeekView.MonthChangeListener mMonthChangeListener;
     private WeekView.EventLongPressListener mEventLongPressListener;
     ImageButton plusButton;
+    Button doneButton;
+    ParseObject event;
 
 
     @Override
@@ -140,14 +148,41 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         //Define a custom layout
         LayoutInflater factory = LayoutInflater.from(this);
         //Creates a view and adds buttons (such as Edit Text) from a customized layout
-        View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
+        final View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
         //Linear layout is created
         LinearLayout hello = new LinearLayout(this);
         //Adds the view to the linear layout
         hello.addView(myView);
 
-        Spinner spinner = (Spinner) myView.findViewById(R.id.hourSpinner);
+        addListenerOnButton(myView);
 
+        doneButton = (Button) myView.findViewById(R.id.doneButton);
+
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                EditText eventTitle = (EditText) myView.findViewById(R.id.eventName);
+                eventTitleString = eventTitle.getText().toString();
+
+                EditText eventDetail = (EditText) myView.findViewById(R.id.eventDetails);
+                eventDetailsString = eventDetail.getText().toString();
+
+                saveToParse();
+
+                //createEvent();
+
+
+
+                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         //Responsible for the dialog
         final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CalendarActivity.this);
@@ -164,6 +199,121 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
 
+    private void saveToParse()
+    {
+        event = new ParseObject("Event");
+        event.put("hour", hourSelected);
+        event.put("min", minSelected);
+        event.put("day", daySelected);
+        event.put("ampm", ampmSelected);
+        event.put("color", colorSelected);
+        event.put("eventName", eventTitleString);
+        event.put("eventDetails", eventDetailsString);
+        event.saveInBackground();
+
+    }
+
+    // get the selected dropdown list value
+    public void addListenerOnButton(View myView) {
+
+        /*
+        Make spinner objects for each spinner. Connect it to the XML in myView, otherwise
+        it will look for it activity_calendar
+         */
+        Spinner spinnerHour = (Spinner) myView.findViewById(R.id.hourSpinner);
+        Spinner spinnerMin = (Spinner) myView.findViewById(R.id.minute_spinner);
+        Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
+        Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
+        Spinner spinnerColor = (Spinner) myView.findViewById(R.id.color_spinner);
+
+
+
+
+        //Create a listener for each spinner.
+        spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                hourSelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+        spinnerMin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                minSelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+        spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                daySelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+        spinnerColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                colorSelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+        spinnerAmPm.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ampmSelected = parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
+
+    }
     @Override
         public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
 
@@ -270,37 +420,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
             return events;
         }
-
-
-
-        /*
-        try {
-            setUp();
-        }
-        catch (IOException e) {
-            Context context = getApplicationContext();
-            CharSequence text = "IOException";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        catch (GeneralSecurityException e) {
-            Context context = getApplicationContext();
-            CharSequence text = "GeneralSecurityException";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        catch (Exception e) {
-            Context context = getApplicationContext();
-            CharSequence text = "Any Exception";
-            int duration = Toast.LENGTH_SHORT;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }*/
 
 
 

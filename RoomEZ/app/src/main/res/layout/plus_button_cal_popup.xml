@@ -20,43 +20,69 @@
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
+        android:paddingBottom="20dp"
         android:hint="What's happening?" />
 
     <Spinner
         android:id="@+id/hourSpinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:entries="@array/Hour">
+        android:entries="@array/Hour"
+        android:prompt="@string/hourPrompt"
+        android:paddingBottom="20dp"
+        android:spinnerMode="dialog">
     </Spinner>
 
     <Spinner
         android:id="@+id/minute_spinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:entries="@array/Minute">
+        android:entries="@array/Minute"
+        android:paddingBottom="20dp"
+        android:prompt="@string/minPrompt"
+        android:spinnerMode="dialog">
+    </Spinner>
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/am_pm_spinner"
+        android:entries="@array/ampm"
+        android:paddingBottom="20dp"
+        android:prompt="@string/am_pm"
+        android:spinnerMode="dialog">
+
     </Spinner>
     <Spinner
         android:id="@+id/day_spinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:entries="@array/Day">
+        android:entries="@array/Day"
+        android:paddingBottom="20dp"
+        android:prompt="@string/dayPrompt"
+        android:spinnerMode="dialog">
     </Spinner>
     <EditText
         android:id="@+id/eventDetails"
-        android:inputType="textPassword"
         android:layout_width="224dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
+        android:paddingBottom="20dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:fontFamily="sans-serif"
         android:hint="Event Details"/>
     <Spinner
         android:id="@+id/color_spinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:entries="@array/Colors">
+        android:entries="@array/Colors"
+        android:prompt="@string/colorPrompt"
+        android:spinnerMode="dialog">
     </Spinner>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:text="@string/abc_action_mode_done"/>
 
 </LinearLayout>
