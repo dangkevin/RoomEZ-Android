@@ -7,6 +7,7 @@ package com.example.anthonygrisaffi.roomez;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.RectF;
+import android.hardware.camera2.params.BlackLevelPattern;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -33,25 +34,14 @@ import java.util.List;
 
 public class CalendarActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
         WeekView.EventClickListener, WeekView.EventLongPressListener  {
-
-//    public final static String DIALOG_TITLE = "dialogTitle";
-//    public final static String MONTH = "month";
-//    public final static String YEAR = "year";
-//    public final static String SHOW_NAVIGATION_ARROWS = "showNavigationArrows";
-//    public final static String DISABLE_DATES = "disableDates";
-//    public final static String SELECTED_DATES = "selectedDates";
-//    public final static String MIN_DATE = "minDate";
-//    public final static String MAX_DATE = "maxDate";
-//    public final static String ENABLE_SWIPE = "enableSwipe";
-//    public final static String START_DAY_OF_WEEK = "startDayOfWeek";
-//    public final static String SIX_WEEKS_IN_CALENDAR = "sixWeeksInCalendar";
-//    public final static String ENABLE_CLICK_ON_DISABLED_DATES = "enableClickOnDisabledDates";
-//    public final static String SQUARE_TEXT_VIEW_CELL = "squareTextViewCell";
-    public String hourSelected;
-    public String minSelected;
-    public String daySelected;
+    public int startSelected;
+    public int endSelected;
+    public int minSelected;
+    public int daySelected;
     public String ampmSelected;
     public String monthSelected;
+    public String colorString;
+    public int monthNumValue;
     public String colorSelected;
     public String eventTitleString;
     public String eventDetailsString;
@@ -148,7 +138,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
 
 
-                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
                 Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
                 Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
 
@@ -175,59 +165,104 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     private void createEvent()
     {
-        int month;
+
         switch (monthSelected) {
 
             case ("January"):
-                month = 0;
+                monthNumValue = 0;
                 break;
             case ("February"):
-                month = 1;
+                monthNumValue = 1;
                 break;
             case ("March"):
-                month = 2;
+                monthNumValue = 2;
                 break;
             case ("April"):
-                month = 3;
+                monthNumValue = 3;
                 break;
             case ("May"):
-                month = 4;
+                monthNumValue = 4;
                 break;
             case ("June"):
-                month = 5;
+                monthNumValue = 5;
                 break;
             case ("July"):
-                 month = 6;
+                 monthNumValue = 6;
                 break;
             case ("August"):
-                month = 7;
+                monthNumValue = 7;
                 break;
             case ("September"):
-                month = 8;
+                monthNumValue = 8;
                 break;
             case ("October"):
-                month = 9;
+                monthNumValue = 9;
                 break;
             case ("November"):
-                month = 10;
+                monthNumValue = 10;
                 break;
             case ("December"):
-                month = 11;
+                monthNumValue = 11;
                 break;
 
         }
+//        int start = Integer.parseInt(startSelected);
+//        int end = Integer.parseInt(endSelected);
+        if(ampmSelected == "pm")
+        {
+         endSelected+= 12;
+         startSelected+= 12;
+            if(startSelected == 24 || endSelected == 24)
+            {
+                startSelected = 0;
+                endSelected = 0;
+            }
+        }
 
-//        Calendar startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        Calendar endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR, 1);
-//        endTime.set(Calendar.MONTH, newMonth-1);
-//        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.teal));
-//        events.add(event);
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, startSelected);
+        startTime.set(Calendar.MINUTE, minSelected);
+        startTime.set(Calendar.MONTH, monthNumValue);
+        startTime.set(Calendar.YEAR, Calendar.YEAR);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR, endSelected);
+        endTime.set(Calendar.MONTH, monthNumValue);
+
+
+
+
+
+        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+
+
+        switch(colorSelected) {
+            case ("Black"):
+                event.setColor(getResources().getColor(R.color.black));
+                break;
+            case ("Red"):
+                event.setColor(getResources().getColor(R.color.MaterialRed));
+                break;
+            case ("Blue"):
+                event.setColor(getResources().getColor(R.color.MaterialBlue));
+                break;
+            case ("Yellow"):
+                event.setColor(getResources().getColor(R.color.yellow));
+                break;
+            case ("Pink"):
+                event.setColor(getResources().getColor(R.color.pink));
+                break;
+            case ("Gray"):
+                event.setColor(getResources().getColor(R.color.grey));
+                break;
+            case ("Teal"):
+                event.setColor(getResources().getColor(R.color.teal));
+                break;
+        }
+
+        event.setColor(getResources().getColor(R.color.teal));
+        events.add(event);
 
     }
 
@@ -235,7 +270,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     private void saveToParse()
     {
         event = new ParseObject("Event");
-        event.put("hour", hourSelected);
+        event.put("startTime", startSelected);
+        event.put("endTime", endSelected);
         event.put("min", minSelected);
         event.put("day", daySelected);
         event.put("ampm", ampmSelected);
@@ -253,7 +289,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         Make spinner objects for each spinner. Connect it to the XML in myView, otherwise
         it will look for it activity_calendar
          */
-        Spinner spinnerHour = (Spinner) myView.findViewById(R.id.hourSpinner);
+        Spinner spinnerStart = (Spinner) myView.findViewById(R.id.startTimeSpinner);
+        Spinner spinnerEnd = (Spinner) myView.findViewById(R.id.endTimeSpinner);
         Spinner spinnerMin = (Spinner) myView.findViewById(R.id.minute_spinner);
         Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
         Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
@@ -282,13 +319,26 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             }
         });
 
-        spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        spinnerStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                startSelected = (int) parent.getSelectedItem();
+                Toast.makeText(CalendarActivity.this, "hour is " + startSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                hourSelected = parent.getSelectedItem().toString();
-                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+                endSelected = (int) parent.getSelectedItem();
+                Toast.makeText(CalendarActivity.this, "hour is " + endSelected, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -303,7 +353,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                minSelected = parent.getSelectedItem().toString();
+                minSelected = (int) parent.getSelectedItem();
                 Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
 
             }
@@ -319,7 +369,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                daySelected = parent.getSelectedItem().toString();
+                daySelected = (int) parent.getSelectedItem();
                 Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
 
             }

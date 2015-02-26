@@ -20,7 +20,10 @@
     <string name="am_pm">Am or Pm?</string>
     <string name="dayPrompt">What day?</string>
     <string name="colorPrompt">Event Color?</string>
-    <string-array name="Hour">
+    <string name="profile_me">My Profile Pic</string>
+    <string name="profile_other">Other profile pic</string>
+
+    <integer-array name="Hour">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -34,8 +37,8 @@
         <item>11</item>
         <item>12</item>
 
-    </string-array>
-    <string-array name="Minute">
+    </integer-array>
+    <integer-array name="Day">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -67,19 +70,17 @@
         <item>29</item>
         <item>30</item>
         <item>31</item>
-    </string-array>
+    </integer-array>
 
-    <string-array name="Day">
-        <item>Sunday</item>
-        <item>Monday</item>
-        <item>Tuesday</item>
-        <item>Wednesday</item>
-        <item>Thursday</item>
-        <item>Friday</item>
-        <item>Saturday</item>
-    </string-array>
+    <integer-array name="Min">
+        <item>0</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+    </integer-array>
 
     <string-array name="Colors">
+        <item>Color of Event</item>
         <item>Black</item>
         <item>Red</item>
         <item>Blue</item>
@@ -89,11 +90,12 @@
         <item>Teal</item>
     </string-array>
     <string-array name="ampm">
+        <item>Am or Pm?</item>
         <item>am</item>
         <item>pm</item>
     </string-array>
-<<<<<<< HEAD
     <string-array name="months">
+        <item>What Month?</item>
         <item>January</item>
         <item>February</item>
         <item>March</item>
@@ -109,6 +111,4 @@
 
 
     </string-array>
-=======
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
 </resources>
