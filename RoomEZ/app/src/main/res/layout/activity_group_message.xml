@@ -1,9 +1,12 @@
+
+
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.anthonygrisaffi.roomez.GroupMessage">
-
 
     <ListView
         android:id="@+id/lvChat"
@@ -24,6 +27,7 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:layout_height="wrap_content" >
+
         <EditText
             android:id="@+id/etMessage"
             android:layout_toLeftOf="@+id/btSend"
@@ -35,6 +39,7 @@
             android:inputType="textShortMessage"
             android:imeOptions="actionSend"
             />
+
         <Button
             android:id="@+id/btSend"
             android:layout_width="wrap_content"

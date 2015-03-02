@@ -20,6 +20,8 @@
     <string name="am_pm">Am or Pm?</string>
     <string name="dayPrompt">What day?</string>
     <string name="colorPrompt">Event Color?</string>
+    <string name="profile_me">My Profile Pic</string>
+    <string name="profile_other">Other profile pic</string>
     <string-array name="Hour">
         <item>1</item>
         <item>2</item>
@@ -92,7 +94,6 @@
         <item>am</item>
         <item>pm</item>
     </string-array>
-<<<<<<< HEAD
     <string-array name="months">
         <item>January</item>
         <item>February</item>
@@ -109,6 +110,5 @@
 
 
     </string-array>
-=======
->>>>>>> fd2f2ed54fbd1af1173dd9f4fb6e1aa535000a11
+
 </resources>

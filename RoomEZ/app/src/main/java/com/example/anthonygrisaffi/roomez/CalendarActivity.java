@@ -78,17 +78,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
             }
         });
-//        CaldroidFragment caldroidFragment = new CaldroidFragment();
-//        Bundle args = new Bundle();
-//        Calendar cal = Calendar.getInstance();
-//        args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
-//        args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
-//        caldroidFragment.setArguments(args);
-//
-//        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-//        t.replace(R.id.calendar1, caldroidFragment);
-//        t.commit();
-        // Get a reference for the week view in the layout.
 
         mWeekView = (WeekView) findViewById(R.id.weekView);
 
@@ -116,8 +105,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     private void addCalEvent()
     {
-
-
 
         //Define a custom layout
         LayoutInflater factory = LayoutInflater.from(this);
@@ -147,7 +134,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
                 createEvent();
 
 
-
                 Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
                 Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
                 Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
@@ -166,9 +152,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         mAlertDialog.setView(hello);
         //Show dialog
         mAlertDialog.show();
-
-
-
 
 
     }
@@ -373,31 +356,64 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
         Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.HOUR_OF_DAY, 12);
         startTime.set(Calendar.MINUTE, 0);
         startTime.set(Calendar.MONTH, newMonth-1);
         startTime.set(Calendar.YEAR, newYear);
         Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 1);
+        endTime.add(Calendar.HOUR, 4);
         endTime.set(Calendar.MONTH, newMonth-1);
-        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.teal));
+        WeekViewEvent event = new WeekViewEvent(1, "Jacob's Bar Mitzvah", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.MaterialBlue));
         events.add(event);
 
+
+        /*Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 12);
+        startTime.set(Calendar.DAY_OF_MONTH,28);
+        startTime.set(Calendar.MINUTE, 0);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        //Calendar endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR, 4);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        event = new WeekViewEvent(1, "Kevin's dentist appointment", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.MaterialRed));
+        events.add(event); */
+
+
         startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 3);
+        startTime.set(Calendar.HOUR_OF_DAY, 14);
         startTime.set(Calendar.MINUTE, 30);
         startTime.set(Calendar.MONTH, newMonth-1);
         startTime.set(Calendar.YEAR, newYear);
+        startTime.set(Calendar.DAY_OF_MONTH,27);
         endTime = (Calendar) startTime.clone();
-        endTime.set(Calendar.HOUR_OF_DAY, 4);
+        endTime.add(Calendar.HOUR_OF_DAY, 2);
         endTime.set(Calendar.MINUTE, 30);
         endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(10, getEventTitle(startTime), startTime, endTime);
-        event.setColor(getResources().getColor(R.color.black2));
+        event = new WeekViewEvent(10, "Anthony's haircut", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.MaterialTeal));
         events.add(event);
 
+
+
         startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, 14);
+        startTime.set(Calendar.MINUTE, 30);
+        startTime.set(Calendar.MONTH, newMonth-1);
+        startTime.set(Calendar.YEAR, newYear);
+        startTime.set(Calendar.DAY_OF_MONTH,28);
+        endTime = (Calendar) startTime.clone();
+        endTime.add(Calendar.HOUR_OF_DAY, 2);
+        endTime.set(Calendar.MINUTE, 30);
+        endTime.set(Calendar.MONTH, newMonth-1);
+        event = new WeekViewEvent(10, "Kevin's NBA debut game", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.MaterialGreen));
+        events.add(event);
+
+
+        /*startTime = Calendar.getInstance();
         startTime.set(Calendar.HOUR_OF_DAY, 4);
         startTime.set(Calendar.MINUTE, 20);
         startTime.set(Calendar.MONTH, newMonth-1);
@@ -468,7 +484,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         endTime.add(Calendar.HOUR_OF_DAY, 3);
         event = new WeekViewEvent(5, getEventTitle(startTime), startTime, endTime);
         event.setColor(getResources().getColor(R.color.yellow));
-        events.add(event);
+        events.add(event);*/
 
         return events;
     }

@@ -1,6 +1,8 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -14,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.parse.ParseUser;
 
 
@@ -33,12 +37,11 @@ public class MainBoard extends ActionBarActivity
         setContentView(R.layout.activity_main_board);
 
 
-        if(findViewById(R.id.StickyNoteFrag) != null)
-        {
+        if (findViewById(R.id.StickyNoteFrag) != null) {
 
         }
 
-        plusButton = (ImageButton)findViewById(R.id.plusButton);
+        plusButton = (ImageButton) findViewById(R.id.plusButton);
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
@@ -50,22 +53,22 @@ public class MainBoard extends ActionBarActivity
 
         //button.setColorNormalResId(R.color.MaterialBlue);
         //calling the Endless Scroll class on the gridview layout
-        GridView gridView = (GridView)findViewById(R.id.gridView);
+        GridView gridView = (GridView) findViewById(R.id.gridView);
 
-        gridView.setOnScrollListener(new EndlessScrollListener()
-        {
+        gridView.setOnScrollListener(new EndlessScrollListener() {
             @Override
-            public void onLoadMore(int page, int totalItemsCount)
-            {
-              // Triggered only when new data needs to be appended to the list
-              // Add whatever code is needed to append new items to your AdapterView
-              customLoadMoreDataFromApi(page);
-              // or customLoadMoreDataFromApi(totalItemsCount);
+            public void onLoadMore(int page, int totalItemsCount) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to your AdapterView
+                customLoadMoreDataFromApi(page);
+                // or customLoadMoreDataFromApi(totalItemsCount);
             }
         });
 
         gridView.setAdapter(new ImageAdaptor(this));
+
     }
+
 
     private void popUpOptions()
     {
@@ -141,6 +144,8 @@ public class MainBoard extends ActionBarActivity
         getMenuInflater().inflate(R.menu.menu_main_board, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

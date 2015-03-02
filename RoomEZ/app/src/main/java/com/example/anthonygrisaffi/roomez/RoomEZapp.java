@@ -18,8 +18,8 @@ public class RoomEZapp extends Application {
 
     public void onCreate() {
         super.onCreate();
-        ParseObject.registerSubclass(Message.class);
         Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(Message.class);
         Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
 
         //ParseUser user = new ParseUser();

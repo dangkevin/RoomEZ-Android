@@ -4,6 +4,8 @@
    <color name="white" type="color">#FFFFFF</color>
    <color name="MaterialBlue" type="color">#0099CC</color>
    <color name="MaterialRed"  type="color>">#B71C1C</color>
+   <color name ="MaterialTeal" type="color>">#009688</color>
+   <color name = "MaterialGreen" type="color">#4CAF50</color>
     <color name="yellow" type="color">#F7FE2E</color>
     <color name="pink" type="color">#FF299C</color>
     <color name="pink_pressed" type="color">#EF27A6</color>
