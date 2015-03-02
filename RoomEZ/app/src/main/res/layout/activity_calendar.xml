@@ -4,7 +4,8 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anthonygrisaffi.roomez.CalendarActivity">
+    tools:context="com.example.anthonygrisaffi.roomez.CalendarActivity"
+    android:orientation="horizontal">
 
 
 
@@ -33,7 +34,42 @@
         app:headerColumnBackground="#ffffffff"/>
 
 
-    <com.melnykov.fab.FloatingActionButton
+
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/plusButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_alignParentBottom="true"
+        fab:fab_addButtonColorNormal="@color/MaterialRed"
+        fab:fab_addButtonColorPressed="@color/MaterialRed"
+        fab:fab_addButtonPlusIconColor="@color/white"
+        fab:fab_addButtonSize="normal"
+        fab:fab_labelStyle="@style/menu_labels_style"
+        fab:fab_labelsPosition="right">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title="Label on the right"
+            fab:fab_colorPressed="@color/MaterialBlue"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title="Another one on the right"
+            fab:fab_colorPressed="@color/MaterialBlue"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+  <!--  <com.melnykov.fab.FloatingActionButton
         android:id="@+id/plusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +80,7 @@
         fab:fab_colorNormal="@color/MaterialRed"
         fab:fab_colorPressed="@color/yellow"
         fab:fab_colorRipple="@color/grey"
-        />
+        /> !-->
 
 
 

@@ -69,15 +69,13 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        plusButton = (ImageButton)findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-
-                //Toast.makeText(CalendarActivity.this, "Adding an Event", Toast.LENGTH_SHORT).show();
-                addCalEvent();
-
+        findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //addCalEvent();
             }
         });
+
 
         mWeekView = (WeekView) findViewById(R.id.weekView);
 
@@ -218,13 +216,13 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     private void saveToParse()
     {
         event = new ParseObject("Event");
-        event.put("hour", hourSelected);
-        event.put("min", minSelected);
-        event.put("day", daySelected);
-        event.put("ampm", ampmSelected);
-        event.put("color", colorSelected);
-        event.put("eventName", eventTitleString);
-        event.put("eventDetails", eventDetailsString);
+        event.put("Hour", hourSelected);
+        event.put("Min", minSelected);
+        event.put("Day", daySelected);
+        event.put("AMPM", ampmSelected);
+        event.put("Color", colorSelected);
+        event.put("EventTitle", eventTitleString);
+        event.put("EventDetails", eventDetailsString);
         event.saveInBackground();
 
     }
@@ -391,7 +389,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 2);
         endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth-1);
+        endTime.set(Calendar.MONTH, newMonth - 1);
         event = new WeekViewEvent(10, "Anthony's haircut", startTime, endTime);
         event.setColor(getResources().getColor(R.color.MaterialTeal));
         events.add(event);
@@ -407,9 +405,9 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         endTime = (Calendar) startTime.clone();
         endTime.add(Calendar.HOUR_OF_DAY, 2);
         endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(10, "Kevin's NBA debut game", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.MaterialGreen));
+        endTime.set(Calendar.MONTH, newMonth - 1);
+        event = new WeekViewEvent(10, "Kevin's NBA debut", startTime, endTime);
+        event.setColor(getResources().getColor(R.color.MaterialTeal));
         events.add(event);
 
 

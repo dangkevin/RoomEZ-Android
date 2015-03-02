@@ -41,12 +41,11 @@ public class MainBoard extends ActionBarActivity
 
         }
 
-        plusButton = (ImageButton) findViewById(R.id.plusButton);
-        plusButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-
+        findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
-                popUpOptions();
+
             }
         });
 
