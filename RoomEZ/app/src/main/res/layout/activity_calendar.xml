@@ -41,14 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_gravity="bottom|end"
         android:layout_marginStart="16dp"
-        android:layout_alignParentBottom="true"
         fab:fab_addButtonColorNormal="@color/MaterialRed"
         fab:fab_addButtonColorPressed="@color/MaterialRed"
         fab:fab_addButtonPlusIconColor="@color/white"
         fab:fab_addButtonSize="normal"
         fab:fab_labelStyle="@style/menu_labels_style"
-        fab:fab_labelsPosition="right">
+        fab:fab_labelsPosition="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"

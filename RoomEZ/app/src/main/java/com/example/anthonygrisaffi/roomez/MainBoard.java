@@ -36,11 +36,6 @@ public class MainBoard extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
-
-        if (findViewById(R.id.StickyNoteFrag) != null) {
-
-        }
-
         findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,59 +64,7 @@ public class MainBoard extends ActionBarActivity
     }
 
 
-    private void popUpOptions()
-    {
-        Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
-        //Define a custom layout
-        LayoutInflater factory = LayoutInflater.from(this);
-        //Creates a view and adds buttons (such as Edit Text) from a customized layout
-        View myView = factory.inflate(R.layout.plus_button_options, null);
-        //Linear layout is created
-        LinearLayout hello = new LinearLayout(this);
-        //Adds the view to the linear layout
-        hello.addView(myView);
-        //Initializes the Edit Text buttons
-        addSticky = (BootstrapButton) myView.findViewById(R.id.add_sticky_button);
-        groupChat = (BootstrapButton) myView.findViewById(R.id.start_group_chat);
 
-        //Responsible for the dialog
-        final MaterialDialog mMaterialDialog = new MaterialDialog(this);
-
-        //This line handles whenever the LOGIN button is clicked in the dialog
-        /*final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("LOGIN", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //login(); //Makes a call to the login function associated with Parse
-
-
-            }
-        });*/
-
-        addSticky.setOnClickListener((new View.OnClickListener() {
-            public void onClick(View view) {
-
-                Toast.makeText(MainBoard.this, "Making a new sticky", Toast.LENGTH_SHORT).show();
-                create_a_sticky();
-            }
-        }));
-
-        //This line handles whenever the CANCEL button is clicked in the dialog
-        mMaterialDialog.setNegativeButton("CANCEL", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMaterialDialog.dismiss();
-
-            }
-        });
-
-        mMaterialDialog.setCanceledOnTouchOutside(true);
-        //Sets the Linear Layout
-        mMaterialDialog.setView(hello);
-        //Show dialog
-        mMaterialDialog.show();
-
-
-    }
 
     private void create_a_sticky()
     {

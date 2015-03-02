@@ -72,7 +72,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addCalEvent();
+                addCalEvent();
             }
         });
 
