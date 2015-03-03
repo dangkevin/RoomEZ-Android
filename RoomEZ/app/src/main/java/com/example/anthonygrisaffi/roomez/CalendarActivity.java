@@ -7,6 +7,7 @@ package com.example.anthonygrisaffi.roomez;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.RectF;
+import android.hardware.camera2.params.BlackLevelPattern;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -30,15 +31,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import me.drakeet.materialdialog.MaterialDialog;
+
 
 public class CalendarActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
         WeekView.EventClickListener, WeekView.EventLongPressListener  {
 
     public String hourSelected;
+    public String startSelected;
+    public String endSelected;
     public String minSelected;
     public String daySelected;
     public String ampmSelected;
     public String monthSelected;
+    public String colorString;
+    public int monthNumValue;
     public String colorSelected;
     public String eventTitleString;
     public String eventDetailsString;
@@ -62,6 +69,9 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
                 addCalEvent();
             }
         });
+
+
+        // Get a reference for the week view in the layout.
 
 
         mWeekView = (WeekView) findViewById(R.id.weekView);
@@ -116,47 +126,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
                 saveToParse();
 
-                //createEvent();
-                int month;
-                switch (monthSelected) {
+                createEvent();
 
-                    case ("January"):
-                        month = 0;
-                        break;
-                    case ("February"):
-                        month = 1;
-                        break;
-                    case ("March"):
-                        month = 2;
-                        break;
-                    case ("April"):
-                        month = 3;
-                        break;
-                    case ("May"):
-                        month = 4;
-                        break;
-                    case ("June"):
-                        month = 5;
-                        break;
-                    case ("July"):
-                        month = 6;
-                        break;
-                    case ("August"):
-                        month = 7;
-                        break;
-                    case ("September"):
-                        month = 8;
-                        break;
-                    case ("October"):
-                        month = 9;
-                        break;
-                    case ("November"):
-                        month = 10;
-                        break;
-                    case ("December"):
-                        month = 11;
-                        break;
-                }
                 mWeekView.setMonthChangeListener(mMonthChangeListener);
 //                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
@@ -164,14 +135,24 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 //
 //                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+                createEvent();
+
+
+
+//                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
 
             }
         });
 
         //Responsible for the dialog
-        final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CalendarActivity.this);
+        final MaterialDialog mAlertDialog = new MaterialDialog(CalendarActivity.this);
 
-        //mAlertDialog.setCanceledOnTouchOutside(true);
+        mAlertDialog.setCanceledOnTouchOutside(true);
         //Sets the Linear Layout
         mAlertDialog.setView(hello);
         //Show dialog
@@ -181,17 +162,104 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     }
 
 
-//        Calendar startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, 3);
-//        startTime.set(Calendar.MINUTE, 0);
-//        startTime.set(Calendar.MONTH, newMonth-1);
-//        startTime.set(Calendar.YEAR, newYear);
-//        Calendar endTime = (Calendar) startTime.clone();
-//        endTime.add(Calendar.HOUR, 1);
-//        endTime.set(Calendar.MONTH, newMonth-1);
-//        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
-//        event.setColor(getResources().getColor(R.color.teal));
-//        events.add(event);
+    private void createEvent() {
+
+        switch (monthSelected) {
+
+            case ("January"):
+                monthNumValue = 0;
+                break;
+            case ("February"):
+                monthNumValue = 1;
+                break;
+            case ("March"):
+                monthNumValue = 2;
+                break;
+            case ("April"):
+                monthNumValue = 3;
+                break;
+            case ("May"):
+                monthNumValue = 4;
+                break;
+            case ("June"):
+                monthNumValue = 5;
+                break;
+            case ("July"):
+                monthNumValue = 6;
+                break;
+            case ("August"):
+                monthNumValue = 7;
+                break;
+            case ("September"):
+                monthNumValue = 8;
+                break;
+            case ("October"):
+                monthNumValue = 9;
+                break;
+            case ("November"):
+                monthNumValue = 10;
+                break;
+            case ("December"):
+                monthNumValue = 11;
+                break;
+
+        }
+        int start = Integer.parseInt(startSelected);
+        int end = Integer.parseInt(endSelected);
+        if (ampmSelected == "pm") {
+            start += 12;
+            if ((end - start) < 0) {
+                end += 12;
+            }
+
+            if (start == 24 || end == 24) {
+                start = 0;
+                end = 0;
+            }
+        }
+
+        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(Calendar.HOUR_OF_DAY, start);
+        startTime.set(Calendar.MINUTE, Integer.parseInt(minSelected));
+        startTime.set(Calendar.MONTH, monthNumValue);
+        startTime.set(Calendar.YEAR, Calendar.YEAR);
+        Calendar endTime = (Calendar) startTime.clone();
+        endTime.set(Calendar.HOUR, end);
+        endTime.set(Calendar.MONTH, monthNumValue);
+        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+
+
+        switch (colorSelected) {
+            case ("Black"):
+                event.setColor(getResources().getColor(R.color.black));
+                break;
+            case ("Red"):
+                event.setColor(getResources().getColor(R.color.MaterialRed));
+                break;
+            case ("Blue"):
+                event.setColor(getResources().getColor(R.color.MaterialBlue));
+                break;
+            case ("Yellow"):
+                event.setColor(getResources().getColor(R.color.yellow));
+                break;
+            case ("Pink"):
+                event.setColor(getResources().getColor(R.color.pink));
+                break;
+            case ("Gray"):
+                event.setColor(getResources().getColor(R.color.grey));
+                break;
+            case ("Teal"):
+                event.setColor(getResources().getColor(R.color.teal));
+                break;
+        }
+
+        event.setColor(getResources().getColor(R.color.teal));
+        events.add(event);
+        mWeekView.setMonthChangeListener(this);
+
+    }
 
 
 
@@ -205,6 +273,14 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         event.put("Color", colorSelected);
         event.put("EventTitle", eventTitleString);
         event.put("EventDetails", eventDetailsString);
+        event.put("startTime", startSelected);
+        event.put("endTime", endSelected);
+        event.put("min", minSelected);
+        event.put("day", daySelected);
+        event.put("ampm", ampmSelected);
+        event.put("color", colorSelected);
+        event.put("eventName", eventTitleString);
+        event.put("eventDetails", eventDetailsString);
         event.saveInBackground();
 
     }
@@ -216,7 +292,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         Make spinner objects for each spinner. Connect it to the XML in myView, otherwise
         it will look for it activity_calendar
          */
-        Spinner spinnerHour = (Spinner) myView.findViewById(R.id.hourSpinner);
+        Spinner spinnerStart = (Spinner) myView.findViewById(R.id.startTimeSpinner);
+        Spinner spinnerEnd = (Spinner) myView.findViewById(R.id.endTimeSpinner);
         Spinner spinnerMin = (Spinner) myView.findViewById(R.id.minute_spinner);
         Spinner spinnerDay = (Spinner) myView.findViewById(R.id.day_spinner);
         Spinner spinnerAmPm = (Spinner) myView.findViewById(R.id.am_pm_spinner);
@@ -245,13 +322,26 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             }
         });
 
-        spinnerHour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        spinnerStart.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                startSelected =  parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "hour is " + startSelected, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerEnd.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                hourSelected = parent.getSelectedItem().toString();
-                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+                endSelected =  parent.getSelectedItem().toString();
+                Toast.makeText(CalendarActivity.this, "hour is " + endSelected, Toast.LENGTH_SHORT).show();
 
             }
 
@@ -282,7 +372,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                daySelected = parent.getSelectedItem().toString();
+                daySelected =  parent.getSelectedItem().toString();
                 Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
 
             }

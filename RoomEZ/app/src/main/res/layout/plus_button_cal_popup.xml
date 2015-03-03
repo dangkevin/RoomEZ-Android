@@ -24,12 +24,22 @@
         android:hint="What's happening?" />
 
     <Spinner
-        android:id="@+id/hourSpinner"
+        android:id="@+id/startTimeSpinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:entries="@array/Hour"
-        android:prompt="@string/hourPrompt"
         android:paddingBottom="20dp"
+        android:prompt="@string/startTitle"
+        android:spinnerMode="dialog">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/endTimeSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:entries="@array/Hour"
+        android:paddingBottom="20dp"
+        android:prompt="@string/endTitle"
         android:spinnerMode="dialog">
     </Spinner>
 
@@ -37,11 +47,12 @@
         android:id="@+id/minute_spinner"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:entries="@array/Minute"
+        android:entries="@array/Min"
         android:paddingBottom="20dp"
         android:prompt="@string/minPrompt"
         android:spinnerMode="dialog">
     </Spinner>
+
     <Spinner
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -52,6 +63,7 @@
         android:spinnerMode="dialog">
 
     </Spinner>
+
     <Spinner
         android:id="@+id/day_spinner"
         android:layout_width="fill_parent"
@@ -61,11 +73,13 @@
         android:prompt="@string/dayPrompt"
         android:spinnerMode="dialog">
     </Spinner>
+
     <Spinner
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/month_spinner"
         android:entries="@array/months"
+        android:prompt="@string/monthPrompt"
         android:spinnerMode="dialog">
 
      </Spinner>
@@ -80,6 +94,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
         android:hint="Event Details"/>
+
     <Spinner
         android:id="@+id/color_spinner"
         android:layout_width="fill_parent"
@@ -88,6 +103,7 @@
         android:prompt="@string/colorPrompt"
         android:spinnerMode="dialog">
     </Spinner>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
