@@ -34,19 +34,6 @@ import java.util.List;
 public class CalendarActivity extends ActionBarActivity implements WeekView.MonthChangeListener,
         WeekView.EventClickListener, WeekView.EventLongPressListener  {
 
-//    public final static String DIALOG_TITLE = "dialogTitle";
-//    public final static String MONTH = "month";
-//    public final static String YEAR = "year";
-//    public final static String SHOW_NAVIGATION_ARROWS = "showNavigationArrows";
-//    public final static String DISABLE_DATES = "disableDates";
-//    public final static String SELECTED_DATES = "selectedDates";
-//    public final static String MIN_DATE = "minDate";
-//    public final static String MAX_DATE = "maxDate";
-//    public final static String ENABLE_SWIPE = "enableSwipe";
-//    public final static String START_DAY_OF_WEEK = "startDayOfWeek";
-//    public final static String SIX_WEEKS_IN_CALENDAR = "sixWeeksInCalendar";
-//    public final static String ENABLE_CLICK_ON_DISABLED_DATES = "enableClickOnDisabledDates";
-//    public final static String SQUARE_TEXT_VIEW_CELL = "squareTextViewCell";
     public String hourSelected;
     public String minSelected;
     public String daySelected;
@@ -88,7 +75,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
-        mWeekView.setMonthChangeListener(this);
+        //mWeekView.setMonthChangeListener(this);
 
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
@@ -129,15 +116,54 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
                 saveToParse();
 
-                createEvent();
+                //createEvent();
+                int month;
+                switch (monthSelected) {
 
-
-                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
-                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
-                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
-
-                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
-                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+                    case ("January"):
+                        month = 0;
+                        break;
+                    case ("February"):
+                        month = 1;
+                        break;
+                    case ("March"):
+                        month = 2;
+                        break;
+                    case ("April"):
+                        month = 3;
+                        break;
+                    case ("May"):
+                        month = 4;
+                        break;
+                    case ("June"):
+                        month = 5;
+                        break;
+                    case ("July"):
+                        month = 6;
+                        break;
+                    case ("August"):
+                        month = 7;
+                        break;
+                    case ("September"):
+                        month = 8;
+                        break;
+                    case ("October"):
+                        month = 9;
+                        break;
+                    case ("November"):
+                        month = 10;
+                        break;
+                    case ("December"):
+                        month = 11;
+                        break;
+                }
+                mWeekView.setMonthChangeListener(mMonthChangeListener);
+//                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+//
+//                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -154,49 +180,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     }
 
-    private void createEvent()
-    {
-        int month;
-        switch (monthSelected) {
-
-            case ("January"):
-                month = 0;
-                break;
-            case ("February"):
-                month = 1;
-                break;
-            case ("March"):
-                month = 2;
-                break;
-            case ("April"):
-                month = 3;
-                break;
-            case ("May"):
-                month = 4;
-                break;
-            case ("June"):
-                month = 5;
-                break;
-            case ("July"):
-                 month = 6;
-                break;
-            case ("August"):
-                month = 7;
-                break;
-            case ("September"):
-                month = 8;
-                break;
-            case ("October"):
-                month = 9;
-                break;
-            case ("November"):
-                month = 10;
-                break;
-            case ("December"):
-                month = 11;
-                break;
-
-        }
 
 //        Calendar startTime = Calendar.getInstance();
 //        startTime.set(Calendar.HOUR_OF_DAY, 3);
@@ -210,7 +193,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 //        event.setColor(getResources().getColor(R.color.teal));
 //        events.add(event);
 
-    }
 
 
     private void saveToParse()
@@ -350,65 +332,79 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
 
-        // Populate the week view with some events.
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
         Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 12);
+        startTime.set(Calendar.HOUR_OF_DAY, 3);
         startTime.set(Calendar.MINUTE, 0);
         startTime.set(Calendar.MONTH, newMonth-1);
         startTime.set(Calendar.YEAR, newYear);
         Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 4);
+        endTime.add(Calendar.HOUR, 1);
         endTime.set(Calendar.MONTH, newMonth-1);
-        WeekViewEvent event = new WeekViewEvent(1, "Jacob's Bar Mitzvah", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.MaterialBlue));
+        WeekViewEvent event = new WeekViewEvent(1, getEventTitle(startTime), startTime, endTime);
+        event.setColor(getResources().getColor(R.color.teal));
         events.add(event);
 
-
-        /*Calendar startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 12);
-        startTime.set(Calendar.DAY_OF_MONTH,28);
-        startTime.set(Calendar.MINUTE, 0);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        //Calendar endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR, 4);
-        endTime.set(Calendar.MONTH, newMonth-1);
-        event = new WeekViewEvent(1, "Kevin's dentist appointment", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.MaterialRed));
-        events.add(event); */
-
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 14);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        startTime.set(Calendar.DAY_OF_MONTH,27);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 2);
-        endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(10, "Anthony's haircut", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.MaterialTeal));
-        events.add(event);
-
-
-
-        startTime = Calendar.getInstance();
-        startTime.set(Calendar.HOUR_OF_DAY, 14);
-        startTime.set(Calendar.MINUTE, 30);
-        startTime.set(Calendar.MONTH, newMonth-1);
-        startTime.set(Calendar.YEAR, newYear);
-        startTime.set(Calendar.DAY_OF_MONTH,28);
-        endTime = (Calendar) startTime.clone();
-        endTime.add(Calendar.HOUR_OF_DAY, 2);
-        endTime.set(Calendar.MINUTE, 30);
-        endTime.set(Calendar.MONTH, newMonth - 1);
-        event = new WeekViewEvent(10, "Kevin's NBA debut", startTime, endTime);
-        event.setColor(getResources().getColor(R.color.MaterialTeal));
-        events.add(event);
+//        // Populate the week view with some events.
+//        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+//
+//        Calendar startTime = Calendar.getInstance();
+//        startTime.set(Calendar.HOUR_OF_DAY, 12);
+//        startTime.set(Calendar.MINUTE, 0);
+//        startTime.set(Calendar.MONTH, newMonth-1);
+//        startTime.set(Calendar.YEAR, newYear);
+//        Calendar endTime = (Calendar) startTime.clone();
+//        endTime.add(Calendar.HOUR, 4);
+//        endTime.set(Calendar.MONTH, newMonth-1);
+//        WeekViewEvent event = new WeekViewEvent(1, "Jacob's Bar Mitzvah", startTime, endTime);
+//        event.setColor(getResources().getColor(R.color.MaterialBlue));
+//        events.add(event);
+//
+//
+//        /*Calendar startTime = Calendar.getInstance();
+//        startTime.set(Calendar.HOUR_OF_DAY, 12);
+//        startTime.set(Calendar.DAY_OF_MONTH,28);
+//        startTime.set(Calendar.MINUTE, 0);
+//        startTime.set(Calendar.MONTH, newMonth-1);
+//        startTime.set(Calendar.YEAR, newYear);
+//        //Calendar endTime = (Calendar) startTime.clone();
+//        endTime.add(Calendar.HOUR, 4);
+//        endTime.set(Calendar.MONTH, newMonth-1);
+//        event = new WeekViewEvent(1, "Kevin's dentist appointment", startTime, endTime);
+//        event.setColor(getResources().getColor(R.color.MaterialRed));
+//        events.add(event); */
+//
+//
+//        startTime = Calendar.getInstance();
+//        startTime.set(Calendar.HOUR_OF_DAY, 14);
+//        startTime.set(Calendar.MINUTE, 30);
+//        startTime.set(Calendar.MONTH, newMonth-1);
+//        startTime.set(Calendar.YEAR, newYear);
+//        startTime.set(Calendar.DAY_OF_MONTH,27);
+//        endTime = (Calendar) startTime.clone();
+//        endTime.add(Calendar.HOUR_OF_DAY, 2);
+//        endTime.set(Calendar.MINUTE, 30);
+//        endTime.set(Calendar.MONTH, newMonth - 1);
+//        event = new WeekViewEvent(10, "Anthony's haircut", startTime, endTime);
+//        event.setColor(getResources().getColor(R.color.MaterialTeal));
+//        events.add(event);
+//
+//
+//
+//        startTime = Calendar.getInstance();
+//        startTime.set(Calendar.HOUR_OF_DAY, 14);
+//        startTime.set(Calendar.MINUTE, 30);
+//        startTime.set(Calendar.MONTH, newMonth-1);
+//        startTime.set(Calendar.YEAR, newYear);
+//        startTime.set(Calendar.DAY_OF_MONTH,28);
+//        endTime = (Calendar) startTime.clone();
+//        endTime.add(Calendar.HOUR_OF_DAY, 2);
+//        endTime.set(Calendar.MINUTE, 30);
+//        endTime.set(Calendar.MONTH, newMonth - 1);
+//        event = new WeekViewEvent(10, "Kevin's NBA debut", startTime, endTime);
+//        event.setColor(getResources().getColor(R.color.MaterialTeal));
+//        events.add(event);
 
 
         /*startTime = Calendar.getInstance();
