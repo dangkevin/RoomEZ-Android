@@ -36,7 +36,7 @@ public class MainBoard extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
-        findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.floatingButtonSticky1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();

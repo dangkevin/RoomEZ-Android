@@ -70,7 +70,8 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        findViewById(R.id.plusButton1).setOnClickListener(new OnClickListener() {
+        findViewById(R.id.floatingButtonCal1).setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 addCalEvent();
@@ -89,18 +90,18 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
         // month every time the month changes on the week view.
-        mWeekView.setMonthChangeListener(this);
+        //mWeekView.setMonthChangeListener(this);
 
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
 
 
         mWeekView.setMonthChangeListener(this);
-
-// Set long press listener for events.
-        //mWeekView.setEventLongPressListener(mEventLongPressListener);
-
+        mWeekView.setNumberOfVisibleDays(1);
     }
+
+
+
 
     private void addCalEvent()
     {

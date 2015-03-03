@@ -32,7 +32,7 @@ public class GroupMessage extends ActionBarActivity
 
     private static final String TAG = GroupMessage.class.getName();
     private ListView lvChat;
-    private static final int MAX_CHAT_MESSAGES_TO_SHOW = 50;
+    private static final int MAX_CHAT_MESSAGES_TO_SHOW = Integer.MAX_VALUE;
     private ArrayList<Message> mMessages;
     private ChatListAdapter mAdapter;
     public static final String USER_ID_KEY = "userId";
