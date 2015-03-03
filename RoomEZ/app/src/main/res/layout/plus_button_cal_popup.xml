@@ -2,96 +2,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     tools:context="com.example.anthonygrisaffi.roomez.CalendarActivity"
     android:orientation="vertical"
     android:weightSum="1">
 
 
-    <EditText
-        android:id="@+id/eventName"
-        android:inputType="textEmailAddress"
-        android:layout_width="224dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:paddingBottom="20dp"
-        android:hint="What's happening?" />
+    <!--<EditText-->
+        <!--android:id="@+id/eventName"-->
+        <!--android:inputType="textEmailAddress"-->
+        <!--android:layout_width="224dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_marginLeft="4dp"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:hint="What's happening?" />-->
 
-    <Spinner
-        android:id="@+id/hourSpinner"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:entries="@array/Hour"
-        android:prompt="@string/hourPrompt"
-        android:paddingBottom="20dp"
-        android:spinnerMode="dialog">
-    </Spinner>
+    <TimePicker
+        android:id="@+id/time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <Spinner
-        android:id="@+id/minute_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:entries="@array/Minute"
-        android:paddingBottom="20dp"
-        android:prompt="@string/minPrompt"
-        android:spinnerMode="dialog">
-    </Spinner>
-    <Spinner
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/am_pm_spinner"
-        android:entries="@array/ampm"
-        android:paddingBottom="20dp"
-        android:prompt="@string/am_pm"
-        android:spinnerMode="dialog">
+    </TimePicker>
 
-    </Spinner>
-    <Spinner
-        android:id="@+id/day_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:entries="@array/Day"
-        android:paddingBottom="20dp"
-        android:prompt="@string/dayPrompt"
-        android:spinnerMode="dialog">
-    </Spinner>
-    <Spinner
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/month_spinner"
-        android:entries="@array/months"
-        android:spinnerMode="dialog">
 
-     </Spinner>
+    <!--<Spinner-->
+        <!--android:id="@+id/startTimeSpinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:entries="@array/Hour"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:prompt="@string/startTitle"-->
+        <!--android:spinnerMode="dialog">-->
+    <!--</Spinner>-->
 
-    <EditText
-        android:id="@+id/eventDetails"
-        android:layout_width="224dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginLeft="4dp"
-        android:paddingBottom="20dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
-        android:hint="Event Details"/>
-    <Spinner
-        android:id="@+id/color_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:entries="@array/Colors"
-        android:prompt="@string/colorPrompt"
-        android:spinnerMode="dialog">
-    </Spinner>
+    <!--<Spinner-->
+        <!--android:id="@+id/endTimeSpinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:entries="@array/Hour"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:prompt="@string/endTitle"-->
+        <!--android:spinnerMode="dialog">-->
+    <!--</Spinner>-->
+
+    <!--<Spinner-->
+        <!--android:id="@+id/minute_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:entries="@array/Min"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:prompt="@string/minPrompt"-->
+        <!--android:spinnerMode="dialog">-->
+    <!--</Spinner>-->
+
+    <!--<Spinner-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/am_pm_spinner"-->
+        <!--android:entries="@array/ampm"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:prompt="@string/am_pm"-->
+        <!--android:spinnerMode="dialog">-->
+
+    <!--</Spinner>-->
+
+    <!--<Spinner-->
+        <!--android:id="@+id/day_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:entries="@array/Day"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:prompt="@string/dayPrompt"-->
+        <!--android:spinnerMode="dialog">-->
+    <!--</Spinner>-->
+
+    <!--<Spinner-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/month_spinner"-->
+        <!--android:entries="@array/months"-->
+        <!--android:prompt="@string/monthPrompt"-->
+        <!--android:spinnerMode="dialog">-->
+
+     <!--</Spinner>-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/eventDetails"-->
+        <!--android:layout_width="224dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_marginLeft="4dp"-->
+        <!--android:paddingBottom="20dp"-->
+        <!--android:layout_marginRight="4dp"-->
+        <!--android:layout_marginBottom="4dp"-->
+        <!--android:hint="Event Details"/>-->
+
+    <!--<Spinner-->
+        <!--android:id="@+id/color_spinner"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:entries="@array/Colors"-->
+        <!--android:prompt="@string/colorPrompt"-->
+        <!--android:spinnerMode="dialog">-->
+    <!--</Spinner>-->
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/doneButton"
         android:text="@string/abc_action_mode_done"/>
+
 
 </LinearLayout>
