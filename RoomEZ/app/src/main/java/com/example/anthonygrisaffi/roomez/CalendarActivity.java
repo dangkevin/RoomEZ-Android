@@ -97,7 +97,7 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
 
         mWeekView.setMonthChangeListener(this);
-        mWeekView.setNumberOfVisibleDays(1);
+        mWeekView.setNumberOfVisibleDays(3);
     }
 
 
