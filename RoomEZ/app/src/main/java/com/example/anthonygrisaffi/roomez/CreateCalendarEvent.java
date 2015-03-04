@@ -1,7 +1,6 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.app.AlertDialog;
-import android.provider.CalendarContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +8,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.DatePicker;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -21,6 +20,10 @@ import me.drakeet.materialdialog.MaterialDialog;
 
 public class CreateCalendarEvent extends ActionBarActivity {
 
+    DatePicker datePicker;
+    TimePicker timePicker;
+    Button doneTime;
+    Button doneDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class CreateCalendarEvent extends ActionBarActivity {
                 //Define a custom layout
                 LayoutInflater factory = LayoutInflater.from(CreateCalendarEvent.this);
                 //Creates a view and adds buttons (such as Edit Text) from a customized layout
-                final View myView = factory.inflate(R.layout.plus_button_cal_popup2, null);
+                final View myView = factory.inflate(R.layout.date_pop, null);
                 //Linear layout is created
                 RelativeLayout hello = new RelativeLayout(CreateCalendarEvent.this);
                 //Adds the view to the linear layout
@@ -55,6 +58,26 @@ public class CreateCalendarEvent extends ActionBarActivity {
                 //Responsible for the dialog
                 final AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CreateCalendarEvent.this);
 //                final MaterialDialog mAlertDialog = new MaterialDialog(CreateCalendarEvent.this);
+
+                doneDate = (Button) myView.findViewById(R.id.doneDate);
+                datePicker = (DatePicker) myView.findViewById(R.id.date1);
+
+                doneDate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        int month = datePicker.getMonth();
+                        int day= datePicker.getDayOfMonth();
+                        int year= datePicker.getYear();
+                       CalendarActivity dateSetting =  new CalendarActivity();
+                       dateSetting.setDatePicker(month, day, year);
+                   //Toast.makeText(dateSetting, "Date is " + month + "/" + day + "/" + year, Toast.LENGTH_SHORT).show();
+                        finish();
+
+                    }
+                });
+
+
 
                // mAlertDialog.setCanceledOnTouchOutside(true);
                 //Sets the Linear Layout
@@ -70,7 +93,7 @@ public class CreateCalendarEvent extends ActionBarActivity {
                 //Define a custom layout
                 LayoutInflater factory = LayoutInflater.from(CreateCalendarEvent.this);
                 //Creates a view and adds buttons (such as Edit Text) from a customized layout
-                final View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
+                final View myView = factory.inflate(R.layout.time_pop, null);
                 //Linear layout is created
                 RelativeLayout hello = new RelativeLayout(CreateCalendarEvent.this);
                 //Adds the view to the linear layout

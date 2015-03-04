@@ -21,6 +21,6 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/doneButton2"
+        android:id="@+id/doneDate"
         android:text="Done"/>
 </LinearLayout>
