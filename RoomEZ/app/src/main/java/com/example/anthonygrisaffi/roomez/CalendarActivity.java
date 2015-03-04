@@ -77,24 +77,21 @@ public class CalendarActivity extends ActionBarActivity implements
 
             @Override
             public void onClick(View v) {
-
                 mStartTime = Calendar.getInstance();
                 mStartTime.set(Calendar.HOUR_OF_DAY, 14);
-                mStartTime.set(Calendar.MINUTE,30);
-                mStartTime.set(Calendar.MONTH,2);
-                mStartTime.set(Calendar.YEAR,2015);
-                mEndTime= Calendar.getInstance();
+                mStartTime.set(Calendar.MINUTE, 30);
+                mStartTime.set(Calendar.MONTH, 2);
+                mStartTime.set(Calendar.YEAR, 2015);
+                mEndTime = Calendar.getInstance();
                 mEndTime.set(Calendar.HOUR_OF_DAY, 16);
-                mEndTime.set(Calendar.MINUTE,30);
-                mEndTime.set(Calendar.MONTH,2);
-                mEndTime.set(Calendar.YEAR,2015);
-                WeekViewEvent weekEvent = new WeekViewEvent(1,"Jacob - CSE 120", mStartTime,mEndTime);
-                //mEventModels.clear();
+                mEndTime.set(Calendar.MINUTE, 30);
+                mEndTime.set(Calendar.MONTH, 2);
+                mEndTime.set(Calendar.YEAR, 2015);
+                WeekViewEvent weekEvent = new WeekViewEvent(1, "Jacob - CSE 120", mStartTime, mEndTime);
+                mEventModels.clear();
                 mEventModels.add(weekEvent);
                 mWeekView.notifyDatasetChanged();
-
-            }
-        });
+            }});
 
 
 

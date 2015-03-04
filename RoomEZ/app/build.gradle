@@ -25,18 +25,22 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.google.android.gms:play-services:6.1.71'
     compile 'com.parse.bolts:bolts-android:1.+'
-    compile 'com.melnykov:floatingactionbutton:1.2.0'//for the plus button actions
+    //for the plus button actions
     compile 'com.getbase:floatingactionbutton:1.8.0'
     //This line is for Parse-backend
     compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')
     //This line is for the Parse-backend
-    compile 'com.beardedhen:androidbootstrap:+' //For that bootstrap actions
+    compile 'com.beardedhen:androidbootstrap:+'
+    //For that bootstrap actions
     compile 'me.drakeet.materialdialog:library:1.2.2'
     //compile files('libs/AndroidBootstrap/libs/android-support-v4.jar')
-    compile 'com.parse.bolts:bolts-android:1.+'        //This line is for Parse-backend
-    compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')  //This line is for the Parse-backend
-    compile 'com.google.apis:google-api-services-calendar:v3-rev117-1.19.1'
-    //compile 'com.roomorama:caldroid:1.1.8'
+    //This line is for Parse-backend
+    compile fileTree(dir: 'libs', include: 'Parse-1.8.1.jar')
+    //This line is for the Parse-backend
     compile 'com.github.alamkanak:android-week-view:1.2.1'
     compile 'com.squareup.picasso:picasso:2.5.0'
+    compile files('libs/layer-sdk-0.9+.jar')
+    compile 'com.android.support:support-annotations:20.+'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+
 }

@@ -3,11 +3,17 @@ package com.example.anthonygrisaffi.roomez;
 import android.app.Application;
 
 
+import com.layer.sdk.LayerClient;
+import com.layer.sdk.messaging.Conversation;
+import com.layer.sdk.messaging.MessagePart;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.Arrays;
+import java.util.UUID;
 
 
 /**
@@ -21,6 +27,22 @@ public class RoomEZapp extends Application {
         Parse.enableLocalDatastore(this);
         ParseObject.registerSubclass(Message.class);
         Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
+        UUID appID = UUID.fromString("c6a349f8-c26e-11e4-b24c-d66a000006ca");
+        LayerClient layerClient = LayerClient.newInstance(this, appID, "GCM Project Number");
+        MyConnectionListener connectionListener = new MyConnectionListener();
+        MyAuthenticationListener authenticationListener = new MyAuthenticationListener();
+        layerClient.registerConnectionListener(connectionListener);
+        layerClient.registerAuthenticationListener(authenticationListener);
+        // Asks the LayerSDK to establish a network connection with the Layer service
+        layerClient.connect();
+
+
+
+    }
+
+
+
+
 
         //ParseUser user = new ParseUser();
 
@@ -41,4 +63,3 @@ public class RoomEZapp extends Application {
 
 
     }
-}
