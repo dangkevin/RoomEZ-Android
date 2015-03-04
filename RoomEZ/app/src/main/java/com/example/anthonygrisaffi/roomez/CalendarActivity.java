@@ -105,84 +105,95 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
 
     private void addCalEvent()
     {
-
-        //Define a custom layout
-        LayoutInflater factory = LayoutInflater.from(this);
-        //Creates a view and adds buttons (such as Edit Text) from a customized layout
-        final View myView = factory.inflate(R.layout.plus_button_cal_popup, null);
-        //Linear layout is created
-        LinearLayout hello = new LinearLayout(this);
-        //Adds the view to the linear layout
-        hello.addView(myView);
-
-        addListenerOnButton(myView);
-        timePicker = (TimePicker) myView.findViewById(R.id.time1);
-        //datePicker = (DatePicker) myView.findViewById(R.id.date1);
-        doneButton1 = (Button) myView.findViewById(R.id.doneButton);
+           Intent intent = new Intent(this, CreateCalendarEvent.class);
+           startActivity(intent);
 
 
-        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
-            @Override
-            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                Toast.makeText(getApplicationContext(), "Time is "+ hourOfDay+":"+minute, Toast.LENGTH_SHORT ).show();
-            }
-        });
-        doneButton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Toast.makeText(getApplicationContext(), "I clicked Done", Toast.LENGTH_SHORT ).show();
-                LayoutInflater factory2 = LayoutInflater.from(getApplicationContext());
-                //Creates a view and adds buttons (such as Edit Text) from a customized layout
-                final View myView2 = factory2.inflate(R.layout.plus_button_cal_popup2, null);
-                //Linear layout is created
-                LinearLayout hello = new LinearLayout(getApplicationContext());
-                //Adds the view to the linear layout
-                hello.addView(myView2);
-
-                addListenerOnButton(myView2);
-                datePicker = (DatePicker) myView2.findViewById(R.id.date1);
-                doneButton2 = (Button) myView2.findViewById(R.id.doneButton2);
-//                EditText eventTitle = (EditText) myView.findViewById(R.id.eventName);
-//                eventTitleString = eventTitle.getText().toString();
+//        //Define a custom layout
+//        LayoutInflater factory = LayoutInflater.from(this);
+//        //Creates a view and adds buttons (such as Edit Text) from a customized layout
+//        final View myView = factory.inflate(R.layout.calendar_select, null);
+//        //Linear layout is created
+//        LinearLayout hello = new LinearLayout(this);
+//        //Adds the view to the linear layout
+//        hello.addView(myView);
 //
-//                EditText eventDetail = (EditText) myView.findViewById(R.id.eventDetails);
-//                eventDetailsString = eventDetail.getText().toString();
-
-                //saveToParse();
-
-                //createEvent();
-
- //               mWeekView.setMonthChangeListener(mMonthChangeListener);
-//                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+//        addListenerOnButton(myView);
+//        timePicker = (TimePicker) myView.findViewById(R.id.time1);
+//        //datePicker = (DatePicker) myView.findViewById(R.id.date1);
+//        doneButton1 = (Button) myView.findViewById(R.id.doneButton);
 //
-//                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
-//                createEvent();
-
-
-
-//                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
 //
-//                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        //Responsible for the dialog
-        final MaterialDialog mAlertDialog = new MaterialDialog(CalendarActivity.this);
-
-        mAlertDialog.setCanceledOnTouchOutside(true);
-        //Sets the Linear Layout
-        mAlertDialog.setView(hello);
-        //Show dialog
-        mAlertDialog.show();
-
+//        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+//            @Override
+//            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+//                Toast.makeText(getApplicationContext(), "Time is "+ hourOfDay+":"+minute, Toast.LENGTH_SHORT ).show();
+//            }
+//        });
+//
+//        doneButton1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v)
+//            {
+//
+//                Toast.makeText(getApplicationContext(), "I clicked Done", Toast.LENGTH_SHORT ).show();
+//                LayoutInflater factory2 = LayoutInflater.from(getApplicationContext());
+//                //Creates a view and adds buttons (such as Edit Text) from a customized layout
+//                final View myView2 = factory2.inflate(R.layout.plus_button_cal_popup2, null);
+//                //Linear layout is created
+//                LinearLayout hello = new LinearLayout(getApplicationContext());
+//                //Adds the view to the linear layout
+//                hello.addView(myView2);
+//
+//                addListenerOnButton(myView2);
+//                datePicker = (DatePicker) myView2.findViewById(R.id.date1);
+//                doneButton2 = (Button) myView2.findViewById(R.id.doneButton2);
+//                timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+//                    @Override
+//                    public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+//                        Toast.makeText(getApplicationContext(), "Time is "+ hourOfDay+":"+minute, Toast.LENGTH_SHORT ).show();
+//                    }
+//                });
+////                EditText eventTitle = (EditText) myView.findViewById(R.id.eventName);
+////                eventTitleString = eventTitle.getText().toString();
+////
+////                EditText eventDetail = (EditText) myView.findViewById(R.id.eventDetails);
+////                eventDetailsString = eventDetail.getText().toString();
+//
+//                //saveToParse();
+//
+//                //createEvent();
+//
+////               mWeekView.setMonthChangeListener(mMonthChangeListener);
+////                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+////
+////                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+////                createEvent();
+//
+//
+//
+////                Toast.makeText(CalendarActivity.this, "hour is " + hourSelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "day is " + daySelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "color is " + colorSelected, Toast.LENGTH_SHORT).show();
+////
+////                Toast.makeText(CalendarActivity.this, "Min is " + minSelected, Toast.LENGTH_SHORT).show();
+////                Toast.makeText(CalendarActivity.this, "am or pm ---> " + ampmSelected, Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        //Responsible for the dialog
+//        final MaterialDialog mAlertDialog = new MaterialDialog(CalendarActivity.this);
+//
+//        mAlertDialog.setCanceledOnTouchOutside(true);
+//        //Sets the Linear Layout
+//        mAlertDialog.setView(hello);
+//        //Show dialog
+//        mAlertDialog.show();
+//
 
     }
 
