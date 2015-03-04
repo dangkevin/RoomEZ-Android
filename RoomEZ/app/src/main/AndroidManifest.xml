@@ -48,8 +48,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".CalendarActivity"
-            android:label="@string/calendar"
-            />
+            android:label="@string/calendar" />
         <activity
             android:name=".SignUpActivity"
             android:label="@string/title_activity_signup"
@@ -61,7 +60,6 @@
         <activity
             android:name=".DispatchActivity"
             android:noHistory="true" >
-
         </activity>
 
         <meta-data
@@ -69,7 +67,6 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-
             android:name=".GroupMessage"
             android:label="@string/title_activity_group_message" >
         </activity>
@@ -86,7 +83,14 @@
             android:name=".AccountSettings"
             android:label="@string/title_activity_account_settings"
             android:screenOrientation="portrait" >
-
+        </activity>
+        <activity
+            android:name=".CreateCalendarEvent"
+            android:label="@string/title_activity_create_calendar_event" >
+        </activity>
+        <activity
+            android:name=".lksjdlkfjsldkfjsld"
+            android:label="@string/title_activity_lksjdlkfjsldkfjsld" >
         </activity>
     </application>
 
