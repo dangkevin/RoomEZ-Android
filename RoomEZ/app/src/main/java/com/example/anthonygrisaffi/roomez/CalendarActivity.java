@@ -62,16 +62,6 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     Button doneButton2;
     ParseObject event;
 
-    int hour = 14;
-    int min = 30;
-    int DOM = 4;
-    int mon = 2;
-    int yr = 2015;
-
-    int hourend = 16;
-    int endmonth = 2;
-    int endmonthday = 4;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -464,8 +454,19 @@ public class CalendarActivity extends ActionBarActivity implements WeekView.Mont
     }*/
 
 
+    int hour = 14;
+    int min = 30;
+    int DOM = 4;
+    int mon = 2;
+    int yr = 2015;
 
-        @Override
+    int hourend = 16;
+    int endmonth = 2;
+    int endmonthday = 4;
+
+
+
+    @Override
         public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
             List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
             Calendar startTime = Calendar.getInstance();
