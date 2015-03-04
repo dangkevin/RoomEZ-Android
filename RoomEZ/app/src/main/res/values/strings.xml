@@ -114,5 +114,7 @@
 
 
     </string-array>
+    <string name="title_activity_create_calendar_event">CreateCalendarEvent</string>
+    <string name="title_activity_lksjdlkfjsldkfjsld">lksjdlkfjsldkfjsld</string>
 
 </resources>
