@@ -1,28 +1,20 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.content.Intent;
-import com.example.anthonygrisaffi.roomez.R;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.getbase.floatingactionbutton.FloatingActionButton;
-import com.getbase.floatingactionbutton.FloatingActionsMenu;
+
 import com.parse.ParseUser;
 
 
-import me.drakeet.materialdialog.MaterialDialog;
 
 
 public class MainBoard extends ActionBarActivity
