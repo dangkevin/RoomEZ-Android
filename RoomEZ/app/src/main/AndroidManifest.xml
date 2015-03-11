@@ -53,21 +53,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Main_Login_Page"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name=".CalendarActivity"
             android:label="@string/calendar" />
-        <activity
-            android:name=".SignUpActivity"
-            android:label="@string/title_activity_signup"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".DispatchActivity"
             android:noHistory="true" >
@@ -99,10 +88,16 @@
             android:name=".CreateCalendarEvent"
             android:label="@string/title_activity_create_calendar_event" >
         </activity>
-        <activity
-            android:name=".lksjdlkfjsldkfjsld"
-            android:label="@string/title_activity_lksjdlkfjsldkfjsld" >
-        </activity>
+
+        <service android:name=".MessageService">
+
+        </service>
+
+        <activity android:name=".MessagingActivity"
+                  android:screenOrientation="portrait">
+
+                  </activity>
+
 
     <!-- Layer SDK has these for monitoring network, boot, and GCM -->
     <receiver android:name="com.layer.sdk.services.LayerReceiver">

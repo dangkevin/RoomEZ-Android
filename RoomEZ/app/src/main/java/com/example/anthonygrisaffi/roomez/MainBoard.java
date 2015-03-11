@@ -1,6 +1,7 @@
 package com.example.anthonygrisaffi.roomez;
 
 import android.content.Intent;
+import com.example.anthonygrisaffi.roomez.R;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
@@ -30,11 +31,14 @@ public class MainBoard extends ActionBarActivity
     ImageButton plusButton;
     private BootstrapButton addSticky;
     private BootstrapButton groupChat;
-
+    private Intent intent;
+    private Intent serviceIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
+
 
         findViewById(R.id.floatingButtonSticky1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +111,10 @@ public class MainBoard extends ActionBarActivity
                 // action_settings
                 return true;
             case R.id.action_gm:
-                // location found
-                Intent i = new Intent(this, GroupMessage.class);
-                startActivity(i);
+                Intent serviceIntent = new Intent(getApplicationContext(),MessageService.class);
+                Intent k = new Intent(this, GroupMessage.class);
+                startActivity(k);
+                startService(serviceIntent);
                 finish();
                 // refresh
                 return true;
@@ -126,6 +131,7 @@ public class MainBoard extends ActionBarActivity
 //                finish();
                 return true;
             case R.id.logOut:
+                stopService(new Intent(getApplicationContext(), MessageService.class));
                 ParseUser.logOut();
                 finish();
                 Intent d = new Intent(this,DispatchActivity.class);

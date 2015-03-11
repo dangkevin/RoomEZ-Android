@@ -18,6 +18,7 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+
 //Github Library we will be using for the dialog
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -26,6 +27,8 @@ import me.drakeet.materialdialog.MaterialDialog;
     and sign up components for our apps.
  */
 public class WelcomeActivity extends Activity {
+
+
 
     //Text field used for the username upon login
     private EditText loginUsername;
@@ -42,11 +45,18 @@ public class WelcomeActivity extends Activity {
     //Text field used for entering password again
     private EditText signupPassword2;
 
+    private String currUser;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+
+
+
 
         //Initializes a customized login button from a GitHub library
         BootstrapButton logininButton = (BootstrapButton) findViewById(R.id.welcomelogin);
@@ -69,6 +79,9 @@ public class WelcomeActivity extends Activity {
             }
         });
     }
+
+
+
 
 
     @Override
@@ -123,6 +136,14 @@ public class WelcomeActivity extends Activity {
         mMaterialDialog.setView(hello);
         //Shows the dialog
         mMaterialDialog.show();
+    }
+
+    public void setUser(String user){
+        this.currUser = user;
+    }
+
+    public String getUser(){
+        return this.currUser;
     }
 
     /****************This method is responsible for generating the Login pop up *****************/
@@ -243,6 +264,7 @@ public class WelcomeActivity extends Activity {
         user.setUsername(username);
         user.setPassword(password);
 
+
         // Call the Parse signup method
         user.signUpInBackground(new SignUpCallback() {
             @Override
@@ -269,8 +291,10 @@ public class WelcomeActivity extends Activity {
     private void login() {
 
 
+
         String username = loginUsername.getText().toString().trim();
         String password = loginPassword.getText().toString().trim();
+
 
         // Validate the log in data
         boolean validationError = false;
@@ -317,11 +341,17 @@ public class WelcomeActivity extends Activity {
         });
     }
 
-
-
-
-
-
-
-
+    @Override
+    public void onDestroy() {
+        stopService(new Intent(this, MessageService.class));
+        super.onDestroy();
+    }
 }
+
+
+
+
+
+
+
+

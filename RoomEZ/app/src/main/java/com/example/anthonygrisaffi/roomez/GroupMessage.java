@@ -1,165 +1,168 @@
 package com.example.anthonygrisaffi.roomez;
 
-import android.app.AlertDialog;
-import android.os.Build;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.layer.sdk.LayerClient;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-/*
- * Handles the main activity and conversationView view
- */
 
 public class GroupMessage extends ActionBarActivity {
 
-    //Replace this with your App ID from the Layer Developer page.
-    //Go http://developer.layer.com, click on "Dashboard" and select "Info"
-    public static String Layer_App_ID = "c6a349f8-c26e-11e4-b24c-d66a000006ca";
+    private String currentUserId;
+    private ArrayAdapter<String> namesArrayAdapter;
+    private ArrayList<String> names;
+    private ListView usersListView;
+    private Button logoutButton;
+    private ProgressDialog progressDialog;
+    private BroadcastReceiver receiver = null;
 
-    //Replace this with your Project Number from http://console.developers.google.com
-    public static String GCM_Project_Number = "00000";
-
-
-    //Global variables used to manage the Layer Client and the conversations in this app
-    private LayerClient layerClient;
-    private ConversationViewController conversationView;
-
-    //Layer connection and authentication callback listeners
-    private MyConnectionListener connectionListener;
-    private MyAuthenticationListener authenticationListener;
-
-    //onCreate is called on App Start
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.lists_user_activity);
+
+        showSpinner();
+
+    }
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch (item.getItemId()) {
+
+            case R.id.action_settings:
+                Intent j = new Intent(this, AccountSettings.class);
+                startActivity(j);
+                //finish();
+                // action_settings
+                return true;
+            case R.id.action_gm:
+                return true;
+            case R.id.action_cal:
+                Intent b = new Intent(this, CalendarActivity.class);
+                startActivity(b);
+                finish();
+                return true;
+            case R.id.action_sticky:
+                Intent c = new Intent(this, MainBoard.class);
+                startActivity(c);
+                finish();
+                return true;
+            case R.id.logOut:
+                ParseUser.logOut();
+                finish();
+                Intent d = new Intent(this, DispatchActivity.class);
+                startActivity(d);
 
 
-
-        //If we haven't created a LayerClient, show the loading splash screen
-       /* if(layerClient == null)
-            setContentView(R.layout.activity_loading);*/
-
-
-        //Create the callback listeners
-
-
-        if(connectionListener == null)
-            connectionListener = new MyConnectionListener();
-
-        if(authenticationListener == null)
-            authenticationListener = new MyAuthenticationListener();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
-    //onResume is called on App Start and when the app is brought to the foreground
-    protected void onResume(){
+
+    //display clickable a list of all users
+    private void setConversationsList() {
+        currentUserId = ParseUser.getCurrentUser().getObjectId();
+        names = new ArrayList<String>();
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereNotEqualTo("objectId", currentUserId);
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> userList, com.parse.ParseException e) {
+                if (e == null) {
+                    for (int i=0; i<userList.size(); i++) {
+                        names.add(userList.get(i).getUsername().toString());
+                    }
+
+                    usersListView = (ListView)findViewById(R.id.usersListView);
+                    namesArrayAdapter =
+                            new ArrayAdapter<String>(getApplicationContext(),
+                                    R.layout.user_list_item, names);
+                    usersListView.setAdapter(namesArrayAdapter);
+
+                    usersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> a, View v, int i, long l) {
+                            openConversation(names, i);
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Error loading user list",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    //open a conversation with one person
+    public void openConversation(ArrayList<String> names, int pos) {
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereEqualTo("username", names.get(pos));
+        query.findInBackground(new FindCallback<ParseUser>() {
+            public void done(List<ParseUser> user, com.parse.ParseException e) {
+                if (e == null) {
+                    Intent intent = new Intent(getApplicationContext(), MessagingActivity.class);
+                    intent.putExtra("RECIPIENT_ID", user.get(0).getObjectId());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Error finding that user",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    //show a loading spinner while the sinch client starts
+    private void showSpinner() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Boolean success = intent.getBooleanExtra("success", false);
+                progressDialog.dismiss();
+                if (!success) {
+                    Toast.makeText(getApplicationContext(), "Messaging service failed to start", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("com.sinch.messagingtutorial.app.GroupMessage"));
+    }
+
+    @Override
+    public void onResume() {
+        setConversationsList();
         super.onResume();
-
-        //Connect to Layer and Authenticate a user
-        loadLayerClient();
-
-        //Every time the app is brought to the foreground, register the typing indicator
-        if(layerClient != null && conversationView != null)
-            layerClient.registerTypingIndicator(conversationView);
-    }
-
-    //onPause is called when the app is sent to the background
-    protected void onPause(){
-        super.onPause();
-
-        //When the app is moved to the background, unregister the typing indicator
-        if(layerClient != null && conversationView != null)
-            layerClient.unregisterTypingIndicator(conversationView);
-    }
-
-    //Checks to see if the SDK is connected to Layer and whether a user is authenticated
-    //The respective callbacks are executed in MyConnectionListener and MyAuthenticationListener
-    private void loadLayerClient(){
-
-        // Check if Sample App is using a valid app ID.
-        if (isValidAppID()) {
-
-            if(layerClient == null){
-
-                LayerClient.setLogLevel(LayerClient.LogLevel.DETAILED);
-
-                // Initializes a LYRClient object
-                UUID appID = UUID.fromString(Layer_App_ID);
-                layerClient = LayerClient.newInstance(this, appID, GCM_Project_Number);
-
-                //Register the connection and authentication listeners
-                layerClient.registerConnectionListener(connectionListener);
-                layerClient.registerAuthenticationListener(authenticationListener);
-            }
-
-
-            if (!layerClient.isAuthenticated()) {
-
-                //First we try to authenticate the user. if the LayerClient is not connected, "connect()"
-                //will be called automatically by the Layer SDK.
-                layerClient.authenticate();
-
-            } else if (!layerClient.isConnected()) {
-
-                //If the user is authenticated, but Layer is not connected, make sure we connect in
-                //order to send/receive messages
-                layerClient.connect();
-
-            } else {
-
-                // If connected to Layer and the user is authenticated, start the conversationView view
-                onUserAuthenticated();
-
-            }
-        }
-    }
-
-    //If you haven't replaced "LAYER_APP_ID" with your App ID, send a message
-    private boolean isValidAppID() {
-        if(Layer_App_ID.equalsIgnoreCase("LAYER_APP_ID")) {
-
-            // Instantiate an AlertDialog.Builder with its constructor
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-            // Chain together various setter methods to set the dialog characteristics
-            builder.setMessage("To correctly use this project you need to replace LAYER_APP_ID in MainActivity.java (line 21) with your App ID from developer.layer.com.")
-                    .setTitle(":-(");
-
-            // Get the AlertDialog from create() and then show() it
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
-            return false;
-        }
-
-        return true;
-    }
-
-    //Return "Simulator" if this is an emulator, or "Device" if running on hardware
-    public static String getUserID(){
-        if(Build.FINGERPRINT.startsWith("generic"))
-            return "Simulator";
-
-        return "Device";
-    }
-
-    //By default, create a conversationView between these 3 participants
-    public static List<String> getAllParticipants(){
-        return Arrays.asList("Device", "Simulator", "Dashboard");
-    }
-
-    //Once the user has successfully authenticated, begin the conversationView
-    public void onUserAuthenticated(){
-
-        if(conversationView == null) {
-
-            conversationView = new ConversationViewController(this, layerClient);
-
-            if (layerClient != null) {
-                layerClient.registerTypingIndicator(conversationView);
-            }
-        }
     }
 }

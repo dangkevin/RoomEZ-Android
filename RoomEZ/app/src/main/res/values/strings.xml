@@ -25,6 +25,7 @@
     <string name="startTitle">Start Time?</string>
     <string name="endTitle">End Time?</string>
     <string name="monthPrompt">What Month?</string>
+    <string name="message_elipses">Message...</string>
 
     <string-array name="Hour">
         <item>1</item>

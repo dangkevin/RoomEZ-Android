@@ -24,19 +24,9 @@ public class RoomEZapp extends Application {
 
     public void onCreate() {
         super.onCreate();
-        Parse.enableLocalDatastore(this);
-        ParseObject.registerSubclass(Message.class);
+       ///parse.enableLocalDatastore(this);
+        //ParseObject.registerSubclass(Message.class);
         Parse.initialize(this, "XjzvazOhCMhhadj1JLb08mCHhiQkOrUy6mqp8U1G", "0BdOq5xBngNt2FImY6k3WMXamQkyfFOlMI6QnpzE");
-        UUID appID = UUID.fromString("c6a349f8-c26e-11e4-b24c-d66a000006ca");
-        LayerClient layerClient = LayerClient.newInstance(this, appID, "GCM Project Number");
-        MyConnectionListener connectionListener = new MyConnectionListener();
-        MyAuthenticationListener authenticationListener = new MyAuthenticationListener();
-        layerClient.registerConnectionListener(connectionListener);
-        layerClient.registerAuthenticationListener(authenticationListener);
-        // Asks the LayerSDK to establish a network connection with the Layer service
-        layerClient.connect();
-
-
 
     }
 
