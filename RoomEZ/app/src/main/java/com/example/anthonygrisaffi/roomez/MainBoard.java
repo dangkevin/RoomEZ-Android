@@ -1,20 +1,25 @@
 package com.example.anthonygrisaffi.roomez;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import com.parse.ParseUser;
 
-
+import java.nio.Buffer;
 
 
 public class MainBoard extends ActionBarActivity
@@ -25,27 +30,53 @@ public class MainBoard extends ActionBarActivity
     private BootstrapButton groupChat;
     private Intent intent;
     private Intent serviceIntent;
+    private TextView textout;
+    private TextView textout2;
+    private TextView textout3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
 
 
-
         findViewById(R.id.floatingButtonSticky1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
+                View cardLayout = findViewById(R.id.card_view);
+                cardLayout.setBackgroundColor(Color.GREEN);
+                TextView hello1 = (TextView) findViewById(R.id.info_text);
+                hello1.setText("hi guys my name is anthuny");
+
+
 
             }
         });
+        //CardView hello = (CardView) findViewById(R.id.card_view);
+
+
+       // textout.setText("HEEEEEEY");
+
+       // textout2 = (TextView) findViewById(R.id.info_text2);
+       // textout2.setText("WOOOOO");
+
+       // textout3 = (TextView) findViewById(R.id.info_text3);
+       // textout3.setText("ANTHONY");
+
+
+
+
+
+
 
 
         //button.setColorNormalResId(R.color.MaterialBlue);
         //calling the Endless Scroll class on the gridview layout
-        GridView gridView = (GridView) findViewById(R.id.gridView);
+        //  GridView gridView = (GridView) findViewById(R.id.gridView);
 
-        gridView.setOnScrollListener(new EndlessScrollListener() {
+        /*gridView.setOnScrollListener(new EndlessScrollListener() {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 // Triggered only when new data needs to be appended to the list
@@ -57,6 +88,7 @@ public class MainBoard extends ActionBarActivity
 
         gridView.setAdapter(new ImageAdaptor(this));
 
+    }*/
     }
 
 
@@ -116,8 +148,8 @@ public class MainBoard extends ActionBarActivity
                 finish();
                 return true;
             case R.id.action_sticky:
-                GridView gridView1 =(GridView)findViewById(R.id.gridView);
-                gridView1.setAdapter(new ImageAdaptor(this));
+               // GridView gridView1 =(GridView)findViewById(R.id.gridView);
+               // gridView1.setAdapter(new ImageAdaptor(this));
 //                Intent c = new Intent(this,MainBoard.class);
 //                startActivity(c);
 //                finish();
