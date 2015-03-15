@@ -11,12 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.beardedhen.androidbootstrap.BootstrapButton;
 
 
 //Github Library we will be using for the dialog

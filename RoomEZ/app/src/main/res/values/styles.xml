@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowContentOverlay">@null</item>
-        <item name = "colorPrimary">#03A9F4</item>
-        <item name = "colorPrimaryDark">#03A9F4</item>
+        <item name = "colorPrimary"> #0288D1</item>
+        <item name = "colorPrimaryDark">#01579B</item>
         <!-- Customize your theme here. -->
     </style>
 

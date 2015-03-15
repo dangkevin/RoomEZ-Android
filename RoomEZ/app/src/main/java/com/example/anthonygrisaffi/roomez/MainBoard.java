@@ -15,19 +15,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import com.parse.ParseUser;
 
-import java.nio.Buffer;
+
 
 
 public class MainBoard extends ActionBarActivity
 {
 
     ImageButton plusButton;
-    private BootstrapButton addSticky;
-    private BootstrapButton groupChat;
     private Intent intent;
     private Intent serviceIntent;
     private TextView textout;
@@ -46,14 +43,16 @@ public class MainBoard extends ActionBarActivity
             public void onClick(View v) {
                 Toast.makeText(MainBoard.this, "Anthony is sexy", Toast.LENGTH_SHORT).show();
                 View cardLayout = findViewById(R.id.card_view);
-                cardLayout.setBackgroundColor(Color.GREEN);
+                cardLayout.setBackgroundColor(Color.WHITE);
+                cardLayout.setPadding(20, 10, 10, 10);
                 TextView hello1 = (TextView) findViewById(R.id.info_text);
                 hello1.setText("hi guys my name is anthuny");
-
-
-
             }
+
+
         });
+
+
         //CardView hello = (CardView) findViewById(R.id.card_view);
 
 
@@ -92,8 +91,6 @@ public class MainBoard extends ActionBarActivity
     }
 
 
-
-
     private void create_a_sticky()
     {
         //FragmentActivity fragmentActivity =
@@ -104,7 +101,6 @@ public class MainBoard extends ActionBarActivity
         // This method probably sends out a network request and appends new data items to your adapter.
         // Use the offset value and add it as a parameter to your API request to retrieve paginated data.
         // Deserialize API response and then construct new objects to append to the adapter
-
     }
 
 
@@ -169,7 +165,6 @@ public class MainBoard extends ActionBarActivity
     }
 
 
-        //noinspection SimplifiableIfStatement
 
         /*
         These if conditions check to see if the action bar buttons are pressed.

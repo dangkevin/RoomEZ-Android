@@ -48,17 +48,18 @@ public class CalendarActivity extends ActionBarActivity implements
     public int yearNum;
     public int monthNumValue;
     private WeekView mWeekView;
-    private static Calendar mStartTime;
-    private static Calendar mEndTime;
+    private Calendar mStartTime;
+    private Calendar mEndTime;
     private WeekView.EventClickListener mEventClickListener;
     private WeekView.EventLongPressListener mEventLongPressListener;
     ParseObject event;
-    private List<WeekViewEvent> mEventModels;
-    int hour = 14;
+    private static List<WeekViewEvent> mEventModels;
+    private static int hour = 14;
+    private static String eventTitle;
     int min = 30;
-    int DOM = 4;
-    int mon = 2;
-    int yr = 2015;
+    private static int DOM;
+    private static int mon;
+    int yr;
 
 
     int hourend = 16;
@@ -73,28 +74,57 @@ public class CalendarActivity extends ActionBarActivity implements
         setContentView(R.layout.activity_calendar);
         mEventModels = new ArrayList<>();
 
+
+        findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
+                           @Override
+                            public void onClick(View v) {
+                            addCalEvent();
+
+
+                        }
+          });
+
+
+
         findViewById(R.id.floatingButtonCal1).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                CreateCalendarEvent hello2 = new CreateCalendarEvent();
+                mon = hello2.getMonth();
+                Toast.makeText(getApplicationContext(), "Month is" + mon, Toast.LENGTH_SHORT).show();
+                DOM = hello2.getDay();
+                Toast.makeText(getApplicationContext(), "Day is" + DOM, Toast.LENGTH_SHORT).show();
+                yr = hello2.getYear();
+                Toast.makeText(getApplicationContext(), "Year is" + DOM, Toast.LENGTH_SHORT).show();
+                eventTitle = hello2.getEventTitle();
+                Toast.makeText(getApplicationContext(), "String is" + eventTitle, Toast.LENGTH_SHORT).show();
+
                 mStartTime = Calendar.getInstance();
                 mStartTime.set(Calendar.HOUR_OF_DAY, 14);
+                mStartTime.set(Calendar.DAY_OF_MONTH,DOM);
                 mStartTime.set(Calendar.MINUTE, 30);
-                mStartTime.set(Calendar.MONTH, 2);
+                mStartTime.set(Calendar.MONTH, mon );
                 mStartTime.set(Calendar.YEAR, 2015);
                 mEndTime = Calendar.getInstance();
                 mEndTime.set(Calendar.HOUR_OF_DAY, 16);
+                mEndTime.set(Calendar.DAY_OF_MONTH,DOM);
                 mEndTime.set(Calendar.MINUTE, 30);
-                mEndTime.set(Calendar.MONTH, 2);
+                mEndTime.set(Calendar.MONTH, mon);
                 mEndTime.set(Calendar.YEAR, 2015);
-                WeekViewEvent weekEvent = new WeekViewEvent(1, "Jacob - CSE 120", mStartTime, mEndTime);
-                mEventModels.clear();
+                WeekViewEvent weekEvent = new WeekViewEvent(1,eventTitle, mStartTime, mEndTime);
+                //mEventModels.clear();
                 mEventModels.add(weekEvent);
                 mWeekView.notifyDatasetChanged();
-            }});
+
+            }
+        });
 
 
-
+        //CreateCalendarEvent hello = new CreateCalendarEvent();
+        //mon = hello.getMonth();
+        //Toast.makeText(getApplicationContext(), "Month is" + mon, Toast.LENGTH_SHORT).show();
 
         // Get a reference for the week view in the layout.
         mWeekView = (WeekView) findViewById(R.id.weekView);
@@ -136,9 +166,8 @@ public class CalendarActivity extends ActionBarActivity implements
 
     private void addCalEvent()
     {
-           //Intent intent = new Intent(this, CreateCalendarEvent.class);
-           //startActivity(intent);
-
+        Intent intent = new Intent(this, CreateCalendarEvent.class);
+        startActivity(intent);
 
     }
 

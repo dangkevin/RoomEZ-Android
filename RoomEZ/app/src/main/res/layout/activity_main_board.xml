@@ -9,6 +9,20 @@
 
 
 
+
+  <!--  <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/plusButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_input_add"
+        android:tint="@color/white"
+        fab:fab_colorNormal="@color/MaterialRed"
+        fab:fab_colorPressed="@color/yellow"
+        fab:fab_colorRipple="@color/grey"
+        />
+      !-->
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
@@ -30,36 +44,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/info_text"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textColor="#FF4444"
-            android:textSize="24sp"
-            android:text="Anthony smellZZZZZZz"
-            />
+            <TextView
+                android:id="@+id/info_text"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textColor="#FF4444"
+                android:textSize="24sp"
+                android:text="Anthony smellZZZZZZz"
+                />
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-        <!-- Content -->
-
-
-
-
-  <!--  <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/plusButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_input_add"
-        android:tint="@color/white"
-        fab:fab_colorNormal="@color/MaterialRed"
-        fab:fab_colorPressed="@color/yellow"
-        fab:fab_colorRipple="@color/grey"
-        />
-      !-->
+    <!-- Content -->
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/plusButton1"
