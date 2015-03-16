@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.parse.ParseUser;
 
 import java.nio.Buffer;
+import java.util.ArrayList;
 
 
 public class MainBoard extends ActionBarActivity
@@ -33,12 +36,32 @@ public class MainBoard extends ActionBarActivity
     private TextView textout;
     private TextView textout2;
     private TextView textout3;
+    private ArrayList<String> stringArray;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_board);
+
+        stringArray = new ArrayList<>();
+        stringArray.add("Anthony");
+        stringArray.add("Kevin");
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+
+
+        // specify an adapter (see also next example)
+        mAdapter = new StickyAdapter(stringArray);
+        recyclerView.setAdapter(mAdapter);
 
 
         findViewById(R.id.floatingButtonSticky1).setOnClickListener(new View.OnClickListener() {
