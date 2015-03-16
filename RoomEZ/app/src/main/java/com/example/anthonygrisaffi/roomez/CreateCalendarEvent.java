@@ -35,27 +35,31 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class CreateCalendarEvent extends ActionBarActivity {
 
     DatePicker datePicker;
+    DatePicker datePicker2;
     TimePicker timePicker;
-    Button doneTime;
-    Button doneDate;
-    private int year;
+    private Button doneTime;
+    private static int year;
     private static int month;
     private static int day;
+    private static int eMonth;
+    private static int eDay;
+    private static int eYear;
     private int hour;
     private int minute;
     private static String eventTitle;
     private EditText eventTitleButton;
-    Button currDate;
+    private Button currTime;
+    private Button currDate;
+    private Button endDate;
+    private Button endTime;
+    private Button doneDate;
+    private Button doneDate2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_calendar_event);
-
-
-
-
-
 
         Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR); // get the current year
@@ -66,11 +70,86 @@ public class CreateCalendarEvent extends ActionBarActivity {
 
 
         currDate = (Button) findViewById(R.id.currentDate);
+        endDate = (Button) findViewById(R.id.endDate);
 
+
+        endDate.setText("Ending Date");
         currDate.setText("Starting Date");
 
         Button currTime = (Button) findViewById(R.id.currentTime);
+        endTime = (Button) findViewById(R.id.endTime);
+
+        endTime.setHint(hour + ":" + minute);
         currTime.setHint(hour + ":" + minute);
+
+
+
+        endDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Define a custom layout
+                LayoutInflater factory = LayoutInflater.from(CreateCalendarEvent.this);
+                //Creates a view and adds buttons (such as Edit Text) from a customized layout
+                final View myView2 = factory.inflate(R.layout.date_pop2, null);
+                //Linear layout is created
+                RelativeLayout hello2 = new RelativeLayout(CreateCalendarEvent.this);
+                //Adds the view to the linear layout
+                hello2.addView(myView2);
+                //        addListenerOnButton(myView);
+                //Responsible for the dialog
+                AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(CreateCalendarEvent.this);
+                final AlertDialog alert2 = mAlertDialog.create();
+                //
+                // currDate.setHint(month + "/" + day + "/" + year);
+
+                // final MaterialDialog mAlertDialog = new MaterialDialog(CreateCalendarEvent.this);
+
+
+
+
+                doneDate2 = (Button) myView2.findViewById(R.id.doneDate2);
+                //Button variable used for onClick for the Date
+                datePicker2 = (DatePicker) myView2.findViewById(R.id.date2);
+
+                //Used to finish the Starting Date Picker Activity
+                doneDate2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        eMonth= datePicker2.getMonth();
+                        eDay = datePicker2.getDayOfMonth();
+                        eYear = datePicker2.getYear();
+                        endDate.setText(month + 1 + "/" + day + "/" + year);
+
+
+                        CalendarActivity dateSetting2 = new CalendarActivity();
+                        dateSetting2.setDatePicker(eMonth, eDay,eYear);
+                        //Toast.makeText(getApplicationContext(), "Date is " + month + "/" + day + "/" + year, Toast.LENGTH_SHORT).show();
+
+                        alert2.dismiss();
+                        seteDay(eDay);
+                        seteMonth(eMonth);
+                        seteYear(eYear);
+                        finish();
+                    }
+                });
+
+
+                // mAlertDialog.setCanceledOnTouchOutside(true);
+                //Sets the Linear Layout
+                alert2.setView(hello2);
+                //Show dialog
+                alert2.show();
+
+
+            }
+        });
+
+
+
+
+
+
+
 
         currDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +196,7 @@ public class CreateCalendarEvent extends ActionBarActivity {
                         setMonth(month);
                         setDay(day);
                         setYear(year);
-                        finish();
+
 
 
                     }
@@ -185,6 +264,36 @@ public class CreateCalendarEvent extends ActionBarActivity {
 
 
     }
+
+
+
+    public void seteMonth(int eMonth){
+        this.eMonth = eMonth;
+    }
+
+    public int geteMonth(){
+        return eMonth;
+    }
+
+    public void seteDay(int eDay){
+
+        this.eDay = eDay;
+
+    }
+
+    public int geteDay(){
+        return eDay;
+    }
+
+    public void seteYear(int eYear){
+        this.eYear = eYear;
+    }
+
+    public int geteYear()
+    {
+        return eYear;
+    }
+
 
 
     public void setMonth(int month) {

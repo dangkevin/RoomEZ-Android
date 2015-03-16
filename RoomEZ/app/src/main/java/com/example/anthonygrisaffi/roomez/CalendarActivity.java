@@ -56,10 +56,14 @@ public class CalendarActivity extends ActionBarActivity implements
     private static List<WeekViewEvent> mEventModels;
     private static int hour = 14;
     private static String eventTitle;
-    int min = 30;
+    private static int min = 30;
     private static int DOM;
     private static int mon;
-    int yr;
+    private static int eDay;
+    private static int eMon;
+    private static int eDOM;
+    private static int eYear;
+    private static int yr;
 
 
     int hourend = 16;
@@ -100,19 +104,22 @@ public class CalendarActivity extends ActionBarActivity implements
                 Toast.makeText(getApplicationContext(), "Year is" + DOM, Toast.LENGTH_SHORT).show();
                 eventTitle = hello2.getEventTitle();
                 Toast.makeText(getApplicationContext(), "String is" + eventTitle, Toast.LENGTH_SHORT).show();
+                eMon = hello2.geteMonth();
+                eDOM = hello2.geteDay();
+                eYear = hello2.geteYear();
 
                 mStartTime = Calendar.getInstance();
                 mStartTime.set(Calendar.HOUR_OF_DAY, 14);
                 mStartTime.set(Calendar.DAY_OF_MONTH,DOM);
                 mStartTime.set(Calendar.MINUTE, 30);
                 mStartTime.set(Calendar.MONTH, mon );
-                mStartTime.set(Calendar.YEAR, 2015);
+                mStartTime.set(Calendar.YEAR, yr);
                 mEndTime = Calendar.getInstance();
                 mEndTime.set(Calendar.HOUR_OF_DAY, 16);
-                mEndTime.set(Calendar.DAY_OF_MONTH,DOM);
+                mEndTime.set(Calendar.DAY_OF_MONTH,eDOM);
                 mEndTime.set(Calendar.MINUTE, 30);
-                mEndTime.set(Calendar.MONTH, mon);
-                mEndTime.set(Calendar.YEAR, 2015);
+                mEndTime.set(Calendar.MONTH, eMon);
+                mEndTime.set(Calendar.YEAR, eYear);
                 WeekViewEvent weekEvent = new WeekViewEvent(1,eventTitle, mStartTime, mEndTime);
                 //mEventModels.clear();
                 mEventModels.add(weekEvent);
