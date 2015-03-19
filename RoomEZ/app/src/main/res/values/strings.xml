@@ -26,6 +26,7 @@
     <string name="endTitle">End Time?</string>
     <string name="monthPrompt">What Month?</string>
     <string name="message_elipses">Message...</string>
+    <string name="sticky_greeting">What is on your mind?</string>
 
     <string-array name="Hour">
         <item>1</item>
