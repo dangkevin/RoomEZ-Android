@@ -1,0 +1,28 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="com.example.anthonygrisaffi.roomez.CalendarActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TimePicker
+
+        android:id="@+id/time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </TimePicker>
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/doneTime2"
+        android:text="@string/abc_action_mode_done"/>
+
+
+</LinearLayout>
+

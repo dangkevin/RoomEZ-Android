@@ -12,27 +12,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/eventTitle"
+        android:singleLine="true"
+        android:textSize="18dp"
+        android:imeOptions="actionDone"
+        android:hint="Event title"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:singleLine="true"
-        android:imeOptions="actionDone"
-        android:hint="Event title"/>
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
+        android:textSize="18dp"
         android:id="@+id/currentDate"
         android:background="@color/white"
         android:paddingBottom="10dp"
+        android:textColor="@color/black"
+
         style="?android:attr/borderlessButtonStyle"
-        android:layout_alignTop="@+id/currentTime"
+        android:layout_below="@+id/eventTitle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/currentTime" />
+        android:layout_alignParentStart="true" />
 
 
     <Button
@@ -41,10 +43,12 @@
         android:inputType="time"
         android:paddingBottom="10dp"
         android:ems="10"
+        android:textSize="18dp"
         android:id="@+id/currentTime"
+        android:textColor="@color/black"
         android:background="@color/white"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_below="@+id/eventTitle"
+        android:layout_alignTop="@+id/currentDate"
         android:layout_toRightOf="@+id/currentDate"
         android:layout_toEndOf="@+id/currentDate" />
 
@@ -54,6 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="date"
+        android:textSize="18dp"
+        android:textColor="@color/black"
         android:ems="10"
         android:id="@+id/endDate"
         android:background="@color/white"
@@ -69,16 +75,15 @@
         android:layout_height="wrap_content"
         android:inputType="time"
         android:paddingBottom="10dp"
+        android:textSize="18dp"
         android:ems="10"
         android:id="@+id/endTime"
+        android:textColor="@color/black"
         android:background="@color/white"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_below="@+id/currentTime"
         android:layout_alignLeft="@+id/currentTime"
-        android:layout_alignStart="@+id/currentTime" />
-
-
-
+        android:layout_alignStart="@+id/currentTime"
+        android:layout_below="@+id/currentTime" />
 
 
 

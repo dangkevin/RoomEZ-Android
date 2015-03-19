@@ -54,7 +54,10 @@ public class CalendarActivity extends ActionBarActivity implements
     private WeekView.EventLongPressListener mEventLongPressListener;
     ParseObject event;
     private static List<WeekViewEvent> mEventModels;
-    private static int hour = 14;
+    private static int starthour;
+    private static int startminute;
+    private static int endhour;
+    private static int endminute;
     private static String eventTitle;
     private static int min = 30;
     private static int DOM;
@@ -65,10 +68,6 @@ public class CalendarActivity extends ActionBarActivity implements
     private static int eYear;
     private static int yr;
 
-
-    int hourend = 16;
-    int endmonth = 2;
-    int endmonthday = 4;
 
 
 
@@ -82,11 +81,13 @@ public class CalendarActivity extends ActionBarActivity implements
         findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
                            @Override
                             public void onClick(View v) {
-                            addCalEvent();
+                               addCalEvent();
+
+                           }
+        });
 
 
-                        }
-          });
+
 
 
 
@@ -94,7 +95,6 @@ public class CalendarActivity extends ActionBarActivity implements
 
             @Override
             public void onClick(View v) {
-
                 CreateCalendarEvent hello2 = new CreateCalendarEvent();
                 mon = hello2.getMonth();
                 Toast.makeText(getApplicationContext(), "Month is" + mon, Toast.LENGTH_SHORT).show();
@@ -104,26 +104,32 @@ public class CalendarActivity extends ActionBarActivity implements
                 Toast.makeText(getApplicationContext(), "Year is" + DOM, Toast.LENGTH_SHORT).show();
                 eventTitle = hello2.getEventTitle();
                 Toast.makeText(getApplicationContext(), "String is" + eventTitle, Toast.LENGTH_SHORT).show();
+                starthour = hello2.getStartHour();
+                startminute = hello2.getStartMinute();
+                endhour = hello2.getEndHour();
+                endminute = hello2.getEndMinute();
+
                 eMon = hello2.geteMonth();
                 eDOM = hello2.geteDay();
                 eYear = hello2.geteYear();
 
                 mStartTime = Calendar.getInstance();
-                mStartTime.set(Calendar.HOUR_OF_DAY, 14);
+                mStartTime.set(Calendar.HOUR_OF_DAY, starthour);
                 mStartTime.set(Calendar.DAY_OF_MONTH,DOM);
-                mStartTime.set(Calendar.MINUTE, 30);
+                mStartTime.set(Calendar.MINUTE, startminute);
                 mStartTime.set(Calendar.MONTH, mon );
                 mStartTime.set(Calendar.YEAR, yr);
                 mEndTime = Calendar.getInstance();
-                mEndTime.set(Calendar.HOUR_OF_DAY, 16);
+                mEndTime.set(Calendar.HOUR_OF_DAY, endhour);
                 mEndTime.set(Calendar.DAY_OF_MONTH,eDOM);
-                mEndTime.set(Calendar.MINUTE, 30);
+                mEndTime.set(Calendar.MINUTE, endhour);
                 mEndTime.set(Calendar.MONTH, eMon);
                 mEndTime.set(Calendar.YEAR, eYear);
                 WeekViewEvent weekEvent = new WeekViewEvent(1,eventTitle, mStartTime, mEndTime);
                 //mEventModels.clear();
                 mEventModels.add(weekEvent);
                 mWeekView.notifyDatasetChanged();
+
 
             }
         });
@@ -164,7 +170,7 @@ public class CalendarActivity extends ActionBarActivity implements
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
 
-        mWeekView.setNumberOfVisibleDays(3);
+        mWeekView.setNumberOfVisibleDays(1);
 
     }
 
