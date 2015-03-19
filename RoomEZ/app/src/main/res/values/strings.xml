@@ -28,6 +28,21 @@
     <string name="message_elipses">Message...</string>
     <string name="sticky_greeting">What is on your mind?</string>
 
+
+    <string name="WeekPrompt">Choose a country</string>
+
+
+    <string-array name="WeekEvent">
+        <item>7 Day View</item>
+        <item>Daily View</item>
+        <item>3 Day View</item>
+    </string-array>
+
+
+
+
+
+
     <string-array name="Hour">
         <item>1</item>
         <item>2</item>

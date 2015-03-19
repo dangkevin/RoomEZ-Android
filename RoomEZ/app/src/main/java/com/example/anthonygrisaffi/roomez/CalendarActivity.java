@@ -10,12 +10,14 @@ import android.graphics.RectF;
 import android.hardware.camera2.params.BlackLevelPattern;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -42,6 +44,7 @@ public class CalendarActivity extends ActionBarActivity implements
 
     DatePicker datePicker;
     TimePicker timePicker;
+    private Spinner spinner;
     public String hourSelected;
     public String minSelected;
     public int dayNum;
@@ -71,10 +74,12 @@ public class CalendarActivity extends ActionBarActivity implements
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        spinner = (Spinner) findViewById(R.id.spinner1);
         mEventModels = new ArrayList<>();
 
 
@@ -123,8 +128,6 @@ public class CalendarActivity extends ActionBarActivity implements
 
 
 
-
-
         findViewById(R.id.floatingButtonCal1).setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -134,6 +137,7 @@ public class CalendarActivity extends ActionBarActivity implements
 
             }
         });
+
 
 
         //CreateCalendarEvent hello = new CreateCalendarEvent();
@@ -177,6 +181,13 @@ public class CalendarActivity extends ActionBarActivity implements
 
 
 
+    public void spinner(){
+
+
+
+    }
+
+
 
     private void addCalEvent()
     {
@@ -184,188 +195,6 @@ public class CalendarActivity extends ActionBarActivity implements
         startActivity(intent);
 
     }
-
-
-
-//    private void createEvent() {
-//
-//        switch (monthSelected) {
-//
-//            case ("January"):
-//                monthNumValue = 0;
-//                break;
-//            case ("February"):
-//                monthNumValue = 1;
-//                break;
-//            case ("March"):
-//                monthNumValue = 2;
-//                break;
-//            case ("April"):
-//                monthNumValue = 3;
-//                break;
-//            case ("May"):
-//                monthNumValue = 4;
-//                break;
-//            case ("June"):
-//                monthNumValue = 5;
-//                break;
-//            case ("July"):
-//                monthNumValue = 6;
-//                break;
-//            case ("August"):
-//                monthNumValue = 7;
-//                break;
-//            case ("September"):
-//                monthNumValue = 8;
-//                break;
-//            case ("October"):
-//                monthNumValue = 9;
-//                break;
-//            case ("November"):
-//                monthNumValue = 10;
-//                break;
-//            case ("December"):
-//                monthNumValue = 11;
-//                break;
-//
-//        }
-//        int start = Integer.parseInt(startSelected);
-//        int end = Integer.parseInt(endSelected);
-//        if (ampmSelected == "pm") {
-//            start += 12;
-//            if ((end - start) < 0) {
-//                end += 12;
-//            }
-//
-//            if (start == 24 || end == 24) {
-//                start = 0;
-//                end = 0;
-//            }
-//        }
-//
-//     List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
-//
-//        Calendar startTime = Calendar.getInstance();
-//        startTime.set(Calendar.HOUR_OF_DAY, start);
-//        startTime.set(Calendar.MINUTE, Integer.parseInt(minSelected));
-//        startTime.set(Calendar.MONTH, monthNumValue);
-//        startTime.set(Calendar.YEAR, Calendar.YEAR);
-//        Calendar endTime = (Calendar) startTime.clone();
-//        endTime.set(Calendar.HOUR, end);
-//        endTime.set(Calendar.MONTH, monthNumValue);
-//        WeekViewEvent event = new WeekViewEvent(1, "Hey", startTime, endTime);
-//
-//
-//        switch (colorSelected) {
-//            case ("Black"):
-//                event.setColor(getResources().getColor(R.color.black));
-//                break;
-//            case ("Red"):
-//                event.setColor(getResources().getColor(R.color.MaterialRed));
-//                break;
-//            case ("Blue"):
-//                event.setColor(getResources().getColor(R.color.MaterialBlue));
-//                break;
-//            case ("Yellow"):
-//                event.setColor(getResources().getColor(R.color.yellow));
-//                break;
-//            case ("Pink"):
-//                event.setColor(getResources().getColor(R.color.pink));
-//                break;
-//            case ("Gray"):
-//                event.setColor(getResources().getColor(R.color.grey));
-//                break;
-//            case ("Teal"):
-//                event.setColor(getResources().getColor(R.color.teal));
-//                break;
-//        }
-//
-//        event.setColor(getResources().getColor(R.color.teal));
-//        events.add(event);
-//        //  mWeekView.setMonthChangeListener(this);
-//
-//    }
-//
-//
-//    private void saveToParse() {
-//        event = new ParseObject("Event");
-//        event.put("Hour", hourSelected);
-//        event.put("Min", minSelected);
-//        event.put("Day", daySelected);
-//        event.put("AMPM", ampmSelected);
-//        event.put("Color", colorSelected);
-//        event.put("EventTitle", eventTitleString);
-//        event.put("EventDetails", eventDetailsString);
-//        event.put("startTime", startSelected);
-//        event.put("endTime", endSelected);
-//        event.put("min", minSelected);
-//        event.put("day", daySelected);
-//        event.put("ampm", ampmSelected);
-//        event.put("color", colorSelected);
-//        event.put("eventName", eventTitleString);
-//        event.put("eventDetails", eventDetailsString);
-//        event.saveInBackground();
-//
-//    }
-
-
-//    private void saveToParse()
-//    {
-//        event = new ParseObject("Event");
-//        event.put("Hour", hourSelected);
-//        event.put("Min", minSelected);
-//        event.put("Day", daySelected);
-//        event.put("AMPM", ampmSelected);
-//        event.put("Color", colorSelected);
-//        event.put("EventTitle", eventTitleString);
-//        event.put("EventDetails", eventDetailsString);
-//        event.put("startTime", startSelected);
-//        event.put("endTime", endSelected);
-//        event.put("min", minSelected);
-//        event.put("day", daySelected);
-//        event.put("ampm", ampmSelected);
-//        event.put("color", colorSelected);
-//        event.put("eventName", eventTitleString);
-//        event.put("eventDetails", eventDetailsString);
-//        event.saveInBackground();
-//
-//    }
-
-
-
-
-
-
-
-/*
-        @Override
-        public List<WeekViewEvent> onMonthChange(int newYear, int newMonth)
-        {
-
-            List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
-            Calendar startTime = Calendar.getInstance();
-            Toast.makeText(getApplicationContext(), "Date is " + monthNumValue + "/" + dayNum + "/" + yearNum, Toast.LENGTH_SHORT).show();
-
-            startTime.set(Calendar.HOUR_OF_DAY, hour);
-            //Toast.makeText(CalendarActivity.this,"Hour is" + hour,Toast.LENGTH_LONG).show();
-            startTime.set(Calendar.MINUTE, min);
-            startTime.set(Calendar.DAY_OF_MONTH,dayNum);
-            startTime.set(Calendar.MONTH, monthNumValue);
-            startTime.set(Calendar.YEAR, yearNum);
-            Calendar endTime = (Calendar) startTime.clone();
-            endTime.set(Calendar.HOUR_OF_DAY, hourend);
-            endTime.set(Calendar.MONTH, monthNumValue);
-            endTime.set(Calendar.DAY_OF_MONTH, dayNum);
-            WeekViewEvent event = new WeekViewEvent(1, "Jacob", startTime, endTime);
-            event.setColor(getResources().getColor(R.color.MaterialBlue));
-
-            events.add(event);
-            mWeekView.notifyDatasetChanged();
-
-            return events;
-        }*/
-
-
 
 
 
@@ -413,6 +242,17 @@ public class CalendarActivity extends ActionBarActivity implements
                     finish();
                     Intent d = new Intent(this, DispatchActivity.class);
                     startActivity(d);
+                case R.id.Three:
+                    mWeekView.setNumberOfVisibleDays(3);
+                    return true;
+                case R.id.Daily:
+                    mWeekView.setNumberOfVisibleDays(1);
+                    return true;
+                case R.id.Seven:
+                    mWeekView.setNumberOfVisibleDays(7);
+                    return true;
+
+
 
 
                 default:

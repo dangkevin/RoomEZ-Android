@@ -86,8 +86,7 @@
         </activity>
         <activity
             android:name=".CreateCalendarEvent"
-            android:label="@string/title_activity_create_calendar_event" >
-        </activity>
+            android:label="Create Event"/>
 
         <service android:name=".MessageService">
 
@@ -117,18 +116,6 @@
     </receiver>
     <service android:name="com.layer.sdk.services.GcmIntentService"/>
 
-    <!-- Listen for Layer-generated push Intents -->
-    <receiver android:name=".LayerPushReceiver">
-        <intent-filter>
-            <action android:name="com.layer.sdk.PUSH"/>
-            <category android:name="com.example.anthonygrisaffi.roomez"/>
-        </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="com.example.anthonygrisaffi.roomez"/>
-            </intent-filter>
-
-    </receiver>
 
 </application>
 

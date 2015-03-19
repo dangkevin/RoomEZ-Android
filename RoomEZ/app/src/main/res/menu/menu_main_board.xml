@@ -13,6 +13,24 @@
         android:orderInCategory="100"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/Three"
+        android:title ="Three Day View"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Daily"
+        android:title = "Daily View"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/Seven"
+        android:title ="Seven Day View"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+
+
     <!--Below is where I added the sticky, calendar and the group messaging-->
     <!--icons in the action bar. I made it say "always" that way it is-->
     <!--always on the action bar.-->
