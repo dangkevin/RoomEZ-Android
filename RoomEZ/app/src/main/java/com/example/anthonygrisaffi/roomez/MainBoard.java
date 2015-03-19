@@ -59,8 +59,8 @@ public class MainBoard extends ActionBarActivity
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         stringArray = new ArrayList<>();
-        stringArray.add("Anthony");
-        stringArray.add("Kevin");
+        //stringArray.add("Anthony");
+        //stringArray.add("Kevin");
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         recyclerView.setHasFixedSize(true);
@@ -84,21 +84,6 @@ public class MainBoard extends ActionBarActivity
                 View daView = factory.inflate(R.layout.add_sticky_popup, null);
                 //Linear layout is created
                 note = (EditText) daView.findViewById(R.id.thoughts);
-                final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                note.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                    @Override
-                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                        if (actionId == EditorInfo.IME_ACTION_DONE) {
-                            noteValue = note.getText().toString().trim();
-                            setNoteValue(noteValue);
-                            Toast.makeText(getApplicationContext(), "String is" + noteValue, Toast.LENGTH_SHORT).show();
-                            imm.hideSoftInputFromWindow(note.getWindowToken(), 0);
-                            return true;
-                        }
-                        return false;
-                    }
-
-                });
 
 
 
@@ -112,16 +97,15 @@ public class MainBoard extends ActionBarActivity
                 final MaterialDialog materialDialog = mMaterialDialog.setPositiveButton("Done", new View.OnClickListener()
                 {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v)
+                    {
                         //add the string to list
-
-                        mMaterialDialog.setNegativeButton("Cancel", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mMaterialDialog.dismiss();
-
-                            }
-                        });
+                        noteValue = note.getText().toString().trim();
+                        setNoteValue(noteValue);
+Toast.makeText(getApplicationContext(),"noteValue = " + noteValue, Toast.LENGTH_SHORT).show();
+                        stringArray.add(noteValue);
+                        recyclerView.setAdapter(mAdapter);
+                        mMaterialDialog.dismiss();
                     }
 
                 });
@@ -170,8 +154,27 @@ public class MainBoard extends ActionBarActivity
     }*/
         });
 
-        //stringArray.add(noteValue);
-        //recyclerView.setAdapter(mAdapter);
+//        LayoutInflater factory = LayoutInflater.from(MainBoard.this);
+//        //Creates a view and adds buttons (such as Edit Text) from a customized layout
+//        View stickyView = factory.inflate(R.layout.add_sticky_popup, null);
+//
+//        note = (EditText) stickyView.findViewById(R.id.thoughts);
+//        final InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//        note.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                if (actionId == EditorInfo.IME_ACTION_DONE) {
+//                    noteValue = note.getText().toString().trim();
+//                    setNoteValue(noteValue);
+//                    Toast.makeText(getApplicationContext(), "String is" + noteValue, Toast.LENGTH_SHORT).show();
+//                    imm.hideSoftInputFromWindow(note.getWindowToken(), 0);
+//                    return true;
+//                }
+//                return false;
+//            }
+//
+//        });
+
     }
 
 
