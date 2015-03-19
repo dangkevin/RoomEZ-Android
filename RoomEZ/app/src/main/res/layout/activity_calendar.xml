@@ -62,15 +62,15 @@
             fab:fab_title="New Event"
             fab:fab_colorPressed="@color/MaterialBlue"/>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/floatingButtonCal2"
-            fab:fab_colorNormal="@color/white"
-            fab:fab_labelStyle="@style/menu_labels_style"
-            fab:fab_size="mini"
-            fab:fab_title="Change Week View"
-            fab:fab_colorPressed="@color/MaterialBlue"/>
+        <!--<com.getbase.floatingactionbutton.FloatingActionButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/floatingButtonCal2"-->
+            <!--fab:fab_colorNormal="@color/white"-->
+            <!--fab:fab_labelStyle="@style/menu_labels_style"-->
+            <!--fab:fab_size="mini"-->
+            <!--fab:fab_title="Change Week View"-->
+            <!--fab:fab_colorPressed="@color/MaterialBlue"/>-->
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
