@@ -12,10 +12,11 @@
     <EditText
         android:layout_width="224dp"
         android:id="@+id/thoughts"
+        android:inputType = "textMultiLine"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="4dp"
-        android:hint="@string/sticky_greeting"/>
+        />
 </LinearLayout>
