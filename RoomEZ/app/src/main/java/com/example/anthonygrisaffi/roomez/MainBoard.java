@@ -59,7 +59,7 @@ public class MainBoard extends ActionBarActivity
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         stringArray = new ArrayList<>();
-        stringArray.add("RoomEZ is so AWESOME!!");
+        stringArray.add("RoomEZ RAWKS!");
         //stringArray.add("Kevin");
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -102,7 +102,6 @@ public class MainBoard extends ActionBarActivity
                         //add the string to list
                         noteValue = note.getText().toString().trim();
                         setNoteValue(noteValue);
-Toast.makeText(getApplicationContext(),"noteValue = " + noteValue, Toast.LENGTH_SHORT).show();
                         stringArray.add(noteValue);
                         recyclerView.setAdapter(mAdapter);
                         mMaterialDialog.dismiss();
@@ -115,7 +114,6 @@ Toast.makeText(getApplicationContext(),"noteValue = " + noteValue, Toast.LENGTH_
                 mMaterialDialog.setView(popup);
                 mMaterialDialog.show();
 
-                Toast.makeText(getApplicationContext(),"Hello there",Toast.LENGTH_SHORT).show();
                 //                        eventTitleButton = (EditText) findViewById(R.id.eventTitle);
 
             }

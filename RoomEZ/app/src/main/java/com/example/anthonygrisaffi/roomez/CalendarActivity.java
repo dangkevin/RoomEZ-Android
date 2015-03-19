@@ -81,7 +81,41 @@ public class CalendarActivity extends ActionBarActivity implements
         findViewById(R.id.plusButton1).setOnClickListener(new View.OnClickListener() {
                            @Override
                             public void onClick(View v) {
-                               addCalEvent();
+
+                               CreateCalendarEvent hello2 = new CreateCalendarEvent();
+                               mon = hello2.getMonth();
+                               //Toast.makeText(getApplicationContext(), "Month is" + mon, Toast.LENGTH_SHORT).show();
+                               DOM = hello2.getDay();
+                               //Toast.makeText(getApplicationContext(), "Day is" + DOM, Toast.LENGTH_SHORT).show();
+                               yr = hello2.getYear();
+                               //Toast.makeText(getApplicationContext(), "Year is" + DOM, Toast.LENGTH_SHORT).show();
+                               eventTitle = hello2.getEventTitle();
+                               //Toast.makeText(getApplicationContext(), "String is" + eventTitle, Toast.LENGTH_SHORT).show();
+                               starthour = hello2.getStartHour();
+                               startminute = hello2.getStartMinute();
+                               endhour = hello2.getEndHour();
+                               endminute = hello2.getEndMinute();
+
+                               eMon = hello2.geteMonth();
+                               eDOM = hello2.geteDay();
+                               eYear = hello2.geteYear();
+
+                               mStartTime = Calendar.getInstance();
+                               mStartTime.set(Calendar.HOUR_OF_DAY, starthour);
+                               mStartTime.set(Calendar.DAY_OF_MONTH,DOM);
+                               mStartTime.set(Calendar.MINUTE, startminute);
+                               mStartTime.set(Calendar.MONTH, mon );
+                               mStartTime.set(Calendar.YEAR, yr);
+                               mEndTime = Calendar.getInstance();
+                               mEndTime.set(Calendar.HOUR_OF_DAY, endhour);
+                               mEndTime.set(Calendar.DAY_OF_MONTH,eDOM);
+                               mEndTime.set(Calendar.MINUTE, endhour);
+                               mEndTime.set(Calendar.MONTH, eMon);
+                               mEndTime.set(Calendar.YEAR, eYear);
+                               WeekViewEvent weekEvent = new WeekViewEvent(1,eventTitle, mStartTime, mEndTime);
+                               //mEventModels.clear();
+                               mEventModels.add(weekEvent);
+                               mWeekView.notifyDatasetChanged();
 
                            }
         });
@@ -95,40 +129,7 @@ public class CalendarActivity extends ActionBarActivity implements
 
             @Override
             public void onClick(View v) {
-                CreateCalendarEvent hello2 = new CreateCalendarEvent();
-                mon = hello2.getMonth();
-                Toast.makeText(getApplicationContext(), "Month is" + mon, Toast.LENGTH_SHORT).show();
-                DOM = hello2.getDay();
-                Toast.makeText(getApplicationContext(), "Day is" + DOM, Toast.LENGTH_SHORT).show();
-                yr = hello2.getYear();
-                Toast.makeText(getApplicationContext(), "Year is" + DOM, Toast.LENGTH_SHORT).show();
-                eventTitle = hello2.getEventTitle();
-                Toast.makeText(getApplicationContext(), "String is" + eventTitle, Toast.LENGTH_SHORT).show();
-                starthour = hello2.getStartHour();
-                startminute = hello2.getStartMinute();
-                endhour = hello2.getEndHour();
-                endminute = hello2.getEndMinute();
-
-                eMon = hello2.geteMonth();
-                eDOM = hello2.geteDay();
-                eYear = hello2.geteYear();
-
-                mStartTime = Calendar.getInstance();
-                mStartTime.set(Calendar.HOUR_OF_DAY, starthour);
-                mStartTime.set(Calendar.DAY_OF_MONTH,DOM);
-                mStartTime.set(Calendar.MINUTE, startminute);
-                mStartTime.set(Calendar.MONTH, mon );
-                mStartTime.set(Calendar.YEAR, yr);
-                mEndTime = Calendar.getInstance();
-                mEndTime.set(Calendar.HOUR_OF_DAY, endhour);
-                mEndTime.set(Calendar.DAY_OF_MONTH,eDOM);
-                mEndTime.set(Calendar.MINUTE, endhour);
-                mEndTime.set(Calendar.MONTH, eMon);
-                mEndTime.set(Calendar.YEAR, eYear);
-                WeekViewEvent weekEvent = new WeekViewEvent(1,eventTitle, mStartTime, mEndTime);
-                //mEventModels.clear();
-                mEventModels.add(weekEvent);
-                mWeekView.notifyDatasetChanged();
+                addCalEvent();
 
 
             }
