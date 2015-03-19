@@ -59,7 +59,7 @@
             fab:fab_colorNormal="@color/white"
             fab:fab_labelStyle="@style/menu_labels_style"
             fab:fab_size="mini"
-            fab:fab_title="List"
+            fab:fab_title="New Event"
             fab:fab_colorPressed="@color/MaterialBlue"/>
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -69,7 +69,7 @@
             fab:fab_colorNormal="@color/white"
             fab:fab_labelStyle="@style/menu_labels_style"
             fab:fab_size="mini"
-            fab:fab_title="Picture"
+            fab:fab_title="Change Week View"
             fab:fab_colorPressed="@color/MaterialBlue"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

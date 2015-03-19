@@ -59,7 +59,7 @@ public class MainBoard extends ActionBarActivity
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         stringArray = new ArrayList<>();
-        //stringArray.add("Anthony");
+        stringArray.add("RoomEZ is so AWESOME!!");
         //stringArray.add("Kevin");
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
